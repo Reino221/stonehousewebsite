@@ -1,0 +1,88 @@
+import React, { createContext, useState, useMemo, useEffect } from 'react';
+import MenuBar from '../components/MenuBar';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+export const ThemeContext = createContext({
+  theme: 'light',
+  toggleTheme: () => {},
+});
+
+const appContainerStyle = (theme) => ({
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  background: theme === 'dark' ? '#181f26' : '#faf9f6',
+  color: theme === 'dark' ? '#fff' : '#222',
+  transition: 'background 0.2s, color 0.2s',
+  boxShadow: theme === 'dark' ? '0 0 0 100vmax #181f26' : '0 0 0 100vmax #faf9f6', // fix white edge
+  margin: 0,
+  padding: 0,
+  boxSizing: 'border-box',
+  overflowX: 'hidden',
+});
+
+const contentStyle = {
+  flex: 1,
+  paddingTop: '5.5rem', // to account for fixed MenuBar height
+};
+
+export const AuthKycContext = createContext({
+  isSignedIn: false,
+  setIsSignedIn: () => {},
+  isKycComplete: false,
+  setIsKycComplete: () => {},
+});
+
+export const AuthKycProvider = ({ children }) => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isKycComplete, setIsKycComplete] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSignedIn(!!localStorage.getItem('isSignedIn'));
+      setIsKycComplete(!!localStorage.getItem('isKycComplete'));
+    }
+  }, []);
+
+  return (
+    <AuthKycContext.Provider value={{ isSignedIn, setIsSignedIn, isKycComplete, setIsKycComplete }}>
+      {children}
+    </AuthKycContext.Provider>
+  );
+};
+
+export default function MyApp({ Component, pageProps }) {
+  const [theme, setTheme] = useState('light');
+
+  // Persist theme in localStorage and apply to <html> for new pages
+  useEffect(() => {
+    const stored = typeof window !== 'undefined' ? localStorage.getItem('stonehouse-theme') : null;
+    if (stored && (stored === 'dark' || stored === 'light')) setTheme(stored);
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('stonehouse-theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+      document.body.style.background = theme === 'dark' ? '#181f26' : '#faf9f6';
+      document.body.style.color = theme === 'dark' ? '#fff' : '#222';
+    }
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  const themeContextValue = useMemo(() => ({ theme, toggleTheme }), [theme]);
+
+  return (
+    <AuthKycProvider>
+      <ThemeContext.Provider value={themeContextValue}>
+        <div style={appContainerStyle(theme)}>
+          <MenuBar />
+          <div style={contentStyle}>
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </div>
+      </ThemeContext.Provider>
+    </AuthKycProvider>
+  );
+}

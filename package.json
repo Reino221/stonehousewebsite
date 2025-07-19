@@ -1,0 +1,23 @@
+{
+  "name": "stonehouse-new-app",
+  "version": "1.0.0",
+  "description": "Next.js app for Stonehouse Holdings",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Stonehouse Holdings",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-datepicker": "^8.4.0",
+    "react-dom": "^19.1.0",
+    "xlsx": "^0.18.5"
+  }
+}

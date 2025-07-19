@@ -1,0 +1,8 @@
+/* Responsive row/column for quote buttons */
+@media (max-width: 900px) {
+  .stonehouse-quote-btn-row {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+    align-items: stretch !important;
+  }
+}
