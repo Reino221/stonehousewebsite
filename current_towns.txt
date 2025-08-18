@@ -1,0 +1,394 @@
+﻿01A Bellville WC
+01A Cape Town WC
+01A Chatsworth ZN
+01A Durban ZN
+01A East London EC
+01A Goodwood WC
+01A Inanda ZN
+01A Kuilsrivier WC
+01A Malmesbury (south of 33o30? latitude) WC
+01A Mdantsane EC
+01A Mitchells Plain WC
+01A Mossel Bay WC
+01A Pinetown ZN
+01A Port Elizabeth EC
+01A Simonstown WC
+01A Umlazi ZN
+01A Wynberg WC
+02A Camperdown ZN
+02A Ndwedwe ZN
+02A Paarl WC
+02A Somerset West WC
+02A Stellenbosch WC
+02A Strand WC
+02A Uitenhage EC
+02A Umbumbulu ZN
+02A Wellington WC
+03A George WC
+03A Hankey EC
+03A King Williams Town EC
+03A Kirkwood EC
+03A Komga EC
+03A Lower Tugela ZN
+03A Malmesbury (north of 33o30? latitude) WC
+03A Mapumulo ZN
+03A Richmond (KZN) ZN
+03A Umzinto ZN
+03A Zwelitsha EC
+03B Humansdorp EC
+03B Lions River ZN
+03B New Hanover ZN
+03B Pietermaritzburg ZN
+03C No MDZ
+04A Albany EC
+04A Alexandria EC
+04A Calitzdorp WC
+04A Eshowe ZN
+04A Heidelberg (W.Cape) WC
+04A Ixopo ZN
+04A Keiskammahoek EC
+04A Knysna WC
+04A Middledrift EC
+04A Moorreesburg WC
+04A Mtunzini ZN
+04A Oudtshoorn WC
+04A Peddie (Ciskei) EC
+04A Port Shepstone ZN
+04A Riversdale WC
+04A Stutterheim EC
+04A Tulbagh WC
+04A Victoria East EC
+04C No MDZ
+05A Adelaide EC
+05A Alfred ZN
+05A Bathurst (Port Alfred) EC
+05A Bedford EC
+05A Caledon WC
+05A Cathcart EC
+05A Centane EC
+05A Ceres WC
+05A Cofimvaba (St Marks) EC
+05A Fort Beaufort EC
+05A Gatyana (Willowvale) EC
+05A Gcuwa (Butterworth) EC
+05A Hermanus WC
+05A Hewu (Whittle Sea) EC
+05A Hlabisa ZN
+05A Hopefield WC
+05A Idutywa EC
+05A Kranskop ZN
+05A Lower Umfolozi ZN
+05A Montagu WC
+05A Mpofu (Stockenstroom)(Seymore) EC
+05A Mtonjaneni ZN
+05A Nkandla ZN
+05A Nqamakwe EC
+05A Queenstown EC
+05A Robertson WC
+05A Sterkstroom EC
+05A Swellendam WC
+05A Tarka EC
+05A Tsomo EC
+05A Umzimkulu EC
+05A Vredenburg WC
+05A Worcester WC
+05B Estcourt ZN
+05B Impendle ZN
+05B Mooirivier ZN
+05B Msinga ZN
+05B Polela ZN
+05B Umvoti ZN
+05B Underberg ZN
+05B Weenen ZN
+05C Kliprivier ZN
+06A Babanango ZN
+06A Bredasdorp WC
+06A Glen Grey/Cacadu/Lady Frere EC
+06A Mahlabatini ZN
+06A Molteno EC
+06A Nongoma ZN
+06A Umtata EC
+06B Ladismith (Cape) WC
+06B Piketberg WC
+06B Uniondale WC
+06C Bergville ZN
+06C Dannhauser ZN
+06C Dundee ZN
+06C Glencoe ZN
+06C Harrismith FS
+06C Newcastle ZN
+06C Nqutu ZN
+06C Vryheid ZN
+07A Albert EC
+07A Aliwal North EC
+07A Noupoort NC
+07A Steynsburg EC
+07A W odehous e EC
+07A Xalanga EC
+07B Clanwilliam WC
+07B Jansenville EC
+07B Joubertina EC
+07B Laingsburg WC
+07B Prince Albert WC
+07B Somerset East EC
+07B Steytlerville EC
+07B Willowmore EC
+07C Bethlehem FS
+07C Fouriesburg FS
+07C Witsieshoek FS
+08A Barkly East EC
+08A Bethulie FS
+08A Colesberg NC
+08A De Aar NC
+08A Edenburg FS
+08A Elliot EC
+08A Hanover NC
+08A Herschel (Sterkspruit) EC
+08A Jagersfontein FS
+08A Lady Grey EC
+08A Maclear EC
+08A Phillippolis FS
+08A Reddersburg FS
+08A Richmond (N.Cape) NC
+08A Rouxville FS
+08A Smithfield FS
+08A Trompsburg FS
+08A Venterstad EC
+08A Wepener FS
+08A Zastron FS
+08B Beaufort West WC
+08B Cradock EC
+08B Fraserburg NC
+08B Pearston EC
+08C Amersfoort MP
+08C Clocolan FS
+08C Ermelo MP
+08C Ficksburg FS
+08C Frankfort FS
+08C Heilbron FS
+08C Ladybrand FS
+08C Lindley FS
+08C Marquard FS
+08C Reitz FS
+08C Senekal FS
+08C Standerton MP
+08C Ventersburg FS
+08C Vrede FS
+09A Britstown NC
+09A Fauresmith FS
+09A Hopetown NC
+09A Koffiefontein FS
+09A Philipstown NC
+09A Prieska NC
+09B Aberdeen EC
+09B Bizana EC
+09B Graaffreinett EC
+09B Murraysburg WC
+09B Sipangeni (Flagstaff) EC
+09B Van Rhynsdorp WC
+09B Vredendal WC
+09C Alberton GP
+09C Bafokeng NW
+09C Balfour MP
+09C Benoni GP
+09C Bethal MP
+09C Boksburg GP
+09C Bothaville FS
+09C Brakpan GP
+09C Brits NW
+09C Bronkhorstspruit GP
+09C Cullinan GP
+09C Delmas MP
+09C Germiston GP
+09C Heidelberg (Gauteng) GP
+09C Hennenman FS
+09C Highveld Ridge MP
+09C Johannesburg GP
+09C Kempton Park GP
+09C Klerksdorp NW
+09C Koppies FS
+09C Koster NW
+09C Kriel MP
+09C Kroonstad FS
+09C Krugersdorp GP
+09C Moretele 1 NW
+09C Moretele 2 MP
+09C Nigel GP
+09C Oberholzer GP
+09C Odendaalsrus FS
+09C Odi NW
+09C Parys FS
+09C Potchefstroom NW
+09C Pretoria GP
+09C Randburg GP
+09C Randfontein GP
+09C Roodepoort GP
+09C Rustenburg NW
+09C Sasolburg FS
+09C Soshanguve GP
+09C Springs GP
+09C Swartruggens NW
+09C Vanderbijlpark GP
+09C Vereeniging GP
+09C Viljoenskroon FS
+09C Virginia FS
+09C Vredefort FS
+09C Welkom FS
+09C Wesselsbron FS
+09C Westonaria GP
+09C Witbank MP
+09C Wonderboom GP
+10 PPM
+10B Carnavon NC
+10B Kwabhaca (Mount Frere) EC
+10B Lusikisiki (PortStJohns) EC
+10B Maxesibeni (Mount Ayliff) EC
+10B Tabankulu EC
+10B Williston NC
+10C Bela-Bela (Warmbad) LP
+10C Belfast MP
+10C Bloemhof NW
+10C Brandfort FS
+10C Bultfontein FS
+10C Carolina MP
+10C Christiana NW
+10C Coligny NW
+10C Eerstehoek MP
+10C Excelsior FS
+10C Groblersdal MP
+10C Hoopstad FS
+10C Kwamhlanga MP
+10C Lichtenburg NW
+10C Lydenburg MP
+10C Madikwe NW
+10C Mankwe NW
+10C Marico NW
+10C Mbibana MP
+10C Mdutjana (Siyabuswa) MP
+10C Middelburg (MP) MP
+10C Mkobola MP
+10C Moutse MP
+10C Theunissen FS
+10C Ventersdorp NW
+10C Waterval - Boven MP
+10C Winburg FS
+10C Wolmaranstad NW
+11A Hay NC
+11C Barkly West NC
+11C Bloemfontein FS
+11C Boshof FS
+11C Botshabelo FS
+11C Delareyville NW
+11C Dewetsdorp FS
+11C Hartswater NC
+11C Herbert NC
+11C Jacobsdal FS
+11C Kimberley NC
+11C Lehurutshe NW
+11C Mokerong 2 (North of Mokopane) LP
+11C Mokerong 3 (Zebediela area) LP
+11C Mokopane (Potgietersrus) (south of tropic of LP
+11C Molopo NW
+11C Nebo LP
+11C Petrusburg FS
+11C Schweizer-Reneke NW
+11C Sekhukhuneland LP
+11C Taung NW
+11C Thaba?nchu FS
+11C Warrenton NC
+11C Waterberg LP
+12B Calvinia (west of 20o longitude) NC
+12B Mount Fletcher EC
+12B Sutherland NC
+12B Umzimvubu EC
+12B Victoria West NC
+12C Ditsobotla NW
+12C Polokwane (Pietersburg) (south of tropic of c LP
+12C Seshego LP
+12C Thabamoopo LP
+12C Thabazimbi (east of 27o longitude) LP
+12C Vryburg (south of 26o30? latitude) NW
+13A Gordonia (south of 28o latitude) NC
+13C Bochum LP
+13C Dzanani Central (North of Makhado) LP
+13C Dzanani South (West of Makhado) LP
+13C Hlanganani LP
+13C Kuruman (south of 27o latitude) NC
+13C Lephalale (Ellisras) LP
+13C Polokwane (Pietersburg) (north of tropic of c LP
+13C Postmasburg NC
+13C Sekgosese LP
+13C Soutpansberg (central of 29o 30?and 30o 30? LP
+13C Thabazimbi (west of 27o longitude) LP
+13C Thohoyandou (west 31o longitude) LP
+13C Vryburg (east of 24o longitude and north of 2 NW
+13C Vuwani LP
+14B Calvinia (east of 20o longitude) NC
+14C Dzanani North (East of Musina) LP
+14C Musina (Messina) (East of 30o longitude) LP
+14C Mutale LP
+15A Kenhardt (east of 20o longitude) NC
+15C Ganyesa NW
+15C Kudumane NW
+16C Mokerong 1 (East of Lephalale) LP
+16C Mokopane (Potgietersrus) (north of tropic of LP
+16C Musina (Messina) (West of 30o longitude) LP
+16C Soutpansberg (west of 29o 30? longitude) LP
+17A Gordonia Central (between 27o30? and 28o la NC
+17C Kuruman (north of 27o latitude) NC
+17C Vryburg (west of 24o longitude) NW
+19A Gordonia (north of 27o30? latitude) NC
+31J Namakwaland South (south of 30o latitude) NC
+32J Namakwaland Central (between 29o and 30o NC
+33J Namakwaland Aggeneys(east of 18o30? longi NC
+34J Namakwaland Vioolsdrif (north of 29o latitud NC
+35J Namakwaland Port Nolloth (south of 29o latit NC
+36J Namakwaland Kleinsee (between 29o and 3 NC
+37J Namakwaland Alexander Bay (north of 29o l NC
+50 PPM
+57A Engcobo EC
+57A Hofmeyer EC
+57A Indwe EC
+57A Ingwavuma ZN
+57A Libode EC
+57A Maluki (Matatiele) EC
+57A Middelburg (E.Cape) EC
+57A Mount Currie ZN
+57A Mqanduli EC
+57A Ngotshe ZN
+57A Nqueleni EC
+57A Qumbu EC
+57A Tsolo EC
+57A Ubombo ZN
+57A Xhora ( Elliotdale) EC
+57C Paulpietersburg ZN
+57C Utrecht ZN
+57C Volksrust MP
+58C Piet Retief MP
+58C Simdlangentsha ZN
+58C Wakkerstroom MP
+60C No MDZ
+61C Barberton MP
+61C Mapulaneng LP
+61C Mhala LP
+61C Nelspruit MP
+61C Nkomazi (Kamhulshwa) MP
+61C Nsikazi (Kangwane) MP
+61C Pilgrims Rest MP
+61C White River MP
+62C Lulekani LP
+63C Bolobedu LP
+63C Letaba LP
+63C Namakgale LP
+63C Naphuno LP
+63C Phalaborwa LP
+63C Ritavi LP
+63C Soutpansberg (east of 30o 30? longitude) LP
+64C Giyani LP
+64C Malamulele LP
+67C Thohoyandou (east of 31o longitude) LP
+69A Kenhardt (west of 20o longitude) NC
+93 ULP
+95 ULP
+General Product
+Illuminating Paraffin

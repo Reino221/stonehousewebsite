@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stonehouse Estates QR Codes</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f7f7f7 0%, #e8e8e8 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .qr-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .qr-item {
+            text-align: center;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+        }
+        .qr-item h3 {
+            color: #1D2A35;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: transform 0.2s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        .facebook-btn {
+            background: linear-gradient(135deg, #1877f2 0%, #166FE5 100%);
+        }
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+        }
+        .url-display {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 10px;
+            word-break: break-all;
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stonehouse Estates QR Codes</h1>
+        <p style="text-align: center; color: #666; font-size: 1.1rem;">
+            Scan these QR codes to quickly access Stonehouse Estates social media
+        </p>
+        
+        <div class="qr-section">
+            <div class="qr-item">
+                <h3>📘 Facebook Page</h3>
+                <canvas id="facebook-qr"></canvas>
+                <br>
+                <button class="download-btn facebook-btn" onclick="downloadQR('facebook-qr', 'Stonehouse-Estates-Facebook-QR')">
+                    Download Facebook QR
+                </button>
+                <div class="url-display">
+                    https://www.facebook.com/share/1Avd5zjM2y/?mibextid=wwXIfr
+                </div>
+            </div>
+            
+            <div class="qr-item">
+                <h3>📱 WhatsApp Business</h3>
+                <canvas id="whatsapp-qr"></canvas>
+                <br>
+                <button class="download-btn whatsapp-btn" onclick="downloadQR('whatsapp-qr', 'Stonehouse-Estates-WhatsApp-QR')">
+                    Download WhatsApp QR
+                </button>
+                <div class="url-display">
+                    https://wa.me/message/EBQN6GQHWTKDH1
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center; color: #666; font-size: 0.9rem;">
+            <p><strong>Usage Instructions:</strong></p>
+            <p>• Right-click on any QR code and "Save image as..." to download</p>
+            <p>• Use the download buttons for easy saving</p>
+            <p>• Print these QR codes on business cards, flyers, or promotional materials</p>
+            <p>• Customers can scan with any QR code reader app</p>
+        </div>
+    </div>
+
+    <script>
+        // Generate QR codes when page loads
+        window.onload = function() {
+            // Facebook QR Code
+            QRCode.toCanvas(document.getElementById('facebook-qr'), 
+                'https://www.facebook.com/share/1Avd5zjM2y/?mibextid=wwXIfr', 
+                {
+                    width: 200,
+                    height: 200,
+                    color: {
+                        dark: '#1877f2',
+                        light: '#ffffff'
+                    },
+                    margin: 2
+                }
+            );
+            
+            // WhatsApp QR Code
+            QRCode.toCanvas(document.getElementById('whatsapp-qr'), 
+                'https://wa.me/message/EBQN6GQHWTKDH1', 
+                {
+                    width: 200,
+                    height: 200,
+                    color: {
+                        dark: '#25d366',
+                        light: '#ffffff'
+                    },
+                    margin: 2
+                }
+            );
+        };
+        
+        // Function to download QR code as image
+        function downloadQR(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

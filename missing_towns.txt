@@ -1,0 +1,186 @@
+﻿06C Adelaide EC
+04A Agisanang NW
+06C Albertinia WC
+10C Alicedale EC
+09A Alldays LP
+11C Alwal North NC
+60C Amanzimtoti ZN
+61C Amersfoort MP
+16B Amorosa NW
+18B Amorosa NW
+09C Babanango ZN
+06C Bafokeng NW
+10C Balfour MP
+09A Copperton NC
+10C Cradock EC
+10C Dannhauser ZN
+07B De Aar NC
+06C Dealesville FS
+07C Delmas MP
+10B Deneysville FS
+14B Despatch EC
+11A Dewetsdorp FS
+09C Douglas NC
+02A Durban ZN
+16C Dzanani 1 (East of Lephalale) LP
+11C Dzanani 2 (North of Mokopane) LP
+11C Dzanani 3 (Zebediela area) LP
+05A East London EC
+10C Edenburg FS
+13B Eerstehoek NW
+06A Ekandustria GP
+15C Empangeni ZN
+10C Ermelo MP
+10C Estcourt ZN
+09C Ficksburg FS
+02A Franschhoek WC
+10C Frankfort FS
+08A George WC
+10A Giyani LP
+08B Goodwood WC
+10B Graaff-Reinet EC
+06B Grahamstown EC
+60B Great Kei Mouth EC
+15C Greytown ZN
+10C Harrismith FS
+09C Hartbeespoort NW
+04A Heidelberg GP
+09C Heidelberg WC
+10C Heilbron FS
+08C Hennenman FS
+05B Hermanus WC
+10C Hoedspruit LP
+04A Hoopstad FS
+13B Humansdorp EC
+12C Jagersfontein FS
+15C Jozini ZN
+13A Kakamas NC
+05A Kameeldrift GP
+10B Kanyamazane MP
+09C Kathu NC
+08B Kenhardt NC
+02A Kimberley NC
+15C Kirkwood EC
+10C Klerksdorp NW
+03A Knysna WC
+06A Kokstad ZN
+10C Komatipoort MP
+11C Kriel MP
+15C Kroondal NW
+15C Kroonstad FS
+05A Kuruman NC
+13C Ladybrand FS
+15C Ladysmith ZN
+08A Laingsburg WC
+09C Langebaan WC
+07C Leeudoringstad NW
+02A Lephalale (Ellisras) LP
+07A Limpopo/Musina LP
+09C Louis Trichardt (Makhado) LP
+11C Lydenburg MP
+11C Mabopane NW
+15A Madadeni ZN
+15A Mafikeng NW
+10C Magaliesburg GP
+10A Mahikeng NW
+10C Makhanda (Grahamstown) EC
+15C Malmesbury WC
+08A Mamre WC
+15C Mandeni ZN
+10B Marble Hall LP
+04A Margate ZN
+11C Mbombela (Nelspruit) MP
+11C Middelburg EC
+10C Middelburg MP
+10C Midrand GP
+13A Midvaal GP
+11C Mmabatho NW
+13C Mooi River ZN
+09C Mookgophong (Naboomspruit) LP
+08C Morgenzon MP
+06A Mossel Bay WC
+10C Mount Ayliff EC
+09C Mount Currie (Kokstad) ZN
+04A Mount Fletcher EC
+05A Mount Frere EC
+10A Mpophomeni ZN
+14C Mtubatuba ZN
+11C Mthatha (Umtata) EC
+10B Mthunzini ZN
+08A Murraysburg NC
+15C Musina LP
+07A Naboomspruit (Mookgophong) LP
+04A Nelspruit (Mbombela) MP
+10B Newcastle ZN
+13C Nieu-Bethesda EC
+08A Nigel GP
+05B Nkandla ZN
+06C Nongoma ZN
+10B Noupoort NC
+04A Nylstroom (Modimolle) LP
+09A Orania NC
+10C Orkney NW
+01A Paarl WC
+05A Parys FS
+15C Piet Retief MP
+15C Pietermaritzburg ZN
+05A Pietersburg (Polokwane) LP
+10C Pinetown ZN
+09A Polokwane LP
+10C Pontdrif LP
+01A Port Alfred EC
+05A Port Elizabeth (Gqeberha) EC
+02A Port Shepstone ZN
+13C Potgietersrus (Mokopane) LP
+05A Prieska NC
+08A Prince Albert WC
+01A Queenstown EC
+12B Randfontein GP
+09C Reitz FS
+05A Richards Bay ZN
+10C Richmond ZN
+11C Rustenburg NW
+11C Sabie MP
+11C Sandton GP
+05A Scottburgh ZN
+08A Secunda MP
+04A Senekal FS
+01A Somerset East EC
+05A Somerset West WC
+09C Springbok NC
+11C Springs GP
+05A Standerton MP
+01A Stellenbosch WC
+11C Stilfontein NW
+13B Strand WC
+04A Swellendam WC
+15C Thabazimbi LP
+13C Thohoyandou LP
+15C Three Rivers (Vereeniging) GP
+04A Tzaneen LP
+05A Uitenhage EC
+15C Ulundi ZN
+04A Umhlanga ZN
+09C Upington NC
+11C Vanderbijlpark GP
+06B Ventersburg FS
+15C Ventersdorp NW
+11C Vereeniging GP
+11C Vereeniging GP (South)
+15C Verkeerdevlei FS
+08B Vrede FS
+11C Vredendal WC
+13C Vredefort FS
+04A Vryburg NW
+11C Vryheid ZN
+04A Vuka ZN
+07B Warden FS
+04A Warmbad (Bela-Bela) LP
+08A Warrenton NC
+15C Wesselsbron FS
+08A Westonaria GP
+13C Witsieshoek FS
+10C Wolmaransstad NW
+09C Zeerust NW
+06C Zululand ZN
+15C Zwelitsha EC

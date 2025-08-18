@@ -12,10 +12,10 @@ const appContainerStyle = (theme) => ({
   minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
-  background: theme === 'dark' ? '#181f26' : '#faf9f6',
+  background: theme === 'dark' ? '#181f26' : '#e5e5e5',
   color: theme === 'dark' ? '#fff' : '#222',
   transition: 'background 0.2s, color 0.2s',
-  boxShadow: theme === 'dark' ? '0 0 0 100vmax #181f26' : '0 0 0 100vmax #faf9f6', // fix white edge
+  boxShadow: theme === 'dark' ? '0 0 0 100vmax #181f26' : '0 0 0 100vmax #e5e5e5', // fix white edge
   margin: 0,
   padding: 0,
   boxSizing: 'border-box',

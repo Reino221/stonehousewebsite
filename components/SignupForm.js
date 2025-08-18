@@ -263,7 +263,7 @@ const SignupForm = ({ onClose, onSuccess }) => {
           </select>
           <input name="phone" type="tel" placeholder="Phone Number" value={form.phone} onChange={handleChange} style={{ flex: 1, padding: '0.8rem', borderRadius: 8, border: '1.2px solid #e0e0e0', fontSize: 15 }} required />
         </div>
-        <input name="company" type="text" placeholder="Company (optional)" value={form.company} onChange={handleChange} style={{ padding: '0.8rem', borderRadius: 8, border: '1.2px solid #e0e0e0', fontSize: 15 }} />
+        <input name="company" type="text" placeholder="Company" value={form.company} onChange={handleChange} style={{ padding: '0.8rem', borderRadius: 8, border: '1.2px solid #e0e0e0', fontSize: 15 }} />
         {error && <div style={{ color: 'red', fontSize: 14 }}>{error}</div>}
         <button type="submit" style={{ background: '#FFD700', color: '#1D2A35', border: 'none', borderRadius: 10, padding: '0.7rem', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>Sign Up</button>
       </form>

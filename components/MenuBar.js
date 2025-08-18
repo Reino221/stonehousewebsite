@@ -65,6 +65,24 @@ const MenuBar = () => {
   // Helper for scaling style
   const scaleIfSelected = (btn) => selected === btn ? { transform: 'scale(1.12)', zIndex: 1, transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' } : { transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' };
 
+  // Get page title based on current route
+  const getPageTitle = () => {
+    switch (router.pathname) {
+      case '/refineries':
+        return 'Refineries';
+      case '/diesel-ulp':
+        return 'FUEL DISTRIBUTION RSA';
+      case '/stonehouse-estates':
+        return 'Stonehouse Estates';
+      case '/agriculture':
+        return 'Agriculture';
+      case '/minerals':
+        return 'Minerals';
+      default:
+        return 'Stonehouse Holdings';
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsSignedUp(!!localStorage.getItem('stonehouse_profile'));
@@ -135,8 +153,14 @@ const MenuBar = () => {
             onClick={() => setSelected('logo')}
           >
             <img src="/Stonehouse Logo 2.PNG" alt="Stonehouse Logo" style={{ height: '2.2rem', width: 'auto', marginRight: '0.7rem', verticalAlign: 'middle', borderRadius: '4px', background: 'transparent', boxShadow: 'none' }} />
-            <span style={{ background: 'linear-gradient(90deg, #C99700, #FFD700)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>Stonehouse</span>{' '}
-            <span style={{ background: 'linear-gradient(90deg, #C0C0C0, #888888)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>Holdings</span>
+            {getPageTitle() === 'Stonehouse Holdings' ? (
+              <>
+                <span style={{ background: 'linear-gradient(90deg, #C99700, #FFD700)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>Stonehouse</span>{' '}
+                <span style={{ background: 'linear-gradient(90deg, #C0C0C0, #888888)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>Holdings</span>
+              </>
+            ) : (
+              <span style={{ background: 'linear-gradient(90deg, #C99700, #FFD700)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>{getPageTitle()}</span>
+            )}
           </a>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', marginRight: 'auto', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
