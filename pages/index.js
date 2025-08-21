@@ -18,7 +18,7 @@ export default function Home() {
       name: 'FUEL DISTRIBUTION RSA',
       color: '#FFD700',
       video: '/Diesel vid.mp4',
-      desc: 'Distribution of diesel and unleaded petrol across South Africa.',
+      desc: 'Premium fuel distribution and industrial petroleum solutions for South African markets.',
       route: '/diesel-ulp',
     },
     {
