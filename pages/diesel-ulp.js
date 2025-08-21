@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext, useState } from 'react';
 import { ThemeContext, AuthKycContext } from './_app';
 
@@ -37,16 +38,21 @@ export default function DieselULP() {
   }
 
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      background: theme === 'dark' ? '#181d23' : '#e5e5e5',
-      padding: '2rem 1rem',
-    }}>
+    <>
+      <Head>
+        <title>Fuel Distribution RSA - Stonehouse Holdings | Diesel & ULP</title>
+        <meta name="description" content="Stonehouse Holdings Fuel Distribution RSA - Reliable diesel and unleaded petrol fuel distribution services across South Africa." />
+      </Head>
+      <div style={{
+        width: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        background: theme === 'dark' ? '#181d23' : '#e5e5e5',
+        padding: '2rem 1rem',
+      }}>
       {/* Hero Section with Background */}
       <div style={{
         width: 'calc(100% - 2rem)',
@@ -1127,5 +1133,6 @@ This quote request was submitted via the Stonehouse Holdings website.
         </div>
       </div>
     </div>
+    </>
   );
 }

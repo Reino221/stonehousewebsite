@@ -1,4 +1,4 @@
-
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ThemeContext } from './_app';
@@ -45,18 +45,23 @@ export default function Home() {
   ];
 
   return (
-    <div
-      style={{
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center', 
-        justifyContent: 'flex-start', 
-        minHeight: '100vh', 
-        width: '100%',
-        padding: '0.5rem 1rem 2rem 1rem',
-        background: theme === 'dark' ? '#181d23' : '#e5e5e5'
-      }}
-    >
+    <>
+      <Head>
+        <title>Stonehouse Holdings - Global Trading & Business Solutions</title>
+        <meta name="description" content="Stonehouse Holdings - Leading global trading company specializing in refineries, minerals, fuel distribution, and deceased estate administration." />
+      </Head>
+      <div
+        style={{
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'flex-start', 
+          minHeight: '100vh', 
+          width: '100%',
+          padding: '0.5rem 1rem 2rem 1rem',
+          background: theme === 'dark' ? '#181d23' : '#e5e5e5'
+        }}
+      >
       <div style={{ 
         flex: 1, 
         display: 'flex', 
@@ -233,5 +238,6 @@ export default function Home() {
       </div>
       </div>
     </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext, useState } from 'react';
 import { ThemeContext, AuthKycContext } from './_app';
 
@@ -94,7 +95,12 @@ export default function Refineries() {
   }
 
   return (
-    <div style={{ width: '100%', minHeight: '100vh', background: theme === 'dark' ? '#181d23' : '#e5e5e5', padding: '2rem 1rem' }}>
+    <>
+      <Head>
+        <title>Refineries - Stonehouse Holdings | Global Petroleum Trading</title>
+        <meta name="description" content="Stonehouse Holdings Refineries division - Global trading and distribution of petroleum products for industrial and commercial use." />
+      </Head>
+      <div style={{ width: '100%', minHeight: '100vh', background: theme === 'dark' ? '#181d23' : '#e5e5e5', padding: '2rem 1rem' }}>
       {/* Hero Section */}
       <div style={{ width: 'calc(100% - 2rem)', maxWidth: 1200, height: 400, borderRadius: 24, backgroundImage: 'url("/Refineries 2.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', marginLeft: 'auto', marginRight: 'auto' }}>
         {/* Title */}
@@ -1311,5 +1317,6 @@ This quote request was submitted via the Stonehouse Holdings website.
         </div>
       </div>
     </div>
+    </>
   );
 }

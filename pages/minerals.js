@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext, useState } from 'react';
 import { ThemeContext, AuthKycContext } from './_app';
 
@@ -94,16 +95,21 @@ export default function Minerals() {
   };
 
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      background: theme === 'dark' ? '#181d23' : '#e5e5e5',
-      padding: '2rem 1rem',
-    }}>
+    <>
+      <Head>
+        <title>Minerals - Stonehouse Holdings | Coal & Chrome Trading</title>
+        <meta name="description" content="Stonehouse Holdings Minerals division - Crushing and screening of our own coal, and trading in minerals including chrome." />
+      </Head>
+      <div style={{
+        width: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        background: theme === 'dark' ? '#181d23' : '#e5e5e5',
+        padding: '2rem 1rem',
+      }}>
       {/* Hero Section with Background */}
       <div style={{
         width: 'calc(100% - 2rem)',
@@ -583,5 +589,6 @@ export default function Minerals() {
         </div>
       )}
     </div>
+    </>
   );
 }

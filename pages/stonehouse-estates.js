@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from './_app';
 
@@ -123,15 +124,20 @@ export default function StonehouseEstates() {
   }, []);
 
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      background: theme === 'dark' ? '#181d23' : '#e5e5e5',
-      padding: '2rem 1rem',
+    <>
+      <Head>
+        <title>Stonehouse Estates - Deceased Estate Administration</title>
+        <meta name="description" content="Stonehouse Estates - Professional deceased estate administration and asset management services with compassionate support." />
+      </Head>
+      <div style={{
+        width: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        background: theme === 'dark' ? '#181d23' : '#e5e5e5',
+        padding: '2rem 1rem',
     }}>
       {/* Hero Section with Background */}
       <div style={{
@@ -559,5 +565,6 @@ export default function StonehouseEstates() {
         </div>
       )}
     </div>
+    </>
   );
 }
