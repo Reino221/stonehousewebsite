@@ -61,7 +61,7 @@ const Contact = () => {
             <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.7rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>Working Hours</h2>
             <ul style={{ listStyle: 'none', padding: 0, color: theme === 'dark' ? '#e0e0e0' : '#333', fontSize: '1.08rem', lineHeight: 1.7, width: '100%' }}>
               <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Monday - Thursday:</span> 08:00 - 16:30</li>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Friday:</span> 08:00 - 14:00</li>
+              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Friday:</span> 08:00 - 15:00</li>
               <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Saturday / Sunday:</span> Closed</li>
               <li><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Public Holidays:</span> Closed</li>
             </ul>
