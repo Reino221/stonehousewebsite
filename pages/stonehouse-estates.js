@@ -185,6 +185,48 @@ export default function StonehouseEstates() {
             Professional deceased estate administration and asset management services
           </p>
         </div>
+        
+        {/* Contact Us Button */}
+        <div style={{ 
+          position: 'absolute', 
+          bottom: 32, 
+          left: 0, 
+          width: '100%', 
+          zIndex: 3, 
+          display: 'flex', 
+          justifyContent: 'center' 
+        }}>
+          <button
+            onClick={() => setShowContactForm(true)}
+            style={{
+              background: '#fff',
+              color: '#1D2A35',
+              border: '2px solid #FFD700',
+              borderRadius: '40px',
+              padding: '1rem 3rem',
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+              transition: 'all 0.3s ease',
+              outline: 'none',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = '#FFD700';
+              e.currentTarget.style.color = '#1D2A35';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.4)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = '#fff';
+              e.currentTarget.style.color = '#1D2A35';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)';
+            }}
+          >
+            Contact Us
+          </button>
+        </div>
       </div>
 
       {/* Content Section */}
@@ -233,41 +275,6 @@ export default function StonehouseEstates() {
             minimizing administrative burden and ensuring timely, equitable distribution of assets.
           </p>
         </div>
-      </div>
-
-      {/* Contact Us Button */}
-      <div style={{
-        width: '100%',
-        maxWidth: 1000,
-        textAlign: 'center',
-        marginTop: '2rem',
-      }}>
-        <button
-          onClick={() => setShowContactForm(true)}
-          style={{
-            background: '#fff',
-            color: '#1D2A35',
-            border: '2px solid #FFD700',
-            borderRadius: '40px',
-            padding: '1rem 3rem',
-            fontSize: '1.1rem',
-            fontWeight: 700,
-            cursor: 'pointer',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
-            transition: 'background 0.2s, color 0.2s, border 0.2s',
-            outline: 'none',
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = '#FFD700';
-            e.currentTarget.style.color = '#1D2A35';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = '#fff';
-            e.currentTarget.style.color = '#1D2A35';
-          }}
-        >
-          Contact Us
-        </button>
       </div>
 
       {/* Contact Form Modal */}
