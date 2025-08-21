@@ -47,27 +47,37 @@ export default function Home() {
   return (
     <div
       style={{
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start', 
+        minHeight: '100vh', 
         width: '100%',
-        minHeight: '100vh',
-        background: theme === 'dark' ? '#181f26' : '#e5e5e5',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        padding: '3rem 0',
+        padding: '0.5rem 1rem 2rem 1rem',
+        background: theme === 'dark' ? '#181d23' : '#e5e5e5'
       }}
     >
+      <div style={{ 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start',
+        maxWidth: '1200px',
+        width: '100%'
+      }}>
       <h1
         style={{
-          fontSize: '2.8rem',
+          fontSize: '3.5rem',
           fontWeight: 900,
-          marginBottom: '2.5rem',
+          marginBottom: '2rem',
           background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           textAlign: 'center',
           letterSpacing: '-0.02em',
+          lineHeight: '1.1'
         }}
       >
         Stonehouse Holdings
@@ -219,6 +229,7 @@ export default function Home() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
