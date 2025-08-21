@@ -401,11 +401,20 @@ export default function Minerals() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Name */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Full Name *
+                      </label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={e => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Full Name *"
+                        placeholder="Full Name"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
@@ -413,11 +422,20 @@ export default function Minerals() {
                     
                     {/* Company */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Company *
+                      </label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={e => setFormData({ ...formData, company: e.target.value })}
-                        placeholder="Company *"
+                        placeholder="Company"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
@@ -425,11 +443,20 @@ export default function Minerals() {
                     
                     {/* Contact Number */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Contact Number *
+                      </label>
                       <input
                         type="tel"
                         value={formData.contactNumber}
                         onChange={e => setFormData({ ...formData, contactNumber: e.target.value })}
-                        placeholder="Contact Number *"
+                        placeholder="Contact Number"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
@@ -437,11 +464,20 @@ export default function Minerals() {
                     
                     {/* Email */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Email Address *
+                      </label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="Email Address *"
+                        placeholder="Email Address"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
@@ -469,13 +505,22 @@ export default function Minerals() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Mineral Type dropdown */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Select {activeQuoteType} Product *
+                      </label>
                       <select
                         value={formData.mineralType}
                         onChange={e => setFormData({ ...formData, mineralType: e.target.value })}
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, background: '#fff', color: formData.mineralType ? '#1D2A35' : '#999', boxSizing: 'border-box', outline: 'none', appearance: 'none', cursor: 'pointer' }}
                         required
                       >
-                        <option value="" disabled>Select {activeQuoteType} Product *</option>
+                        <option value="" disabled>Select {activeQuoteType} Product</option>
                         {getMineralOptions(activeQuoteType).map((option, index) => (
                           <option key={index} value={option}>{option}</option>
                         ))}
@@ -532,11 +577,20 @@ export default function Minerals() {
                     
                     {/* Quantity */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Quantity Needed (tons) *
+                      </label>
                       <input
                         type="text"
                         value={formData.quantity}
                         onChange={e => setFormData({ ...formData, quantity: e.target.value })}
-                        placeholder="Quantity Needed (tons) *"
+                        placeholder="Quantity Needed (tons)"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
@@ -564,10 +618,19 @@ export default function Minerals() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Comments */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Additional Comments (optional)
+                      </label>
                       <textarea
                         value={formData.comments}
                         onChange={e => setFormData({ ...formData, comments: e.target.value })}
-                        placeholder="Additional comments or special requirements (optional)"
+                        placeholder="Additional comments or special requirements"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 100, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
                       />
                     </div>
