@@ -11,7 +11,7 @@ export default function Home() {
       name: 'Refineries',
       color: '#FFA500',
       video: '/Refinery vid.mp4',
-      desc: 'Petroleum refining and processing for industrial and commercial use.',
+      desc: 'Global trading and distribution of petroleum products for industrial and commercial use.',
       route: '/refineries',
     },
     {
