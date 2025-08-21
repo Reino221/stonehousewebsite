@@ -25,7 +25,7 @@ export default function Home() {
       name: 'Stonehouse Estates',
       color: '#8B5CF6',
       video: '/Estates vid.mp4',
-      desc: 'Property development, management, and real estate solutions.',
+      desc: 'Professional deceased estate administration and asset management services.',
       route: '/stonehouse-estates',
     },
     {
