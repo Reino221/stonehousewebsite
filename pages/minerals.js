@@ -613,7 +613,7 @@ export default function Minerals() {
                     borderBottom: '2px solid #dee2e6',
                     paddingBottom: '8px'
                   }}>
-                    Additional Information
+                    Special Requirements
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Comments */}
