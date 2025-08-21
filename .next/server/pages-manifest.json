@@ -1,6 +1,20 @@
 {
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/_error": "pages/_error.js",
+  "/dashboard": "pages/dashboard.html",
+  "/minerals": "pages/minerals.html",
+  "/about": "pages/about.html",
+  "/agriculture": "pages/agriculture.html",
+  "/contact": "pages/contact.html",
+  "/signup": "pages/signup.html",
+  "/profile": "pages/profile.html",
+  "/": "pages/index.html",
+  "/login": "pages/login.html",
+  "/diesel-ulp": "pages/diesel-ulp.html",
+  "/minerals_new": "pages/minerals_new.html",
+  "/store": "pages/store.html",
+  "/stonehouse-estates": "pages/stonehouse-estates.html",
+  "/refineries": "pages/refineries.html",
+  "/_app": "pages/_app.js",
+  "/404": "pages/404.html"
 }

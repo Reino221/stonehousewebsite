@@ -407,11 +407,20 @@ export default function StonehouseEstates() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Full Name */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Full Name *
+                      </label>
                       <input
                         type="text"
                         value={contactForm.fullName}
                         onChange={e => setContactForm({ ...contactForm, fullName: e.target.value })}
-                        placeholder="Full Name *"
+                        placeholder="Full Name"
                         style={{
                           width: '100%',
                           padding: '14px 18px',
@@ -429,11 +438,20 @@ export default function StonehouseEstates() {
 
                     {/* Contact Number */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Contact Number *
+                      </label>
                       <input
                         type="tel"
                         value={contactForm.contactNumber}
                         onChange={e => setContactForm({ ...contactForm, contactNumber: e.target.value })}
-                        placeholder="Contact Number *"
+                        placeholder="Contact Number"
                         style={{
                           width: '100%',
                           padding: '14px 18px',
@@ -451,11 +469,20 @@ export default function StonehouseEstates() {
 
                     {/* Email Address */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Email Address *
+                      </label>
                       <input
                         type="email"
                         value={contactForm.emailAddress}
                         onChange={e => setContactForm({ ...contactForm, emailAddress: e.target.value })}
-                        placeholder="Email Address *"
+                        placeholder="Email Address"
                         style={{
                           width: '100%',
                           padding: '14px 18px',
@@ -493,10 +520,19 @@ export default function StonehouseEstates() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                     {/* Comments */}
                     <div>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Your Message (optional)
+                      </label>
                       <textarea
                         value={contactForm.comments}
                         onChange={e => setContactForm({ ...contactForm, comments: e.target.value })}
-                        placeholder="Tell us about your inquiry or how we can help you (optional)"
+                        placeholder="Tell us about your inquiry or how we can help you"
                         style={{
                           width: '100%',
                           padding: '14px 18px',
