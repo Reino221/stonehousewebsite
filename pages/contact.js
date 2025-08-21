@@ -4,12 +4,29 @@ import { ThemeContext } from './_app';
 const Contact = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', minHeight: '100vh', width: '100%', background: theme === 'dark' ? '#181d23' : '#e5e5e5' }}>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'flex-start', 
+      minHeight: '100vh', 
+      width: '100%',
+      padding: '0.5rem 1rem 2rem 1rem',
+      background: theme === 'dark' ? '#181d23' : '#e5e5e5'
+    }}>
+      <div style={{ 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start',
+        maxWidth: '1000px',
+        width: '100%'
+      }}>
         <h1 style={{ 
           fontSize: '3.5rem', 
           fontWeight: 800, 
-          marginBottom: '1.5rem', 
+          marginBottom: '2rem', 
           background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
