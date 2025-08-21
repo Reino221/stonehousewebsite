@@ -135,9 +135,9 @@ export default function Minerals() {
         }} />
         
         {/* Title */}
-        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff' }}>
+        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff', padding: '0 1rem' }}>
           <h1 style={{
-            fontSize: '4rem',
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
             fontWeight: 900,
             background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
             WebkitBackgroundClip: 'text',
@@ -148,14 +148,15 @@ export default function Minerals() {
             Minerals
           </h1>
           <p style={{ 
-            fontSize: '1.2rem', 
+            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', 
             fontWeight: 500, 
             color: '#fff', 
             textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
             marginBottom: 0,
             maxWidth: '600px',
             margin: '0 auto',
-            lineHeight: '1.4'
+            lineHeight: '1.4',
+            padding: '0 1rem'
           }}>
             Crushing and screening of our own coal, and trading in minerals
           </p>
@@ -184,13 +185,13 @@ export default function Minerals() {
         maxWidth: 1000,
         background: theme === 'dark' ? '#232b36' : '#ffffff',
         borderRadius: '24px',
-        padding: '3rem 2rem',
+        padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)',
         boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)',
         border: theme === 'dark' ? '1px solid #3a4248' : '1px solid #e0e0e0',
         textAlign: 'center',
       }}>
         <h2 style={{
-          fontSize: '2.5rem',
+          fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
           fontWeight: 800,
           background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
           WebkitBackgroundClip: 'text',

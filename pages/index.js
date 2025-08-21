@@ -39,7 +39,7 @@ export default function Home() {
       name: 'Minerals',
       color: '#8B5C2A',
       video: '/Coal vid.mp4',
-      desc: 'Mining and trading of minerals and natural resources.',
+      desc: 'Crushing and screening of our own coal, and trading in minerals.',
       route: '/minerals',
     },
   ];
@@ -68,7 +68,7 @@ export default function Home() {
       }}>
       <h1
         style={{
-          fontSize: '3.5rem',
+          fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
           fontWeight: 900,
           marginBottom: '2rem',
           background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
@@ -77,7 +77,8 @@ export default function Home() {
           backgroundClip: 'text',
           textAlign: 'center',
           letterSpacing: '-0.02em',
-          lineHeight: '1.1'
+          lineHeight: '1.1',
+          padding: '0 1rem'
         }}
       >
         Stonehouse Holdings

@@ -98,17 +98,18 @@ export default function Refineries() {
       {/* Hero Section */}
       <div style={{ width: 'calc(100% - 2rem)', maxWidth: 1200, height: 400, borderRadius: 24, backgroundImage: 'url("/Refineries 2.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '3rem', marginLeft: 'auto', marginRight: 'auto' }}>
         {/* Title */}
-        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff' }}>
-          <h1 style={{ fontSize: '4rem', fontWeight: 900, background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '0.5rem', textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}>Refineries</h1>
+        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff', padding: '0 1rem' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 900, background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '0.5rem', textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}>Refineries</h1>
           <p style={{ 
-            fontSize: '1.2rem', 
+            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', 
             fontWeight: 500, 
             color: '#fff', 
             textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
             marginBottom: 0,
             maxWidth: '600px',
             margin: '0 auto',
-            lineHeight: '1.4'
+            lineHeight: '1.4',
+            padding: '0 1rem'
           }}>
             Global trading and distribution of petroleum products for industrial and commercial use
           </p>
@@ -1303,8 +1304,8 @@ This quote request was submitted via the Stonehouse Holdings website.
       </div>
 
       {/* Content Section */}
-      <div style={{ width: '100%', maxWidth: 1000, background: theme === 'dark' ? '#232b36' : '#ffffff', borderRadius: 24, padding: '3rem 2rem', boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)', border: theme === 'dark' ? '1px solid #3a4248' : '1px solid #e0e0e0', textAlign: 'center', margin: '2rem auto 0 auto' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '2rem' }}>Global Trading with Trusted Partnerships</h2>
+      <div style={{ width: '100%', maxWidth: 1000, background: theme === 'dark' ? '#232b36' : '#ffffff', borderRadius: 24, padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)', boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)', border: theme === 'dark' ? '1px solid #3a4248' : '1px solid #e0e0e0', textAlign: 'center', margin: '2rem auto 0 auto' }}>
+        <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 800, background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '2rem' }}>Global Trading with Trusted Partnerships</h2>
         <div style={{ fontSize: '1.2rem', lineHeight: '1.8', color: theme === 'dark' ? '#cbd5e0' : '#4a5568', textAlign: 'left' }}>
           <p>Stonehouse Holdings is a trusted international trading company specializing in the procurement and supply of a wide range of products. We work directly with reputable refineries and have partnered with reputable businesses across the industry to ensure the highest quality and reliable delivery. Our strong global partnerships and commitment to integrity allow us to provide seamless trade solutions tailored to meet the diverse needs of our clients.</p>
         </div>

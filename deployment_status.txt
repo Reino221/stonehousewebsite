@@ -1,0 +1,21 @@
+DEPLOYMENT STATUS - August 21, 2025
+
+✅ Changes Committed and Pushed:
+- Enhanced refineries page with client information fields
+- Professional sectioned layout for fuel distribution RSA  
+- Fixed email functionality (mailto integration)
+- Removed personal email reference from quotes
+- All quote forms now properly formatted
+
+🚀 GitHub Actions Deployment:
+- Triggered automatically on push to main branch
+- Expected deployment time: 3-5 minutes
+- Target: https://stonehousegroup.co.za
+
+📝 Changes Include:
+- Refineries: Professional form sections with client info
+- Fuel Distribution RSA: Matching professional layout
+- Both: Working email submission to stonehouseholdings24@gmail.com
+- Both: No personal email references in quote emails
+
+⏰ Status: Changes pushed - waiting for GitHub Actions to complete deployment
