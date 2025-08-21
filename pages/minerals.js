@@ -311,6 +311,36 @@ export default function Minerals() {
                     destinationEmail: 'stonehouseholdings24@gmail.com'
                   });
                   
+                  // Create email body
+                  let emailBody = `MINERALS QUOTE REQUEST\n\n`;
+                  emailBody += `CLIENT INFORMATION:\n`;
+                  emailBody += `Name: ${formData.name}\n`;
+                  emailBody += `Company: ${formData.company}\n`;
+                  emailBody += `Email: ${formData.email}\n`;
+                  emailBody += `Contact Number: ${formData.contactNumber}\n\n`;
+                  emailBody += `PRODUCT INFORMATION:\n`;
+                  emailBody += `Category: ${activeQuoteType}\n`;
+                  emailBody += `Product: ${formData.mineralType}\n`;
+                  
+                  if (activeQuoteType === 'Chrome' && formData.mineralType === 'ROM' && selectedROMRanges.length > 0) {
+                    emailBody += `ROM Percentage Ranges: ${selectedROMRanges.join(', ')}\n`;
+                  }
+                  if (activeQuoteType === 'Chrome' && formData.mineralType === 'Concentrate' && selectedConcentrateRanges.length > 0) {
+                    emailBody += `Concentrate Percentage Ranges: ${selectedConcentrateRanges.join(', ')}\n`;
+                  }
+                  
+                  emailBody += `Quantity: ${formData.quantity}\n\n`;
+                  if (formData.comments) {
+                    emailBody += `ADDITIONAL COMMENTS:\n${formData.comments}\n\n`;
+                  }
+                  emailBody += `Please provide a quotation for the above requirements.\n\n`;
+                  emailBody += `Best regards,\n${formData.name}`;
+                  
+                  const emailSubject = `Minerals Quote Request - ${activeQuoteType} - ${formData.company}`;
+                  const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                  
+                  window.location.href = mailtoLink;
+                  
                   // Add to quote history if user is signed in
                   if (isSignedIn) {
                     addQuoteToHistory({
@@ -330,139 +360,199 @@ export default function Minerals() {
                   alert('Quote request submitted successfully!');
                   closeQuoteForm();
                 }}
-                style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
+                style={{ display: 'flex', flexDirection: 'column', gap: 25 }}
               >
-                {/* Name */}
-                <div>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Full Name *"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                    required
-                  />
-                </div>
-                
-                {/* Email */}
-                <div>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="Email Address *"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                    required
-                  />
-                </div>
-                
-                {/* Company */}
-                <div>
-                  <input
-                    type="text"
-                    value={formData.company}
-                    onChange={e => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="Company *"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                    required
-                  />
-                </div>
-                
-                {/* Contact Number */}
-                <div>
-                  <input
-                    type="tel"
-                    value={formData.contactNumber}
-                    onChange={e => setFormData({ ...formData, contactNumber: e.target.value })}
-                    placeholder="Contact Number *"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                    required
-                  />
-                </div>
-                
-                {/* Mineral Type dropdown - moved here between Contact Number and Quantity */}
-                <div>
-                  <select
-                    value={formData.mineralType}
-                    onChange={e => setFormData({ ...formData, mineralType: e.target.value })}
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, background: '#fff', color: formData.mineralType ? '#1D2A35' : '#999', boxSizing: 'border-box', outline: 'none', appearance: 'none', cursor: 'pointer' }}
-                    required
-                  >
-                    <option value="" disabled>Select {activeQuoteType} Product *</option>
-                    {getMineralOptions(activeQuoteType).map((option, index) => (
-                      <option key={index} value={option}>{option}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                {/* ROM Range Selection - Only show for Chrome with ROM product */}
-                {activeQuoteType === 'Chrome' && formData.mineralType === 'ROM' && (
-                  <div>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: '#1D2A35', marginBottom: 10 }}>
-                      Select ROM Percentage Range(s) *
+                {/* Client Information Section */}
+                <div style={{ 
+                  background: '#f8f9fa', 
+                  padding: '20px', 
+                  borderRadius: '12px', 
+                  border: '2px solid #e9ecef' 
+                }}>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    fontWeight: 700, 
+                    color: '#495057', 
+                    marginBottom: '15px',
+                    borderBottom: '2px solid #dee2e6',
+                    paddingBottom: '8px'
+                  }}>
+                    Client Information
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                    {/* Name */}
+                    <div>
+                      <input
+                        type="text"
+                        value={formData.name}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Full Name *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-                      {['28% - 30%', '30% - 32%', '32% - 34%', '34% - 36%', '36% - 38%', '38% - 40%', '40% - 42%'].map((range) => (
-                        <label key={range} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '8px 12px', borderRadius: 8, border: '2px solid #e0e0e0', background: selectedROMRanges.includes(range) ? '#FFD700' : '#fff', transition: 'all 0.2s' }}>
-                          <input
-                            type="checkbox"
-                            checked={selectedROMRanges.includes(range)}
-                            onChange={() => handleROMRangeChange(range)}
-                            style={{ marginRight: 8, accentColor: '#C99700' }}
-                          />
-                          <span style={{ fontSize: 14, fontWeight: 500, color: selectedROMRanges.includes(range) ? '#1D2A35' : '#666' }}>
-                            {range}
-                          </span>
-                        </label>
-                      ))}
+                    
+                    {/* Email */}
+                    <div>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="Email Address *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
+                    </div>
+                    
+                    {/* Company */}
+                    <div>
+                      <input
+                        type="text"
+                        value={formData.company}
+                        onChange={e => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Company *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
+                    </div>
+                    
+                    {/* Contact Number */}
+                    <div>
+                      <input
+                        type="tel"
+                        value={formData.contactNumber}
+                        onChange={e => setFormData({ ...formData, contactNumber: e.target.value })}
+                        placeholder="Contact Number *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
                     </div>
                   </div>
-                )}
+                </div>
 
-                {/* Concentrate Range Selection - Only show for Chrome with Concentrate product */}
-                {activeQuoteType === 'Chrome' && formData.mineralType === 'Concentrate' && (
-                  <div>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: '#1D2A35', marginBottom: 10 }}>
-                      Select Concentrate Percentage Range(s) *
+                {/* Product Information Section */}
+                <div style={{ 
+                  background: '#f8f9fa', 
+                  padding: '20px', 
+                  borderRadius: '12px', 
+                  border: '2px solid #e9ecef' 
+                }}>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    fontWeight: 700, 
+                    color: '#495057', 
+                    marginBottom: '15px',
+                    borderBottom: '2px solid #dee2e6',
+                    paddingBottom: '8px'
+                  }}>
+                    Product Information
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                    {/* Mineral Type dropdown */}
+                    <div>
+                      <select
+                        value={formData.mineralType}
+                        onChange={e => setFormData({ ...formData, mineralType: e.target.value })}
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, background: '#fff', color: formData.mineralType ? '#1D2A35' : '#999', boxSizing: 'border-box', outline: 'none', appearance: 'none', cursor: 'pointer' }}
+                        required
+                      >
+                        <option value="" disabled>Select {activeQuoteType} Product *</option>
+                        {getMineralOptions(activeQuoteType).map((option, index) => (
+                          <option key={index} value={option}>{option}</option>
+                        ))}
+                      </select>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-                      {['38% - 40%', '40% - 42%', '42% - 44%', '44% - 46%', '46% - 48%'].map((range) => (
-                        <label key={range} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '8px 12px', borderRadius: 8, border: '2px solid #e0e0e0', background: selectedConcentrateRanges.includes(range) ? '#FFD700' : '#fff', transition: 'all 0.2s' }}>
-                          <input
-                            type="checkbox"
-                            checked={selectedConcentrateRanges.includes(range)}
-                            onChange={() => handleConcentrateRangeChange(range)}
-                            style={{ marginRight: 8, accentColor: '#C99700' }}
-                          />
-                          <span style={{ fontSize: 14, fontWeight: 500, color: selectedConcentrateRanges.includes(range) ? '#1D2A35' : '#666' }}>
-                            {range}
-                          </span>
-                        </label>
-                      ))}
+                    
+                    {/* ROM Range Selection - Only show for Chrome with ROM product */}
+                    {activeQuoteType === 'Chrome' && formData.mineralType === 'ROM' && (
+                      <div>
+                        <div style={{ fontSize: 15, fontWeight: 600, color: '#1D2A35', marginBottom: 10 }}>
+                          Select ROM Percentage Range(s) *
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                          {['28% - 30%', '30% - 32%', '32% - 34%', '34% - 36%', '36% - 38%', '38% - 40%', '40% - 42%'].map((range) => (
+                            <label key={range} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '8px 12px', borderRadius: 8, border: '2px solid #e0e0e0', background: selectedROMRanges.includes(range) ? '#FFD700' : '#fff', transition: 'all 0.2s' }}>
+                              <input
+                                type="checkbox"
+                                checked={selectedROMRanges.includes(range)}
+                                onChange={() => handleROMRangeChange(range)}
+                                style={{ marginRight: 8, accentColor: '#C99700' }}
+                              />
+                              <span style={{ fontSize: 14, fontWeight: 500, color: selectedROMRanges.includes(range) ? '#1D2A35' : '#666' }}>
+                                {range}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Concentrate Range Selection - Only show for Chrome with Concentrate product */}
+                    {activeQuoteType === 'Chrome' && formData.mineralType === 'Concentrate' && (
+                      <div>
+                        <div style={{ fontSize: 15, fontWeight: 600, color: '#1D2A35', marginBottom: 10 }}>
+                          Select Concentrate Percentage Range(s) *
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                          {['38% - 40%', '40% - 42%', '42% - 44%', '44% - 46%', '46% - 48%'].map((range) => (
+                            <label key={range} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', padding: '8px 12px', borderRadius: 8, border: '2px solid #e0e0e0', background: selectedConcentrateRanges.includes(range) ? '#FFD700' : '#fff', transition: 'all 0.2s' }}>
+                              <input
+                                type="checkbox"
+                                checked={selectedConcentrateRanges.includes(range)}
+                                onChange={() => handleConcentrateRangeChange(range)}
+                                style={{ marginRight: 8, accentColor: '#C99700' }}
+                              />
+                              <span style={{ fontSize: 14, fontWeight: 500, color: selectedConcentrateRanges.includes(range) ? '#1D2A35' : '#666' }}>
+                                {range}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Quantity */}
+                    <div>
+                      <input
+                        type="text"
+                        value={formData.quantity}
+                        onChange={e => setFormData({ ...formData, quantity: e.target.value })}
+                        placeholder="Quantity Needed *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
                     </div>
                   </div>
-                )}
-                
-                {/* Quantity */}
-                <div>
-                  <input
-                    type="text"
-                    value={formData.quantity}
-                    onChange={e => setFormData({ ...formData, quantity: e.target.value })}
-                    placeholder="Quantity Needed *"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                    required
-                  />
                 </div>
-                
-                {/* Comments */}
-                <div>
-                  <textarea
-                    value={formData.comments}
-                    onChange={e => setFormData({ ...formData, comments: e.target.value })}
-                    placeholder="Additional comments (optional)"
-                    style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 100, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
-                  />
+
+                {/* Additional Information Section */}
+                <div style={{ 
+                  background: '#f8f9fa', 
+                  padding: '20px', 
+                  borderRadius: '12px', 
+                  border: '2px solid #e9ecef' 
+                }}>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    fontWeight: 700, 
+                    color: '#495057', 
+                    marginBottom: '15px',
+                    borderBottom: '2px solid #dee2e6',
+                    paddingBottom: '8px'
+                  }}>
+                    Additional Information
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                    {/* Comments */}
+                    <div>
+                      <textarea
+                        value={formData.comments}
+                        onChange={e => setFormData({ ...formData, comments: e.target.value })}
+                        placeholder="Additional comments or special requirements (optional)"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 100, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
+                      />
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Submit Button */}
