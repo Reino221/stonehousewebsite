@@ -163,24 +163,28 @@ export default function StonehouseEstates() {
           borderRadius: '24px',
         }} />
         
-        {/* Hero Content */}
-        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', color: '#fff' }}>
+        {/* Title */}
+        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff' }}>
           <h1 style={{
             fontSize: '4rem',
             fontWeight: 900,
             background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: '1rem',
+            marginBottom: '0.5rem',
             textShadow: '0 4px 8px rgba(0,0,0,0.3)',
           }}>
             Stonehouse Estates
           </h1>
-          <p style={{
-            fontSize: '1.5rem',
-            fontWeight: 500,
-            textShadow: '0 2px 4px rgba(0,0,0,0.6)',
+          <p style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 500, 
+            color: '#fff', 
+            textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
+            marginBottom: 0,
             maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.4'
           }}>
             Professional deceased estate administration and asset management services
           </p>
