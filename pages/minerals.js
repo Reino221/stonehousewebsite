@@ -517,7 +517,7 @@ export default function Minerals() {
                         type="text"
                         value={formData.quantity}
                         onChange={e => setFormData({ ...formData, quantity: e.target.value })}
-                        placeholder="Quantity Needed *"
+                        placeholder="Quantity Needed (tons) *"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
