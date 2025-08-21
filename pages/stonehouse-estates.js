@@ -33,11 +33,23 @@ export default function StonehouseEstates() {
       return;
     }
     
-    // Success message
-    console.log('STONEHOUSE ESTATES Form submitted:', {
-      ...contactForm,
-      destinationEmail: 'stonehouseholdings24@gmail.com'
-    });
+    // Create and send email
+    let emailBody = `STONEHOUSE ESTATES CONTACT REQUEST\n\n`;
+    emailBody += `CLIENT INFORMATION:\n`;
+    emailBody += `Full Name: ${contactForm.fullName}\n`;
+    emailBody += `Contact Number: ${contactForm.contactNumber}\n`;
+    emailBody += `Email Address: ${contactForm.emailAddress}\n\n`;
+    if (contactForm.comments.trim()) {
+      emailBody += `MESSAGE:\n${contactForm.comments}\n\n`;
+    }
+    emailBody += `Please respond to this Stonehouse Estates inquiry.\n\n`;
+    emailBody += `Best regards,\n${contactForm.fullName}`;
+    
+    const emailSubject = `Stonehouse Estates Contact Request - ${contactForm.fullName}`;
+    const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    window.location.href = mailtoLink;
+    
     setSubmitMessage('Thank you! Your message has been submitted successfully.');
     
     // Reset form
