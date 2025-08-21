@@ -392,18 +392,6 @@ export default function Minerals() {
                       />
                     </div>
                     
-                    {/* Email */}
-                    <div>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="Email Address *"
-                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                        required
-                      />
-                    </div>
-                    
                     {/* Company */}
                     <div>
                       <input
@@ -423,6 +411,18 @@ export default function Minerals() {
                         value={formData.contactNumber}
                         onChange={e => setFormData({ ...formData, contactNumber: e.target.value })}
                         placeholder="Contact Number *"
+                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
+                        required
+                      />
+                    </div>
+                    
+                    {/* Email */}
+                    <div>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="Email Address *"
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                         required
                       />
