@@ -362,94 +362,135 @@ export default function StonehouseEstates() {
               padding: '0 30px 30px',
               flexGrow: 1
             }}>
-              <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-                {/* Full Name */}
-                <div>
-                  <input
-                    type="text"
-                    value={contactForm.fullName}
-                    onChange={e => setContactForm({ ...contactForm, fullName: e.target.value })}
-                    placeholder="Full Name *"
-                    style={{
-                      width: '100%',
-                      padding: '14px 18px',
-                      borderRadius: 10,
-                      border: '2px solid #e0e0e0',
-                      fontSize: 15,
-                      boxSizing: 'border-box',
-                      outline: 'none',
-                      background: '#fff',
-                      color: '#1D2A35'
-                    }}
-                    required
-                  />
+              <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 25 }}>
+                
+                {/* Client Information Section */}
+                <div style={{ 
+                  background: '#f8f9fa', 
+                  padding: '20px', 
+                  borderRadius: '12px', 
+                  border: '2px solid #e9ecef' 
+                }}>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    fontWeight: 700, 
+                    color: '#495057', 
+                    marginBottom: '15px',
+                    borderBottom: '2px solid #dee2e6',
+                    paddingBottom: '8px'
+                  }}>
+                    Contact Information
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                    {/* Full Name */}
+                    <div>
+                      <input
+                        type="text"
+                        value={contactForm.fullName}
+                        onChange={e => setContactForm({ ...contactForm, fullName: e.target.value })}
+                        placeholder="Full Name *"
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: 10,
+                          border: '2px solid #e0e0e0',
+                          fontSize: 15,
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff',
+                          color: '#1D2A35'
+                        }}
+                        required
+                      />
+                    </div>
+
+                    {/* Contact Number */}
+                    <div>
+                      <input
+                        type="tel"
+                        value={contactForm.contactNumber}
+                        onChange={e => setContactForm({ ...contactForm, contactNumber: e.target.value })}
+                        placeholder="Contact Number *"
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: 10,
+                          border: '2px solid #e0e0e0',
+                          fontSize: 15,
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff',
+                          color: '#1D2A35'
+                        }}
+                        required
+                      />
+                    </div>
+
+                    {/* Email Address */}
+                    <div>
+                      <input
+                        type="email"
+                        value={contactForm.emailAddress}
+                        onChange={e => setContactForm({ ...contactForm, emailAddress: e.target.value })}
+                        placeholder="Email Address *"
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: 10,
+                          border: '2px solid #e0e0e0',
+                          fontSize: 15,
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff',
+                          color: '#1D2A35'
+                        }}
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Contact Number */}
-                <div>
-                  <input
-                    type="tel"
-                    value={contactForm.contactNumber}
-                    onChange={e => setContactForm({ ...contactForm, contactNumber: e.target.value })}
-                    placeholder="Contact Number *"
-                    style={{
-                      width: '100%',
-                      padding: '14px 18px',
-                      borderRadius: 10,
-                      border: '2px solid #e0e0e0',
-                      fontSize: 15,
-                      boxSizing: 'border-box',
-                      outline: 'none',
-                      background: '#fff',
-                      color: '#1D2A35'
-                    }}
-                    required
-                  />
-                </div>
-
-                {/* Email Address */}
-                <div>
-                  <input
-                    type="email"
-                    value={contactForm.emailAddress}
-                    onChange={e => setContactForm({ ...contactForm, emailAddress: e.target.value })}
-                    placeholder="Email Address *"
-                    style={{
-                      width: '100%',
-                      padding: '14px 18px',
-                      borderRadius: 10,
-                      border: '2px solid #e0e0e0',
-                      fontSize: 15,
-                      boxSizing: 'border-box',
-                      outline: 'none',
-                      background: '#fff',
-                      color: '#1D2A35'
-                    }}
-                    required
-                  />
-                </div>
-
-                {/* Comments */}
-                <div>
-                  <textarea
-                    value={contactForm.comments}
-                    onChange={e => setContactForm({ ...contactForm, comments: e.target.value })}
-                    placeholder="Comments (optional)"
-                    style={{
-                      width: '100%',
-                      padding: '14px 18px',
-                      borderRadius: 10,
-                      border: '2px solid #e0e0e0',
-                      minHeight: 100,
-                      fontSize: 15,
-                      resize: 'vertical',
-                      boxSizing: 'border-box',
-                      outline: 'none',
-                      fontFamily: 'inherit',
-                      background: '#fff',
-                      color: '#1D2A35'
-                    }}
-                  />
+                {/* Message Section */}
+                <div style={{ 
+                  background: '#f8f9fa', 
+                  padding: '20px', 
+                  borderRadius: '12px', 
+                  border: '2px solid #e9ecef' 
+                }}>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    fontWeight: 700, 
+                    color: '#495057', 
+                    marginBottom: '15px',
+                    borderBottom: '2px solid #dee2e6',
+                    paddingBottom: '8px'
+                  }}>
+                    Your Message
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                    {/* Comments */}
+                    <div>
+                      <textarea
+                        value={contactForm.comments}
+                        onChange={e => setContactForm({ ...contactForm, comments: e.target.value })}
+                        placeholder="Tell us about your inquiry or how we can help you (optional)"
+                        style={{
+                          width: '100%',
+                          padding: '14px 18px',
+                          borderRadius: 10,
+                          border: '2px solid #e0e0e0',
+                          minHeight: 100,
+                          fontSize: 15,
+                          resize: 'vertical',
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          fontFamily: 'inherit',
+                          background: '#fff',
+                          color: '#1D2A35'
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Submit Message */}
