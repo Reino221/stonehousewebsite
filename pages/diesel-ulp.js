@@ -78,16 +78,15 @@ export default function DieselULP() {
           }}>
             FUEL DISTRIBUTION RSA
           </h1>
-        </div>
-        
-        {/* Hero Content */}
-        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', color: '#fff' }}>
-          <p style={{
-            fontSize: '1.5rem',
-            fontWeight: 500,
-            color: '#fff',
-            textShadow: '0 2px 4px rgba(0,0,0,0.8)',
+          <p style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 500, 
+            color: '#fff', 
+            textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
+            marginBottom: 0,
             maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.4'
           }}>
             Premium fuel distribution and industrial petroleum solutions for South African markets
           </p>
