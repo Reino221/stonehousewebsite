@@ -202,14 +202,19 @@ export default function StonehouseEstates() {
               background: '#fff',
               color: '#1D2A35',
               border: '2px solid #FFD700',
-              borderRadius: '40px',
-              padding: '1rem 3rem',
-              fontSize: '1.1rem',
+              borderRadius: 40,
+              width: 140,
+              height: 48,
+              fontSize: '0.82rem',
               fontWeight: 700,
               cursor: 'pointer',
               boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
               transition: 'all 0.3s ease',
               outline: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = '#FFD700';
