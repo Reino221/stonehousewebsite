@@ -10,6 +10,7 @@ export default function Refineries() {
     name: '',
     email: '',
     company: '',
+    contactNumber: '',
     product: '',
     procedure: '',
     fobOption: '',
@@ -155,6 +156,28 @@ export default function Refineries() {
                   onSubmit={e => {
                     e.preventDefault();
                     
+                    // Validate required client information
+                    if (!form.name.trim()) {
+                      setSubmitMessage('Please enter your full name.');
+                      return;
+                    }
+                    if (!form.company.trim()) {
+                      setSubmitMessage('Please enter your company name.');
+                      return;
+                    }
+                    if (!form.contactNumber.trim()) {
+                      setSubmitMessage('Please enter your contact number.');
+                      return;
+                    }
+                    if (!form.email.trim()) {
+                      setSubmitMessage('Please enter your email address.');
+                      return;
+                    }
+                    if (!form.product) {
+                      setSubmitMessage('Please select a product.');
+                      return;
+                    }
+                    
                     // Validate quantity based on selected product limits
                     const quantityValidationError = validateQuantity(form.quantity, form.product);
                     if (quantityValidationError) {
@@ -204,6 +227,7 @@ Client Information:
 Name: ${form.name}
 Email: ${form.email}
 Company: ${form.company}
+Contact Number: ${form.contactNumber}
 
 Origin Locations: ${selectedOrigins.join(', ')}
 
@@ -251,6 +275,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                         name: '',
                         email: '',
                         company: '',
+                        contactNumber: '',
                         product: '',
                         procedure: '',
                         fobOption: '',
@@ -267,8 +292,174 @@ This quote request was submitted via the Stonehouse Holdings website.
                   }}
                   style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
                 >
+                  {/* Client Information Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Client Information
+                    </h3>
+                    
+                    {/* Full Name */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        value={form.name}
+                        onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                        placeholder="Enter your full name"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Company */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Company *
+                      </label>
+                      <input
+                        type="text"
+                        value={form.company}
+                        onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                        placeholder="Enter your company name"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Contact Number */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Contact Number *
+                      </label>
+                      <input
+                        type="tel"
+                        value={form.contactNumber}
+                        onChange={e => setForm(f => ({ ...f, contactNumber: e.target.value }))}
+                        placeholder="Enter your contact number"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Email Address */}
+                    <div style={{ marginBottom: '0' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                        placeholder="Enter your email address"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Product Selection Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Product Information
+                    </h3>
+
                   {/* Product dropdown */}
                   <div>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '8px', 
+                      color: '#1D2A35', 
+                      fontSize: '14px', 
+                      fontWeight: 600 
+                    }}>
+                      Select Product *
+                    </label>
                     <select
                       value={form.product}
                       onChange={e => {
@@ -369,7 +560,36 @@ This quote request was submitted via the Stonehouse Holdings website.
                       )}
                     </select>
                   </div>
-                  {/* Procedure Options */}
+                  </div>
+
+                  {/* Procedure Options Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Procedure Information
+                    </h3>
+                  
+                  <div>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '8px', 
+                      color: '#1D2A35', 
+                      fontSize: '14px', 
+                      fontWeight: 600 
+                    }}>
+                      Select Procedure *
+                    </label>
                   <div>
                     <select
                       value={form.fobOption}
@@ -390,6 +610,27 @@ This quote request was submitted via the Stonehouse Holdings website.
                       )}
                     </select>
                   </div>
+                  </div>
+                  </div>
+
+                  {/* Origin and Destination Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Origin & Destination
+                    </h3>
+
                   {/* Select Origin */}
                   <div>
                     <div style={{ marginBottom: 10, fontWeight: 600, fontSize: 15, color: '#1D2A35' }}>
@@ -414,8 +655,37 @@ This quote request was submitted via the Stonehouse Holdings website.
                       </div>
                     )}
                   </div>
+                  </div>
+
+                  {/* Order Details Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Order Details
+                    </h3>
+
                   {/* Quantity */}
-                  <div>
+                  <div style={{ marginBottom: '15px' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '8px', 
+                      color: '#1D2A35', 
+                      fontSize: '14px', 
+                      fontWeight: 600 
+                    }}>
+                      Quantity *
+                    </label>
                     <input
                       type="number"
                       value={form.quantity}
@@ -445,24 +715,44 @@ This quote request was submitted via the Stonehouse Holdings website.
                   </div>
                   {/* Destination Port - Only show when CIF is selected */}
                   {form.fobOption === 'CIF' && (
-                    <div>
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '8px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Destination Port *
+                      </label>
                       <input
                         type="text"
                         value={form.destinationPort || ''}
                         onChange={e => setForm(f => ({ ...f, destinationPort: e.target.value }))}
                         placeholder="Enter destination port"
+                        required
                         style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
                       />
                     </div>
                   )}
                   {/* Comments */}
-                  <div>
+                  <div style={{ marginBottom: '0' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      marginBottom: '8px', 
+                      color: '#1D2A35', 
+                      fontSize: '14px', 
+                      fontWeight: 600 
+                    }}>
+                      Additional Comments
+                    </label>
                     <textarea
                       value={form.comments}
                       onChange={e => setForm(f => ({ ...f, comments: e.target.value }))}
                       placeholder="Additional comments (optional)"
                       style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 100, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
                     />
+                  </div>
                   </div>
                   
                   {/* FOB - TTT Procedures (only show when FOB - TTT is selected) */}

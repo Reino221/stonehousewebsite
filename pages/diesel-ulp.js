@@ -219,6 +219,37 @@ export default function DieselULP() {
                       productType: modalProduct,
                       destinationEmail: 'stonehouseholdings24@gmail.com'
                     });
+
+                    // Prepare email content
+                    const emailSubject = `Fuel Distribution RSA Quote Request - ${form.product}`;
+                    const emailBody = `
+FUEL DISTRIBUTION RSA QUOTE REQUEST
+
+CLIENT INFORMATION:
+- Full Name: ${form.fullName}
+- Company: ${form.company}
+- Contact Number: ${form.contactNumber}
+- Email Address: ${form.emailAddress}
+
+PRODUCT INFORMATION:
+- Product Category: ${modalProduct}
+- Product: ${form.product}
+- Quantity: ${form.quantity} litres${modalProduct !== 'Fuel Depot Bloemfontein' ? `
+- Town/City: ${form.townCity}
+- Delivery Address: ${form.deliveryAddress}` : ''}${form.comments ? `
+
+ADDITIONAL COMMENTS:
+${form.comments}` : ''}
+
+---
+This quote request was submitted via the Stonehouse Holdings website.
+`;
+
+                    // Create mailto URL for email client
+                    const mailtoUrl = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                    
+                    // Open email client
+                    window.location.href = mailtoUrl;
                     
                     // Add to quote history if user is signed in
                     if (isSignedIn) {
@@ -235,118 +266,327 @@ export default function DieselULP() {
                       });
                     }
                     
-                    setSubmitMessage('Quote request submitted successfully! We will contact you soon.');
+                    setSubmitMessage('Opening email client... Please send the email to complete your quote request.');
+                    
+                    // Reset form after a delay
+                    setTimeout(() => {
+                      setForm({
+                        fullName: '',
+                        company: '',
+                        contactNumber: '',
+                        emailAddress: '',
+                        product: '',
+                        quantity: '',
+                        townCity: '',
+                        deliveryAddress: '',
+                        comments: '',
+                      });
+                      setSubmitMessage('');
+                      setModalOpen(false);
+                    }, 3000);
                   }}
                   style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
                 >
-                  {/* 1. FULL NAME */}
-                  <div>
-                    <input
-                      type="text"
-                      value={form.fullName}
-                      onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))}
-                      placeholder="Full Name *"
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                      required
-                    />
+                  {/* Client Information Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Client Information
+                    </h3>
+                    
+                    {/* Full Name */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        value={form.fullName}
+                        onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))}
+                        placeholder="Enter your full name"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Company */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Company *
+                      </label>
+                      <input
+                        type="text"
+                        value={form.company}
+                        onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                        placeholder="Enter your company name"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Contact Number */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Contact Number *
+                      </label>
+                      <input
+                        type="tel"
+                        value={form.contactNumber}
+                        onChange={e => setForm(f => ({ ...f, contactNumber: e.target.value }))}
+                        placeholder="Enter your contact number"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
+
+                    {/* Email Address */}
+                    <div style={{ marginBottom: '0' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        value={form.emailAddress}
+                        onChange={e => setForm(f => ({ ...f, emailAddress: e.target.value }))}
+                        placeholder="Enter your email address"
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                    </div>
                   </div>
 
-                  {/* 2. COMPANY */}
-                  <div>
-                    <input
-                      type="text"
-                      value={form.company}
-                      onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
-                      placeholder="Company *"
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                      required
-                    />
-                  </div>
+                  {/* Product Information Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Product Information
+                    </h3>
 
-                  {/* 3. CONTACT NUMBER */}
-                  <div>
-                    <input
-                      type="tel"
-                      value={form.contactNumber}
-                      onChange={e => setForm(f => ({ ...f, contactNumber: e.target.value }))}
-                      placeholder="Contact Number *"
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                      required
-                    />
-                  </div>
-
-                  {/* 4. EMAIL ADDRESS */}
-                  <div>
-                    <input
-                      type="email"
-                      value={form.emailAddress}
-                      onChange={e => setForm(f => ({ ...f, emailAddress: e.target.value }))}
-                      placeholder="Email Address *"
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                      required
-                    />
-                  </div>
-
-                  {/* 5. SELECT PRODUCT */}
-                  <div>
-                    <select
-                      value={form.product}
-                      onChange={e => setForm(f => ({ ...f, product: e.target.value }))}
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, background: '#fff', color: form.product ? '#1D2A35' : '#999', boxSizing: 'border-box', outline: 'none', appearance: 'none', cursor: 'pointer' }}
-                      required
-                    >
-                      <option value="" disabled>Select Product *</option>
-                      {modalProduct === 'Fuel' ? (
-                        <>
-                          <option value="10 PPM">10 PPM</option>
-                          <option value="50 PPM">50 PPM</option>
-                          <option value="93 ULP">93 ULP</option>
-                          <option value="95 ULP">95 ULP</option>
-                        </>
-                      ) : modalProduct === 'Fuel Depot Bloemfontein' ? (
-                        <>
-                          <option value="50 PPM">50 PPM</option>
-                        </>
-                      ) : modalProduct === 'Coastal IP' ? (
-                        <>
-                          <option value="Illuminating Paraffin">Illuminating Paraffin</option>
-                        </>
-                      ) : (
-                        <option value="General Product">General Product</option>
-                      )}
-                    </select>
-                  </div>
-
-                  {/* 6. ENTER QUANTITY */}
-                  <div>
-                    <input
-                      type="number"
-                      value={form.quantity}
-                      onChange={e => setForm(f => ({ ...f, quantity: e.target.value }))}
-                      placeholder={modalProduct === 'Fuel' ? "Enter Quantity (40,000 litres increments) *" : modalProduct === 'Fuel Depot Bloemfontein' ? "Possible Monthly Litres *" : "Enter Quantity (Litres) *"}
-                      min={modalProduct === 'Fuel' ? "40000" : "1"}
-                      step={modalProduct === 'Fuel' ? "40000" : "1"}
-                      style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, boxSizing: 'border-box', outline: 'none' }}
-                      required
-                    />
-                    {modalProduct === 'Fuel' && (
-                      <div style={{ color: '#666', fontSize: 12, marginTop: 4, fontStyle: 'italic' }}>
-                        Valid quantities: 40,000, 80,000, 120,000, 160,000, etc.
-                      </div>
-                    )}
-                  </div>
-
-                  {/* 7. SELECT TOWN / CITY */}
-                  {modalProduct !== 'Fuel Depot Bloemfontein' && (
-                    <div>
+                    {/* Product Selection */}
+                    <div style={{ marginBottom: '15px' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Select Product *
+                      </label>
                       <select
-                        value={form.townCity}
-                        onChange={e => setForm(f => ({ ...f, townCity: e.target.value }))}
-                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', fontSize: 15, background: '#fff', color: form.townCity ? '#1D2A35' : '#999', boxSizing: 'border-box', outline: 'none', appearance: 'none', cursor: 'pointer' }}
+                        value={form.product}
+                        onChange={e => setForm(f => ({ ...f, product: e.target.value }))}
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          background: '#fff', 
+                          color: form.product ? '#1D2A35' : '#999', 
+                          boxSizing: 'border-box', 
+                          outline: 'none', 
+                          appearance: 'none', 
+                          cursor: 'pointer' 
+                        }}
                         required
                       >
-                        <option value="" disabled>Select Town / City *</option>
-                      {/* South African Cities and Towns with Codes */}
+                        <option value="" disabled>Select Product</option>
+                        {modalProduct === 'Fuel' ? (
+                          <>
+                              <option value="10 PPM">10 PPM</option>
+                            <option value="50 PPM">50 PPM</option>
+                            <option value="93 ULP">93 ULP</option>
+                            <option value="95 ULP">95 ULP</option>
+                          </>
+                        ) : modalProduct === 'Fuel Depot Bloemfontein' ? (
+                          <>
+                            <option value="50 PPM">50 PPM</option>
+                          </>
+                        ) : modalProduct === 'Coastal IP' ? (
+                          <>
+                            <option value="Illuminating Paraffin">Illuminating Paraffin</option>
+                          </>
+                        ) : (
+                          <option value="General Product">General Product</option>
+                        )}
+                      </select>
+                    </div>
+
+                    {/* Quantity */}
+                    <div style={{ marginBottom: '0' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        {modalProduct === 'Fuel' ? "Quantity (40,000L increments) *" : 
+                         modalProduct === 'Fuel Depot Bloemfontein' ? "Possible Monthly Litres *" : 
+                         "Enter Quantity (Litres) *"}
+                      </label>
+                      <input
+                        type="number"
+                        value={form.quantity}
+                        onChange={e => setForm(f => ({ ...f, quantity: e.target.value }))}
+                        placeholder={modalProduct === 'Fuel' ? "Enter quantity (40,000, 80,000, etc.)" : 
+                                   modalProduct === 'Fuel Depot Bloemfontein' ? "Enter possible monthly litres" : 
+                                   "Enter quantity in litres"}
+                        min={modalProduct === 'Fuel' ? "40000" : "1"}
+                        step={modalProduct === 'Fuel' ? "40000" : "1"}
+                        required
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          fontSize: '15px', 
+                          boxSizing: 'border-box',
+                          outline: 'none',
+                          background: '#fff'
+                        }}
+                      />
+                      {modalProduct === 'Fuel' && (
+                        <div style={{ color: '#666', fontSize: 12, marginTop: 4, fontStyle: 'italic' }}>
+                          Valid quantities: 40,000, 80,000, 120,000, 160,000, etc.
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Location & Delivery Section */}
+                  {modalProduct !== 'Fuel Depot Bloemfontein' && (
+                    <div style={{ 
+                      background: '#f8f9fa', 
+                      padding: '20px', 
+                      borderRadius: '10px', 
+                      border: '2px solid #e0e0e0',
+                      marginBottom: '10px'
+                    }}>
+                      <h3 style={{ 
+                        color: '#1D2A35', 
+                        fontSize: '18px', 
+                        fontWeight: 700, 
+                        marginBottom: '15px', 
+                        marginTop: '0' 
+                      }}>
+                        Location & Delivery
+                      </h3>
+
+                      {/* Town/City Selection */}
+                      <div style={{ marginBottom: '15px' }}>
+                        <label style={{ 
+                          display: 'block', 
+                          marginBottom: '5px', 
+                          color: '#1D2A35', 
+                          fontSize: '14px', 
+                          fontWeight: 600 
+                        }}>
+                          Select Town / City *
+                        </label>
+                        <select
+                          value={form.townCity}
+                          onChange={e => setForm(f => ({ ...f, townCity: e.target.value }))}
+                          style={{ 
+                            width: '100%', 
+                            padding: '12px 16px', 
+                            borderRadius: '8px', 
+                            border: '2px solid #e0e0e0', 
+                            fontSize: '15px', 
+                            background: '#fff', 
+                            color: form.townCity ? '#1D2A35' : '#999', 
+                            boxSizing: 'border-box', 
+                            outline: 'none', 
+                            appearance: 'none', 
+                            cursor: 'pointer' 
+                          }}
+                          required
+                        >
+                          <option value="" disabled>Select Town / City</option>
+                          {/* South African Cities and Towns with Codes */}
                       <option value="09B Aberdeen EC">09B Aberdeen EC</option>
                       <option value="05A Adelaide EC">05A Adelaide EC</option>
                       <option value="04A Albany EC">04A Albany EC</option>
@@ -736,33 +976,91 @@ export default function DieselULP() {
                             <option value="08A Zastron FS">08A Zastron FS</option>
                             <option value="03A Zwelitsha EC">03A Zwelitsha EC</option>
                         </select>
+                      </div>
+                      
+                      {/* Delivery Address */}
+                      <div style={{ marginBottom: '0' }}>
+                        <label style={{ 
+                          display: 'block', 
+                          marginBottom: '5px', 
+                          color: '#1D2A35', 
+                          fontSize: '14px', 
+                          fontWeight: 600 
+                        }}>
+                          Delivery Address *
+                        </label>
+                        <textarea
+                          value={form.deliveryAddress}
+                          onChange={e => setForm(f => ({ ...f, deliveryAddress: e.target.value }))}
+                          placeholder="Please provide complete delivery address including:&#10;- Street Address&#10;- Suburb&#10;- Postal Code&#10;- Special delivery instructions (if any)"
+                          style={{ 
+                            width: '100%', 
+                            padding: '12px 16px', 
+                            borderRadius: '8px', 
+                            border: '2px solid #e0e0e0', 
+                            minHeight: 100, 
+                            fontSize: 15, 
+                            resize: 'vertical', 
+                            boxSizing: 'border-box', 
+                            outline: 'none', 
+                            fontFamily: 'inherit',
+                            background: '#fff'
+                          }}
+                          required
+                        />
+                      </div>
                     </div>
                   )}
 
-                  {/* 8. ADDRESS TO BE DELIVERED */}
-                  {modalProduct !== 'Fuel Depot Bloemfontein' && (
-                    <div>
-                      <textarea
-                        value={form.deliveryAddress}
-                        onChange={e => setForm(f => ({ ...f, deliveryAddress: e.target.value }))}
-                        placeholder="Address To Be Delivered *&#10;&#10;Please provide complete delivery address including:&#10;- Street Address&#10;- Suburb&#10;- Postal Code&#10;- Special delivery instructions (if any)"
-                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 120, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
-                        required
-                      />
-                    </div>
-                  )}
+                  {/* Additional Information Section */}
+                  <div style={{ 
+                    background: '#f8f9fa', 
+                    padding: '20px', 
+                    borderRadius: '10px', 
+                    border: '2px solid #e0e0e0',
+                    marginBottom: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1D2A35', 
+                      fontSize: '18px', 
+                      fontWeight: 700, 
+                      marginBottom: '15px', 
+                      marginTop: '0' 
+                    }}>
+                      Additional Information
+                    </h3>
 
-                  {/* 9. COMMENTS SECTION */}
-                  {modalProduct !== 'Fuel Depot Bloemfontein' && (
-                    <div>
+                    {/* Comments */}
+                    <div style={{ marginBottom: '0' }}>
+                      <label style={{ 
+                        display: 'block', 
+                        marginBottom: '5px', 
+                        color: '#1D2A35', 
+                        fontSize: '14px', 
+                        fontWeight: 600 
+                      }}>
+                        Additional Comments
+                      </label>
                       <textarea
                         value={form.comments}
                         onChange={e => setForm(f => ({ ...f, comments: e.target.value }))}
-                        placeholder="Additional Comments (Optional)&#10;&#10;Please include any special requirements, delivery preferences, or additional information that would help us provide you with the best service."
-                        style={{ width: '100%', padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', minHeight: 100, fontSize: 15, resize: 'vertical', boxSizing: 'border-box', outline: 'none', fontFamily: 'inherit' }}
+                        placeholder="Please include any special requirements, delivery preferences, or additional information that would help us provide you with the best service."
+                        style={{ 
+                          width: '100%', 
+                          padding: '12px 16px', 
+                          borderRadius: '8px', 
+                          border: '2px solid #e0e0e0', 
+                          minHeight: 100, 
+                          fontSize: 15, 
+                          resize: 'vertical', 
+                          boxSizing: 'border-box', 
+                          outline: 'none', 
+                          fontFamily: 'inherit',
+                          background: '#fff'
+                        }}
                       />
                     </div>
-                  )}
+                  </div>
 
                   {/* Submit Message */}
                   {submitMessage && (
