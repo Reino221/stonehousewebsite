@@ -22,11 +22,11 @@ export default function Home() {
       route: '/diesel-ulp',
     },
     {
-      name: 'Stonehouse Estates',
-      color: '#8B5CF6',
-      video: '/Estates vid.mp4',
-      desc: 'Professional deceased estate administration and asset management services.',
-      route: '/stonehouse-estates',
+      name: 'Minerals',
+      color: '#8B5C2A',
+      video: '/Coal vid.mp4',
+      desc: 'Crushing and screening of our own coal, and trading in minerals.',
+      route: '/minerals',
     },
     {
       name: 'Agriculture',
@@ -36,11 +36,11 @@ export default function Home() {
       route: '/agriculture',
     },
     {
-      name: 'Minerals',
-      color: '#8B5C2A',
-      video: '/Coal vid.mp4',
-      desc: 'Crushing and screening of our own coal, and trading in minerals.',
-      route: '/minerals',
+      name: 'Stonehouse Estates',
+      color: '#8B5CF6',
+      video: '/Estates vid.mp4',
+      desc: 'Professional deceased estate administration and asset management services.',
+      route: '/stonehouse-estates',
     },
   ];
 
