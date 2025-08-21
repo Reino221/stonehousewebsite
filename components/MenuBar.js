@@ -108,7 +108,7 @@ const MenuBar = () => {
             style={{ color: '#fff', marginRight: '2rem', textDecoration: 'none', fontWeight: 'bold', display: 'flex', alignItems: 'center', fontSize: '1.5rem', cursor: 'pointer', ...scaleIfSelected('logo') }}
             onClick={() => setSelected('logo')}
           >
-            <img src="/Stonehouse Logo 2.PNG" alt="Stonehouse Logo" style={{ height: '2.2rem', width: 'auto', marginRight: '0.7rem', verticalAlign: 'middle', borderRadius: '4px', background: 'transparent', boxShadow: 'none' }} />
+            <img src="/stonehouse logo.jpg" alt="Stonehouse Logo" style={{ height: '2.2rem', width: 'auto', marginRight: '0.7rem', verticalAlign: 'middle', borderRadius: '4px', background: 'transparent', boxShadow: 'none' }} />
             {getPageTitle() === 'Stonehouse Holdings' ? (
               <>
                 <span style={{ background: 'linear-gradient(90deg, #C99700, #FFD700)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', padding: '0 0.3em' }}>Stonehouse</span>{' '}
