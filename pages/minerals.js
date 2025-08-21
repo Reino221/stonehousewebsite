@@ -147,6 +147,18 @@ export default function Minerals() {
           }}>
             Minerals
           </h1>
+          <p style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 500, 
+            color: '#fff', 
+            textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
+            marginBottom: 0,
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.4'
+          }}>
+            Crushing and screening of our own coal, and trading in minerals
+          </p>
         </div>
         
         {/* Quote Buttons */}
