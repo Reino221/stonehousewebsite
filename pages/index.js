@@ -148,12 +148,15 @@ export default function Home() {
                 backgroundClip: 'text',
                 textAlign: 'center',
                 letterSpacing: '-0.01em',
-                lineHeight: '1.1',
-                minHeight: '3.6rem',
+                lineHeight: '1.2',
+                minHeight: '4.5rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 2,
+                padding: '0 0.5rem',
+                wordBreak: 'break-word',
+                hyphens: 'auto',
               }}
             >
               {col.name}
