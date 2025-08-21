@@ -100,6 +100,18 @@ export default function Refineries() {
         {/* Title */}
         <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff' }}>
           <h1 style={{ fontSize: '4rem', fontWeight: 900, background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '0.5rem', textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}>Refineries</h1>
+          <p style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: 500, 
+            color: '#fff', 
+            textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
+            marginBottom: 0,
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.4'
+          }}>
+            Global trading and distribution of petroleum products for industrial and commercial use
+          </p>
         </div>
         {/* Quote Buttons */}
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end', position: 'absolute', bottom: 32, left: 0, width: '100%', zIndex: 3, gap: '0.4rem' }}>
