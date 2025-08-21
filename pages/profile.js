@@ -1,254 +1,376 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // Theme context import
-import { ThemeContext } from './_app';
+import { ThemeContext, AuthKycContext } from './_app';
 
-const sidebarStyle = {
-  width: '120px',
-  minHeight: '420px', // increased height
-  maxHeight: '94vh', // increased max height
-  background: '#1D2A35',
-  color: '#fff',
-  position: 'fixed',
-  top: 90,
-  left: 12,
-  display: 'flex',
-  flexDirection: 'column',
-  padding: '1.2rem 0.7rem 1.2rem 0.7rem',
-  zIndex: 1200,
-  borderRadius: '16px',
-  border: '1.5px solid #223044',
-  backgroundClip: 'padding-box',
-  alignItems: 'center',
-  overflowY: 'auto',
-  transition: 'box-shadow 0.2s',
-};
-
-const linkStyle = {
-  color: '#fff',
-  textDecoration: 'none',
-  fontWeight: 'bold',
-  fontSize: '1.1rem',
-  marginBottom: '1.2rem',
-  transition: 'color 0.2s',
-  display: 'block',
-  padding: '0.4rem 0.7rem',
-  borderRadius: '6px',
-  textAlign: 'center',
-};
-
-const linkHoverStyle = {
-  background: 'linear-gradient(90deg, #C99700, #FFD700)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  fontWeight: 'bold',
-};
-
-const switchContainer = {
-  margin: '2.2rem 0 1.2rem 0',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center', // ensure vertical centering
-  width: '100%', // take full sidebar width
-};
-
-const switchLabel = {
-  fontSize: '1rem',
-  fontWeight: 600,
-  marginBottom: '0.5rem',
-  color: 'inherit',
-};
-
-const switchButton = {
-  width: '46px', // slightly longer
-  height: '26px', // slightly taller
-  borderRadius: '13px', // match new height
-  background: '#333',
-  border: '1.5px solid #C99700',
-  position: 'relative',
-  cursor: 'pointer',
-  outline: 'none',
-  transition: 'background 0.2s',
-  display: 'flex',
-  alignItems: 'center', // ensures vertical centering
-  justifyContent: 'flex-start', // let the circle be positioned absolutely
-  margin: '0 auto',
-  overflow: 'hidden',
-  boxSizing: 'border-box',
-  padding: 0,
-};
-
-const switchCircle = (isDark) => ({
-  width: '18px',
-  height: '18px',
-  borderRadius: '50%',
-  background: isDark
-    ? 'linear-gradient(135deg, #C99700 40%, #FFD700 100%)'
-    : 'linear-gradient(135deg, #bbb 40%, #fff 100%)',
-  position: 'absolute',
-  left: isDark ? '26px' : '2px', // left for light, right for dark
-  right: isDark ? '2px' : 'auto', // ensure right edge fits perfectly in dark mode
-  top: '50%',
-  transform: 'translateY(-50%)',
-  transition: 'left 0.2s, right 0.2s',
-  boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-  boxSizing: 'border-box',
-});
-
-const ProfileSidebar = ({ selected, setSelected }) => {
-  const [hovered, setHovered] = React.useState('');
-  const [themeHovered, setThemeHovered] = React.useState(false);
+const Profile = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const isDark = theme === 'dark';
-  const scaleIfSelected = (btn) => selected === btn ? { transform: 'scale(1.12)', zIndex: 1, transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' } : { transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' };
+  const { isSignedIn, userProfile, quoteHistory, setIsSignedIn, setUserProfile } = useContext(AuthKycContext);
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState('profile');
+
+  // Redirect if not signed in
+  useEffect(() => {
+    if (!isSignedIn) {
+      router.push('/login');
+    }
+  }, [isSignedIn, router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('stonehouse_isSignedIn');
+    localStorage.removeItem('stonehouse_profile');
+    setIsSignedIn(false);
+    setUserProfile(null);
+    router.push('/');
+  };
+
+  if (!isSignedIn || !userProfile) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        color: theme === 'dark' ? '#fff' : '#333'
+      }}>
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Submitted': return '#FFA500';
+      case 'Processing': return '#2196F3';
+      case 'Completed': return '#4CAF50';
+      case 'Cancelled': return '#f44336';
+      default: return '#666';
+    }
+  };
 
   return (
-    <aside style={{ ...sidebarStyle, background: isDark ? '#1D2A35' : '#e0e0e0', color: isDark ? '#fff' : '#222', border: isDark ? '1.5px solid #223044' : '1.5px solid #e0e0e0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <div style={{ width: '100%' }}>
-        <h2
-          style={{
-            fontSize: '1.4rem',
-            marginBottom: '2rem',
-            fontWeight: 800,
-            letterSpacing: 0.5,
-            textAlign: 'center',
-            width: '100%',
-            background: selected === 'profile' ? 'linear-gradient(90deg, #C99700, #FFD700)' : 'none',
-            WebkitBackgroundClip: selected === 'profile' ? 'text' : 'unset',
-            WebkitTextFillColor: selected === 'profile' ? 'transparent' : 'unset',
-            color: selected === 'profile' ? 'unset' : (isDark ? '#fff' : '#222'),
-            ...scaleIfSelected('profile'),
-            cursor: 'pointer',
-          }}
-          onClick={() => setSelected('profile')}
-        >Profile</h2>
-        <a
-          href="#"
-          style={{ ...linkStyle, color: isDark ? '#fff' : '#222', marginBottom: '1.2rem', ...(hovered === 'dashboard' || selected === 'dashboard' ? linkHoverStyle : {}), ...scaleIfSelected('dashboard') }}
-          onMouseEnter={() => setHovered('dashboard')}
-          onMouseLeave={() => setHovered('')}
-          onClick={e => {
-            e.preventDefault();
-            setSelected('dashboard');
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('sidebarSelected', 'dashboard');
-              localStorage.setItem('menubarSelected', 'dropdown-dashboard');
-            }
-          }}
-        >Dashboard</a>
-      </div>
-      <div style={{ width: '100%' }}>
-        <div
-          style={{ ...switchContainer, margin: 0, marginTop: 'auto', marginBottom: '2.7rem', ...scaleIfSelected('theme'), cursor: 'pointer' }}
-          onMouseEnter={() => setThemeHovered(true)}
-          onMouseLeave={() => setThemeHovered(false)}
-          onClick={() => setSelected('theme')}
-        >
-          <span style={{
-            ...switchLabel,
-            ...(themeHovered ? linkHoverStyle : {}),
-            ...scaleIfSelected('theme')
-          }}>{isDark ? 'Dark Mode' : 'Light Mode'}</span>
+    <div style={{
+      minHeight: '100vh',
+      padding: '2rem',
+      background: theme === 'dark' ? '#181f26' : '#faf9f6',
+      color: theme === 'dark' ? '#fff' : '#333'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        {/* Header */}
+        <div style={{
+          background: theme === 'dark' ? '#1D2A35' : '#fff',
+          borderRadius: '12px',
+          padding: '2rem',
+          marginBottom: '2rem',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <h1 style={{
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              background: 'linear-gradient(90deg, #C99700, #FFD700)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              margin: 0
+            }}>
+              Welcome, {userProfile.name}
+            </h1>
+            
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              {/* Theme Toggle - Only for signed-in users */}
+              <button
+                onClick={toggleTheme}
+                style={{
+                  background: theme === 'dark' ? '#2a3441' : '#e0e0e0',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '0.5rem 1rem',
+                  cursor: 'pointer',
+                  color: theme === 'dark' ? '#FFD700' : '#1D2A35',
+                  fontWeight: 'bold',
+                  transition: 'all 0.2s'
+                }}
+              >
+                {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+              </button>
+              
+              <button
+                onClick={handleLogout}
+                style={{
+                  background: '#dc3545',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '0.5rem 1rem',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  transition: 'background 0.2s'
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+          
+          <p style={{
+            margin: 0,
+            color: theme === 'dark' ? '#ccc' : '#666',
+            fontSize: '1.1rem'
+          }}>
+            Manage your account and view your quote history
+          </p>
+        </div>
+
+        {/* Tab Navigation */}
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          marginBottom: '2rem'
+        }}>
           <button
-            aria-label="Toggle theme"
-            style={{ ...switchButton, background: isDark ? '#222' : '#eee', border: isDark ? '1.5px solid #C99700' : '1.5px solid #bbb' }}
-            onClick={toggleTheme}
+            onClick={() => setActiveTab('profile')}
+            style={{
+              background: activeTab === 'profile' ? 'linear-gradient(90deg, #C99700, #FFD700)' : (theme === 'dark' ? '#2a3441' : '#e0e0e0'),
+              color: activeTab === 'profile' ? '#fff' : (theme === 'dark' ? '#ccc' : '#666'),
+              border: 'none',
+              borderRadius: '8px',
+              padding: '0.8rem 1.5rem',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              transition: 'all 0.2s'
+            }}
           >
-            <span style={switchCircle(isDark)}></span>
+            Profile Information
+          </button>
+          <button
+            onClick={() => setActiveTab('quotes')}
+            style={{
+              background: activeTab === 'quotes' ? 'linear-gradient(90deg, #C99700, #FFD700)' : (theme === 'dark' ? '#2a3441' : '#e0e0e0'),
+              color: activeTab === 'quotes' ? '#fff' : (theme === 'dark' ? '#ccc' : '#666'),
+              border: 'none',
+              borderRadius: '8px',
+              padding: '0.8rem 1.5rem',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              transition: 'all 0.2s'
+            }}
+          >
+            Quote History ({quoteHistory.length})
           </button>
         </div>
-        <a
-          href="#logout"
-          style={{ ...linkStyle, color: isDark ? '#fff' : '#222', marginBottom: 0, fontSize: '1.22rem', fontWeight: 800, ...(hovered === 'logout' ? linkHoverStyle : {}), ...scaleIfSelected('logout') }}
-          onMouseEnter={() => setHovered('logout')}
-          onMouseLeave={() => setHovered('')}
-          onClick={() => setSelected('logout')}
-        >Logout</a>
+
+        {/* Tab Content */}
+        {activeTab === 'profile' && (
+          <div style={{
+            background: theme === 'dark' ? '#1D2A35' : '#fff',
+            borderRadius: '12px',
+            padding: '2rem',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              marginBottom: '1.5rem',
+              color: theme === 'dark' ? '#FFD700' : '#1D2A35'
+            }}>
+              Profile Information
+            </h2>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Full Name:</label>
+                <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem' }}>{userProfile.name}</p>
+              </div>
+              
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Email:</label>
+                <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem' }}>{userProfile.email}</p>
+              </div>
+              
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Company:</label>
+                <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem' }}>{userProfile.company || 'Not specified'}</p>
+              </div>
+              
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Phone:</label>
+                <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem' }}>{userProfile.phone || 'Not specified'}</p>
+              </div>
+              
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Member Since:</label>
+                <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem' }}>{formatDate(userProfile.signupDate)}</p>
+              </div>
+              
+              <div>
+                <label style={{ fontWeight: 'bold', color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Status:</label>
+                <p style={{ 
+                  margin: '0.5rem 0 1rem 0', 
+                  fontSize: '1.1rem',
+                  color: '#4CAF50',
+                  fontWeight: 'bold'
+                }}>
+                  {userProfile.status}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'quotes' && (
+          <div style={{
+            background: theme === 'dark' ? '#1D2A35' : '#fff',
+            borderRadius: '12px',
+            padding: '2rem',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              marginBottom: '1.5rem',
+              color: theme === 'dark' ? '#FFD700' : '#1D2A35'
+            }}>
+              Quote Request History
+            </h2>
+            
+            {quoteHistory.length === 0 ? (
+              <div style={{
+                textAlign: 'center',
+                padding: '3rem',
+                color: theme === 'dark' ? '#ccc' : '#666'
+              }}>
+                <p style={{ fontSize: '1.2rem', marginBottom: '1rem' }}>No quote requests yet</p>
+                <p>Start by requesting a quote from our services pages</p>
+                <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="/diesel-ulp" style={{
+                    background: 'linear-gradient(90deg, #C99700, #FFD700)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '8px',
+                    fontWeight: 'bold'
+                  }}>
+                    Fuel Distribution
+                  </a>
+                  <a href="/minerals" style={{
+                    background: 'linear-gradient(90deg, #C99700, #FFD700)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '8px',
+                    fontWeight: 'bold'
+                  }}>
+                    Minerals
+                  </a>
+                  <a href="/refineries" style={{
+                    background: 'linear-gradient(90deg, #C99700, #FFD700)',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '8px',
+                    fontWeight: 'bold'
+                  }}>
+                    Refineries
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {quoteHistory.map((quote) => (
+                  <div key={quote.id} style={{
+                    background: theme === 'dark' ? '#2a3441' : '#f8f9fa',
+                    borderRadius: '8px',
+                    padding: '1.5rem',
+                    border: `1px solid ${theme === 'dark' ? '#444' : '#e0e0e0'}`
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      marginBottom: '1rem'
+                    }}>
+                      <h3 style={{
+                        margin: 0,
+                        color: theme === 'dark' ? '#FFD700' : '#1D2A35',
+                        fontSize: '1.2rem'
+                      }}>
+                        {quote.product}
+                      </h3>
+                      <span style={{
+                        background: getStatusColor(quote.status),
+                        color: '#fff',
+                        padding: '0.3rem 0.8rem',
+                        borderRadius: '15px',
+                        fontSize: '0.8rem',
+                        fontWeight: 'bold'
+                      }}>
+                        {quote.status}
+                      </span>
+                    </div>
+                    
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                      gap: '1rem',
+                      marginBottom: '1rem'
+                    }}>
+                      {quote.mineralType && (
+                        <div>
+                          <strong>Product:</strong> {quote.mineralType}
+                        </div>
+                      )}
+                      {quote.quantity && (
+                        <div>
+                          <strong>Quantity:</strong> {quote.quantity}
+                        </div>
+                      )}
+                      {quote.company && (
+                        <div>
+                          <strong>Company:</strong> {quote.company}
+                        </div>
+                      )}
+                      <div>
+                        <strong>Submitted:</strong> {formatDate(quote.timestamp)}
+                      </div>
+                    </div>
+                    
+                    {quote.message && (
+                      <div style={{
+                        background: theme === 'dark' ? '#1D2A35' : '#fff',
+                        padding: '1rem',
+                        borderRadius: '6px',
+                        marginTop: '1rem'
+                      }}>
+                        <strong>Message:</strong>
+                        <p style={{ margin: '0.5rem 0 0 0' }}>{quote.message}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
-    </aside>
-  );
-};
-
-const ProfilePage = () => {
-  const { theme } = useContext(ThemeContext);
-  const isDark = theme === 'dark';
-  const router = useRouter();
-  const [selected, setSelected] = React.useState('profile');
-
-  // On mount, check for sidebar param or localStorage flag
-  React.useEffect(() => {
-    let initial = 'profile';
-    if (router.query.sidebar === 'dashboard') {
-      initial = 'dashboard';
-    } else if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('sidebarSelected');
-      if (stored === 'dashboard') {
-        initial = 'dashboard';
-        localStorage.removeItem('sidebarSelected');
-      }
-    }
-    setSelected(initial);
-  }, [router.query.sidebar]);
-
-  // Helper for welcome message
-  let welcomeText = '';
-  if (selected === 'profile') {
-    welcomeText = 'Welcome to Your Profile';
-  } else if (selected === 'dashboard') {
-    welcomeText = 'Welcome to Your Dashboard';
-  }
-
-  // Get profile from localStorage
-  let profile = null;
-  if (typeof window !== 'undefined') {
-    const stored = localStorage.getItem('stonehouse_profile');
-    if (stored) {
-      try {
-        profile = JSON.parse(stored);
-      } catch {}
-    }
-  }
-
-  return (
-    <div style={{ display: 'flex', background: isDark ? '#181f26' : '#faf9f6', minHeight: '100vh' }}>
-      <ProfileSidebar selected={selected} setSelected={setSelected} />
-      <main style={{ marginLeft: 140, padding: '2.5rem 2rem', width: '100%' }}>
-        {welcomeText && (
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1.5rem', color: isDark ? '#fff' : '#1D2A35' }}>{welcomeText}</h1>
-        )}
-        {selected === 'profile' && profile && (
-          <div style={{ background: isDark ? '#232b36' : '#fff', borderRadius: 12, padding: '1.5rem 1.2rem', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', border: isDark ? '1.5px solid #223044' : '1.5px solid #e0e0e0', maxWidth: 400, marginBottom: 24 }}>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: 12, color: isDark ? '#FFD700' : '#C99700' }}>Your Details</h2>
-            <div style={{ marginBottom: 8 }}><b>Name:</b> {profile.name}</div>
-            <div style={{ marginBottom: 8 }}><b>Email:</b> {profile.email}</div>
-            {profile.company && <div style={{ marginBottom: 8 }}><b>Company:</b> {profile.company}</div>}
-          </div>
-        )}
-        {selected === 'profile' && !profile && (
-          <div style={{ color: isDark ? '#bbb' : '#333', fontSize: '1.1rem', marginBottom: 24 }}>
-            No profile found. Please <a href="/signup" style={{ color: isDark ? '#FFD700' : '#C99700', textDecoration: 'underline' }}>sign up</a>.
-          </div>
-        )}
-        {selected === 'profile' && (
-          <p style={{ color: isDark ? '#bbb' : '#333', fontSize: '1.1rem' }}>
-          This is your profile page. Use the sidebar to navigate your profile settings and information.
-        </p>
-        )}
-        {selected === 'dashboard' && !profile && (
-          <div style={{ color: isDark ? '#bbb' : '#333', fontSize: '1.1rem', marginBottom: 24 }}>
-            No profile found. Please <a href="/signup" style={{ color: isDark ? '#FFD700' : '#C99700', textDecoration: 'underline' }}>sign up</a> to access your dashboard.
-          </div>
-        )}
-        {selected === 'dashboard' && profile && (
-          <p style={{ color: isDark ? '#bbb' : '#333', fontSize: '1.1rem' }}>
-            Here you can view your details and track your quotation requests. Use the sidebar to switch between your dashboard and profile.
-          </p>
-        )}
-      </main>
     </div>
   );
 };
 
-export default ProfilePage;
+export default Profile;

@@ -32,21 +32,64 @@ export const AuthKycContext = createContext({
   setIsSignedIn: () => {},
   isKycComplete: false,
   setIsKycComplete: () => {},
+  userProfile: null,
+  setUserProfile: () => {},
+  quoteHistory: [],
+  addQuoteToHistory: () => {},
 });
 
 export const AuthKycProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isKycComplete, setIsKycComplete] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+  const [quoteHistory, setQuoteHistory] = useState([]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsSignedIn(!!localStorage.getItem('isSignedIn'));
+      const signedIn = !!localStorage.getItem('stonehouse_isSignedIn');
+      const profile = localStorage.getItem('stonehouse_profile');
+      const quotes = localStorage.getItem('stonehouse_quotes');
+      
+      setIsSignedIn(signedIn);
       setIsKycComplete(!!localStorage.getItem('isKycComplete'));
+      
+      if (profile) {
+        setUserProfile(JSON.parse(profile));
+      }
+      
+      if (quotes) {
+        setQuoteHistory(JSON.parse(quotes));
+      }
     }
   }, []);
 
+  const addQuoteToHistory = (quote) => {
+    const newQuote = {
+      ...quote,
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString(),
+      status: 'Submitted'
+    };
+    
+    const updatedHistory = [newQuote, ...quoteHistory];
+    setQuoteHistory(updatedHistory);
+    
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('stonehouse_quotes', JSON.stringify(updatedHistory));
+    }
+  };
+
   return (
-    <AuthKycContext.Provider value={{ isSignedIn, setIsSignedIn, isKycComplete, setIsKycComplete }}>
+    <AuthKycContext.Provider value={{ 
+      isSignedIn, 
+      setIsSignedIn, 
+      isKycComplete, 
+      setIsKycComplete,
+      userProfile,
+      setUserProfile,
+      quoteHistory,
+      addQuoteToHistory
+    }}>
       {children}
     </AuthKycContext.Provider>
   );
@@ -60,6 +103,7 @@ export default function MyApp({ Component, pageProps }) {
     const stored = typeof window !== 'undefined' ? localStorage.getItem('stonehouse-theme') : null;
     if (stored && (stored === 'dark' || stored === 'light')) setTheme(stored);
   }, []);
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('stonehouse-theme', theme);
@@ -69,7 +113,14 @@ export default function MyApp({ Component, pageProps }) {
     }
   }, [theme]);
 
-  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  // Theme toggle only works for signed-in users
+  const toggleTheme = () => {
+    const isSignedIn = typeof window !== 'undefined' ? !!localStorage.getItem('stonehouse_isSignedIn') : false;
+    if (isSignedIn) {
+      setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    }
+  };
+  
   const themeContextValue = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
   return (

@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
-import { ThemeContext } from './_app';
+import { ThemeContext, AuthKycContext } from './_app';
 
 export default function DieselULP() {
   const { theme } = useContext(ThemeContext);
+  const { isSignedIn, addQuoteToHistory } = useContext(AuthKycContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState('');
   const [form, setForm] = useState({
@@ -218,6 +219,22 @@ export default function DieselULP() {
                       productType: modalProduct,
                       destinationEmail: 'stonehouseholdings24@gmail.com'
                     });
+                    
+                    // Add to quote history if user is signed in
+                    if (isSignedIn) {
+                      addQuoteToHistory({
+                        product: `Fuel Distribution - ${modalProduct}`,
+                        fullName: form.fullName,
+                        company: form.company,
+                        contactNumber: form.contactNumber,
+                        emailAddress: form.emailAddress,
+                        quantity: form.quantity,
+                        townCity: form.townCity,
+                        deliveryAddress: form.deliveryAddress,
+                        message: form.comments || 'No additional comments'
+                      });
+                    }
+                    
                     setSubmitMessage('Quote request submitted successfully! We will contact you soon.');
                   }}
                   style={{ display: 'flex', flexDirection: 'column', gap: 20 }}

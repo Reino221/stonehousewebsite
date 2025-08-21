@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
-import { ThemeContext } from './_app';
+import { ThemeContext, AuthKycContext } from './_app';
 
 export default function Refineries() {
   const { theme } = useContext(ThemeContext);
+  const { isSignedIn, addQuoteToHistory } = useContext(AuthKycContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState('');
   const [form, setForm] = useState({
@@ -193,6 +194,24 @@ export default function Refineries() {
                       selectedOrigins,
                       destinationEmail: 'stonehouseholdings24@gmail.com'
                     });
+                    
+                    // Add to quote history if user is signed in
+                    if (isSignedIn) {
+                      addQuoteToHistory({
+                        product: `Refineries - ${form.product}`,
+                        name: form.name,
+                        email: form.email,
+                        company: form.company,
+                        productType: form.product,
+                        procedure: form.procedure,
+                        fobOption: form.fobOption,
+                        quantity: form.quantity,
+                        destinationPort: form.destinationPort,
+                        origins: selectedOrigins.length > 0 ? selectedOrigins.join(', ') : null,
+                        message: form.comments || 'No additional comments'
+                      });
+                    }
+                    
                     setSubmitMessage('Your request has been submitted!');
                     // Here you would handle the actual submission (API call, etc.)
                   }}

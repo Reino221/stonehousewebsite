@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
-import { ThemeContext } from './_app';
+import { ThemeContext, AuthKycContext } from './_app';
 
 export default function Minerals() {
   const { theme } = useContext(ThemeContext);
+  const { isSignedIn, addQuoteToHistory } = useContext(AuthKycContext);
   const [showQuoteForm, setShowQuoteForm] = useState(false);
   const [activeQuoteType, setActiveQuoteType] = useState('');
   const [formData, setFormData] = useState({
@@ -189,13 +190,30 @@ export default function Minerals() {
           Quality Coal & Chrome. Trusted Partnerships. Reliable Supply
         </h2>
         
+        {/* Washplant Image */}
+        <div style={{
+          textAlign: 'center',
+          margin: '2rem 0',
+        }}>
+          <img 
+            src="/washplant2.jpg" 
+            alt="Coal Washplant Facility" 
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              borderRadius: '10px',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+            }}
+          />
+        </div>
+        
         <div style={{
           fontSize: '1.2rem',
           lineHeight: '1.8',
           color: theme === 'dark' ? '#cbd5e0' : '#4a5568',
         }}>
           <p>
-            At Stonehouse Holdings, we supply quality coal that keeps industries moving. Working with trusted partners, our products are washed and prepared to meet strict standards, ensuring reliable performance and value. With a focus on consistency, trust, and strong relationships, we deliver coal solutions that work for your business.
+            At Stonehouse Holdings, we supply quality coal that keeps industries moving. Working with trusted partners, our coal products are washed in-house using a jig plant to meet strict standards, ensuring reliable performance and value. In addition, we crush and screen peas and 48kcal, providing consistent, high-quality products across all our offerings. With a focus on consistency, trust, and strong relationships, we deliver solutions that work for your business.
           </p>
         </div>
       </div>
@@ -292,6 +310,23 @@ export default function Minerals() {
                     selectedConcentrateRanges,
                     destinationEmail: 'stonehouseholdings24@gmail.com'
                   });
+                  
+                  // Add to quote history if user is signed in
+                  if (isSignedIn) {
+                    addQuoteToHistory({
+                      product: `Minerals - ${activeQuoteType}`,
+                      name: formData.name,
+                      email: formData.email,
+                      company: formData.company,
+                      contactNumber: formData.contactNumber,
+                      mineralType: formData.mineralType,
+                      quantity: formData.quantity,
+                      message: formData.comments || 'No additional comments',
+                      romRanges: selectedROMRanges.length > 0 ? selectedROMRanges.join(', ') : null,
+                      concentrateRanges: selectedConcentrateRanges.length > 0 ? selectedConcentrateRanges.join(', ') : null
+                    });
+                  }
+                  
                   alert('Quote request submitted successfully!');
                   closeQuoteForm();
                 }}
