@@ -189,6 +189,38 @@ export default function Refineries() {
                       return;
                     }
                     setQuantityError('');
+                    
+                    // Prepare email content
+                    const emailSubject = `Refineries Quote Request - ${form.product}`;
+                    const emailBody = `
+REFINERIES QUOTE REQUEST
+
+Product: ${form.product}
+Quantity: ${form.quantity} MT
+FOB Option: ${form.fobOption}
+Destination Port: ${form.destinationPort}
+
+Client Information:
+Name: ${form.name}
+Email: ${form.email}
+Company: ${form.company}
+
+Origin Locations: ${selectedOrigins.join(', ')}
+
+Additional Comments: ${form.comments || 'None'}
+
+Procedure: ${form.procedure}
+
+---
+This quote request was submitted via the Stonehouse Holdings website.
+                    `.trim();
+
+                    // Create mailto link
+                    const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                    
+                    // Open email client
+                    window.location.href = mailtoLink;
+                    
                     console.log('REFINERIES Form submitted:', {
                       ...form,
                       selectedOrigins,
@@ -212,8 +244,26 @@ export default function Refineries() {
                       });
                     }
                     
-                    setSubmitMessage('Your request has been submitted!');
-                    // Here you would handle the actual submission (API call, etc.)
+                    setSubmitMessage('Opening email client... Please send the email to complete your quote request.');
+                    // Reset form after brief delay
+                    setTimeout(() => {
+                      setForm({
+                        name: '',
+                        email: '',
+                        company: '',
+                        product: '',
+                        procedure: '',
+                        fobOption: '',
+                        quantity: '',
+                        comments: '',
+                        destinationPort: '',
+                      });
+                      setSelectedOrigins([]);
+                      setProcedureAccepted(false);
+                      setTttAccepted(false);
+                      setModalOpen(false);
+                      setSubmitMessage('');
+                    }, 3000);
                   }}
                   style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
                 >
