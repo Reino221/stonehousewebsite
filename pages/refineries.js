@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ThemeContext, AuthKycContext } from './_app';
 
 export default function Refineries() {
@@ -7,6 +7,8 @@ export default function Refineries() {
   const { isSignedIn, addQuoteToHistory } = useContext(AuthKycContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState('');
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -24,6 +26,18 @@ export default function Refineries() {
   const [quantityError, setQuantityError] = useState('');
   const [submitMessage, setSubmitMessage] = useState('');
   const [selectedOrigins, setSelectedOrigins] = useState([]);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   // Function to extract min and max values from product string
   function getProductQuantityLimits(productString) {
@@ -120,21 +134,160 @@ export default function Refineries() {
             Global trading and distribution of petroleum products for industrial and commercial use
           </p>
         </div>
-        {/* Quote Buttons */}
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end', position: 'absolute', bottom: 32, left: 0, width: '100%', zIndex: 3, gap: '0.4rem' }}>
-          {['Fuel', 'Fertilizer', 'Oil', 'Alcohols (Chem)', 'LPG / LNG', 'Bitumen', 'Pet Coke', 'Edible Oil'].map((name) => (
+        {/* Quote Buttons - Mobile vs Desktop */}
+        {isMobile ? (
+          /* Mobile Dropdown */
+          <div style={{ 
+            position: 'absolute', 
+            bottom: 32, 
+            left: '50%', 
+            transform: 'translateX(-50%)', 
+            zIndex: 3 
+          }}>
+            {/* Dropdown Button */}
             <button
-              key={name}
-              style={{ background: '#fff', color: '#1D2A35', border: '2px solid #FFD700', borderRadius: 40, width: 140, height: 48, fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer', transition: 'background 0.2s, color 0.2s, border 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.08)', outline: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', lineHeight: 1.12, letterSpacing: 0.03, userSelect: 'none', margin: 0, padding: 0 }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#FFD700'; e.currentTarget.style.color = '#1D2A35'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#1D2A35'; }}
-              onClick={() => openModalForProduct(name)}
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+              style={{
+                background: '#fff',
+                color: '#1D2A35',
+                border: '2px solid #FFD700',
+                borderRadius: 40,
+                width: 180,
+                height: 48,
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+                outline: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                position: 'relative'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#FFD700';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.3)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+              }}
             >
-              <span style={{ fontSize: '0.82rem', fontWeight: 800, marginBottom: 0 }}>{name}</span>
-              <span style={{ fontSize: '0.72rem', fontWeight: 500, opacity: 0.85 }}>Quote</span>
+              Get Quote {mobileDropdownOpen ? '▲' : '▼'}
             </button>
-          ))}
-        </div>
+
+            {/* Dropdown Menu */}
+            {mobileDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                bottom: '100%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                marginBottom: '8px',
+                background: '#fff',
+                borderRadius: '16px',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                border: '2px solid #FFD700',
+                overflow: 'hidden',
+                minWidth: '200px',
+                maxHeight: '300px',
+                overflowY: 'auto'
+              }}>
+                {['Fuel', 'Fertilizer', 'Oil', 'Alcohols (Chem)', 'LPG / LNG', 'Bitumen', 'Pet Coke', 'Edible Oil'].map((name, index) => (
+                  <button
+                    key={name}
+                    onClick={() => {
+                      openModalForProduct(name);
+                      setMobileDropdownOpen(false);
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      background: '#fff',
+                      color: '#1D2A35',
+                      border: 'none',
+                      borderBottom: index < 7 ? '1px solid #f0f0f0' : 'none',
+                      fontSize: '0.9rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      transition: 'background 0.2s',
+                      textAlign: 'left'
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = '#f8f9fa';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = '#fff';
+                    }}
+                  >
+                    {name} Quote
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          /* Desktop Buttons */
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            justifyContent: 'center', 
+            alignItems: 'flex-end', 
+            position: 'absolute', 
+            bottom: 32, 
+            left: 0, 
+            width: '100%', 
+            zIndex: 3, 
+            gap: '0.4rem' 
+          }}>
+            {['Fuel', 'Fertilizer', 'Oil', 'Alcohols (Chem)', 'LPG / LNG', 'Bitumen', 'Pet Coke', 'Edible Oil'].map((name) => (
+              <button
+                key={name}
+                style={{ 
+                  background: '#fff', 
+                  color: '#1D2A35', 
+                  border: '2px solid #FFD700', 
+                  borderRadius: 40, 
+                  width: 140, 
+                  height: 48, 
+                  fontWeight: 700, 
+                  fontSize: '0.82rem', 
+                  cursor: 'pointer', 
+                  transition: 'background 0.2s, color 0.2s, border 0.2s', 
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.08)', 
+                  outline: 'none', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  textAlign: 'center', 
+                  whiteSpace: 'nowrap', 
+                  lineHeight: 1.12, 
+                  letterSpacing: 0.03, 
+                  userSelect: 'none', 
+                  margin: 0, 
+                  padding: 0 
+                }}
+                onMouseEnter={e => { 
+                  e.currentTarget.style.background = '#FFD700'; 
+                  e.currentTarget.style.color = '#1D2A35'; 
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.background = '#fff'; 
+                  e.currentTarget.style.color = '#1D2A35'; 
+                }}
+                onClick={() => openModalForProduct(name)}
+              >
+                <span style={{ fontSize: '0.82rem', fontWeight: 800, marginBottom: 0 }}>{name}</span>
+                <span style={{ fontSize: '0.72rem', fontWeight: 500, opacity: 0.85 }}>Quote</span>
+              </button>
+            ))}
+          </div>
+        )}
         {/* Modal */}
         {modalOpen && (
           <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', boxSizing: 'border-box' }} onClick={() => setModalOpen(false)}>
