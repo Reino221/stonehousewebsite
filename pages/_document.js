@@ -7,12 +7,12 @@ export default function Document() {
     "name": "Stonehouse Holdings",
     "alternateName": ["Stonehouse Group", "Stonehouse"],
     "url": "https://www.stonehousegroup.co.za",
-    "logo": "https://www.stonehousegroup.co.za/stonehouse%20logo.jpg",
-    "image": "https://www.stonehousegroup.co.za/stonehouse%20logo.jpg",
+    "logo": "https://www.stonehousegroup.co.za/stonehouse-logo.jpg",
+    "image": "https://www.stonehousegroup.co.za/stonehouse-logo.jpg",
     "description": "Leading global trading company specializing in refineries, minerals, fuel distribution, and deceased estate administration.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+27-64-559-8007",
+      "telephone": "+27645598007",
       "contactType": "customer service",
       "availableLanguage": "English"
     },
