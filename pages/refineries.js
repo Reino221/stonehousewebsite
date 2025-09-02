@@ -823,36 +823,38 @@ This quote request was submitted via the Stonehouse Holdings website.
                       }}
                     >
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
-                        <label key={origin}>
+                        <div key={origin} style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: isMobile ? '1px' : '8px',
+                          marginBottom: isMobile ? '8px' : '0px',
+                          fontSize: isMobile ? '15px' : '14px',
+                          color: '#1D2A35',
+                          fontWeight: 500,
+                          cursor: 'default'
+                        }}>
                           <input
                             type="checkbox"
                             checked={selectedOrigins.includes(origin)}
                             onChange={() => handleOriginChange(origin)}
+                            style={{
+                              width: isMobile ? '18px' : '16px',
+                              height: isMobile ? '18px' : '16px',
+                              margin: '0',
+                              padding: '0',
+                              cursor: 'pointer',
+                              flexShrink: 0
+                            }}
                           />
-                          {' '}{origin}
-                        </label>
+                          <span style={{
+                            marginLeft: isMobile ? '1px' : '0px',
+                            cursor: 'default',
+                            userSelect: 'none'
+                          }}>
+                            {origin}
+                          </span>
+                        </div>
                       ))}
-                      
-                      <style jsx>{`
-                        .refinery-checkboxes label {
-                          display: inline-flex !important;
-                          align-items: center !important;
-                          gap: ${isMobile ? '2px' : '4px'} !important;
-                          margin-bottom: 6px;
-                          cursor: pointer;
-                          font-size: ${isMobile ? '15px' : '14px'};
-                          color: #1D2A35;
-                          font-weight: 500;
-                        }
-
-                        .refinery-checkboxes input[type="checkbox"] {
-                          margin: 0 !important;
-                          min-width: ${isMobile ? '18px' : '16px'};
-                          min-height: ${isMobile ? '18px' : '16px'};
-                          cursor: pointer;
-                          flex-shrink: 0;
-                        }
-                      `}</style>
                     </div>
                     {selectedOrigins.length > 0 && (
                       <div style={{ color: '#38a169', fontSize: 12, marginTop: 4, fontStyle: 'italic' }}>
