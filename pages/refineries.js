@@ -816,23 +816,22 @@ This quote request was submitted via the Stonehouse Holdings website.
                       borderRadius: 10, 
                       border: '2px solid #e0e0e0', 
                       background: '#fff',
-                      width: isMobile ? '100%' : 'auto',
+                      width: '100%',
                       boxSizing: 'border-box'
                     }}>
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
                         <label key={origin} style={{ 
                           display: 'flex', 
                           alignItems: 'center', 
-                          gap: isMobile ? 1 : 8, 
+                          gap: isMobile ? 8 : 8, 
                           cursor: 'pointer', 
-                          fontSize: isMobile ? 14 : 14, 
+                          fontSize: 14, 
                           color: '#1D2A35', 
                           fontWeight: 500,
                           minHeight: isMobile ? 24 : 'auto',
                           padding: isMobile ? '4px 0' : '0',
                           width: '100%',
-                          boxSizing: 'border-box',
-                          overflow: 'hidden'
+                          boxSizing: 'border-box'
                         }}>
                           <input
                             type="checkbox"
@@ -846,15 +845,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                               margin: 0
                             }}
                           />
-                          <span style={{
-                            flex: 1,
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: isMobile ? 'nowrap' : 'normal',
-                            wordBreak: 'break-word'
-                          }}>
-                            {origin}
-                          </span>
+                          {origin}
                         </label>
                       ))}
                     </div>
