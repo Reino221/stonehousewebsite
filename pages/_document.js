@@ -41,7 +41,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="description" content="Stonehouse Holdings - Leading global trading company specializing in refineries, minerals, fuel distribution, and deceased estate administration." />
         <meta name="keywords" content="Stonehouse Holdings, global trading, refineries, minerals, fuel distribution, estate administration" />
         <link rel="icon" href="/stonehouse logo.jpg" />
