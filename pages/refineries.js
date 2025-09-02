@@ -808,14 +808,37 @@ This quote request was submitted via the Stonehouse Holdings website.
                     <div style={{ marginBottom: 10, fontWeight: 600, fontSize: 15, color: '#1D2A35' }}>
                       Select Origin (Select one or multiple locations)
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, padding: '14px 18px', borderRadius: 10, border: '2px solid #e0e0e0', background: '#fff' }}>
+                    <div style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', 
+                      gap: isMobile ? 12 : 10, 
+                      padding: isMobile ? '16px 20px' : '14px 18px', 
+                      borderRadius: 10, 
+                      border: '2px solid #e0e0e0', 
+                      background: '#fff' 
+                    }}>
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
-                        <label key={origin} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 14, color: '#1D2A35', fontWeight: 500 }}>
+                        <label key={origin} style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: isMobile ? 12 : 8, 
+                          cursor: 'pointer', 
+                          fontSize: isMobile ? 15 : 14, 
+                          color: '#1D2A35', 
+                          fontWeight: 500,
+                          minHeight: isMobile ? 24 : 'auto',
+                          padding: isMobile ? '4px 0' : '0'
+                        }}>
                           <input
                             type="checkbox"
                             checked={selectedOrigins.includes(origin)}
                             onChange={() => handleOriginChange(origin)}
-                            style={{ minWidth: 16, minHeight: 16, cursor: 'pointer' }}
+                            style={{ 
+                              minWidth: isMobile ? 18 : 16, 
+                              minHeight: isMobile ? 18 : 16, 
+                              cursor: 'pointer',
+                              flexShrink: 0
+                            }}
                           />
                           {origin}
                         </label>
