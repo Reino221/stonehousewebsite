@@ -854,7 +854,6 @@ This quote request was submitted via the Stonehouse Holdings website.
                         }
                       `}</style>
                     </div>
-                    </div>
                     {selectedOrigins.length > 0 && (
                       <div style={{ color: '#38a169', fontSize: 12, marginTop: 4, fontStyle: 'italic' }}>
                         Selected: {selectedOrigins.join(', ')}
