@@ -808,48 +808,52 @@ This quote request was submitted via the Stonehouse Holdings website.
                     <div style={{ marginBottom: 10, fontWeight: 600, fontSize: 15, color: '#1D2A35' }}>
                       Select Origin (Select one or multiple locations)
                     </div>
-                    <div style={{ 
-                      display: 'grid', 
-                      gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', 
-                      gap: isMobile ? 12 : 10, 
-                      padding: isMobile ? '12px 16px' : '14px 18px', 
-                      borderRadius: 10, 
-                      border: '2px solid #e0e0e0', 
-                      background: '#fff',
-                      width: '100%',
-                      boxSizing: 'border-box'
-                    }}>
+                    <div 
+                      className="refinery-checkboxes"
+                      style={{ 
+                        display: 'grid', 
+                        gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', 
+                        gap: isMobile ? 12 : 10, 
+                        padding: isMobile ? '12px 16px' : '14px 18px', 
+                        borderRadius: 10, 
+                        border: '2px solid #e0e0e0', 
+                        background: '#fff',
+                        width: '100%',
+                        boxSizing: 'border-box'
+                      }}
+                    >
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
-                        <label key={origin} style={{ 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          gap: isMobile ? 0 : 8, 
-                          marginBottom: isMobile ? 8 : 0,
-                          cursor: 'pointer',
-                          fontSize: isMobile ? 15 : 14, 
-                          color: '#1D2A35', 
-                          fontWeight: 500,
-                          minHeight: isMobile ? 24 : 'auto',
-                          padding: isMobile ? '4px 0' : '0',
-                          width: '100%',
-                          boxSizing: 'border-box'
-                        }}>
+                        <label key={origin}>
                           <input
                             type="checkbox"
                             checked={selectedOrigins.includes(origin)}
                             onChange={() => handleOriginChange(origin)}
-                            style={{ 
-                              minWidth: isMobile ? 18 : 16, 
-                              minHeight: isMobile ? 18 : 16, 
-                              cursor: 'pointer',
-                              flexShrink: 0,
-                              margin: 0,
-                              transform: isMobile ? 'scale(1.1)' : 'scale(1)'
-                            }}
                           />
-                          {origin}
+                          {' '}{origin}
                         </label>
                       ))}
+                      
+                      <style jsx>{`
+                        .refinery-checkboxes label {
+                          display: inline-flex !important;
+                          align-items: center !important;
+                          gap: 4px !important;
+                          margin-bottom: 6px;
+                          cursor: pointer;
+                          font-size: ${isMobile ? '15px' : '14px'};
+                          color: #1D2A35;
+                          font-weight: 500;
+                        }
+
+                        .refinery-checkboxes input[type="checkbox"] {
+                          margin: 0 !important;
+                          min-width: ${isMobile ? '18px' : '16px'};
+                          min-height: ${isMobile ? '18px' : '16px'};
+                          cursor: pointer;
+                          flex-shrink: 0;
+                        }
+                      `}</style>
+                    </div>
                     </div>
                     {selectedOrigins.length > 0 && (
                       <div style={{ color: '#38a169', fontSize: 12, marginTop: 4, fontStyle: 'italic' }}>
