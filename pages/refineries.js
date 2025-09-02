@@ -820,11 +820,10 @@ This quote request was submitted via the Stonehouse Holdings website.
                       boxSizing: 'border-box'
                     }}>
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
-                        <label key={origin} style={{ 
+                        <div key={origin} style={{ 
                           display: 'flex', 
                           alignItems: 'center', 
                           gap: isMobile ? 4 : 8, 
-                          cursor: 'pointer', 
                           fontSize: 14, 
                           color: '#1D2A35', 
                           fontWeight: 500,
@@ -845,8 +844,13 @@ This quote request was submitted via the Stonehouse Holdings website.
                               margin: 0
                             }}
                           />
-                          {origin}
-                        </label>
+                          <span style={{ 
+                            cursor: 'default',
+                            userSelect: 'none' 
+                          }}>
+                            {origin}
+                          </span>
+                        </div>
                       ))}
                     </div>
                     {selectedOrigins.length > 0 && (
