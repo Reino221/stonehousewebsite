@@ -812,10 +812,12 @@ This quote request was submitted via the Stonehouse Holdings website.
                       display: 'grid', 
                       gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', 
                       gap: isMobile ? 12 : 10, 
-                      padding: isMobile ? '16px 20px' : '14px 18px', 
+                      padding: isMobile ? '12px 16px' : '14px 18px', 
                       borderRadius: 10, 
                       border: '2px solid #e0e0e0', 
-                      background: '#fff' 
+                      background: '#fff',
+                      width: isMobile ? '100%' : 'auto',
+                      boxSizing: 'border-box'
                     }}>
                       {['HOUSTON', 'ROTTERDAM', 'FUJAIRAH', 'JURONG', 'NINGBO-ZHOUSHAN', 'QINGDAO', 'KAZAKHSTAN'].map((origin) => (
                         <label key={origin} style={{ 
@@ -823,11 +825,14 @@ This quote request was submitted via the Stonehouse Holdings website.
                           alignItems: 'center', 
                           gap: isMobile ? 1 : 8, 
                           cursor: 'pointer', 
-                          fontSize: isMobile ? 15 : 14, 
+                          fontSize: isMobile ? 14 : 14, 
                           color: '#1D2A35', 
                           fontWeight: 500,
                           minHeight: isMobile ? 24 : 'auto',
-                          padding: isMobile ? '4px 0' : '0'
+                          padding: isMobile ? '4px 0' : '0',
+                          width: '100%',
+                          boxSizing: 'border-box',
+                          overflow: 'hidden'
                         }}>
                           <input
                             type="checkbox"
@@ -837,10 +842,19 @@ This quote request was submitted via the Stonehouse Holdings website.
                               minWidth: isMobile ? 18 : 16, 
                               minHeight: isMobile ? 18 : 16, 
                               cursor: 'pointer',
-                              flexShrink: 0
+                              flexShrink: 0,
+                              margin: 0
                             }}
                           />
-                          {origin}
+                          <span style={{
+                            flex: 1,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: isMobile ? 'nowrap' : 'normal',
+                            wordBreak: 'break-word'
+                          }}>
+                            {origin}
+                          </span>
                         </label>
                       ))}
                     </div>
