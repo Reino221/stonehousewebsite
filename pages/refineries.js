@@ -837,7 +837,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                         .refinery-checkboxes label {
                           display: inline-flex !important;
                           align-items: center !important;
-                          gap: 4px !important;
+                          gap: ${isMobile ? '2px' : '4px'} !important;
                           margin-bottom: 6px;
                           cursor: pointer;
                           font-size: ${isMobile ? '15px' : '14px'};
