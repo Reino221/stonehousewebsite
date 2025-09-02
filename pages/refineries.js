@@ -823,7 +823,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                         <label key={origin} style={{ 
                           display: 'flex', 
                           alignItems: 'center', 
-                          gap: isMobile ? 8 : 8, 
+                          gap: isMobile ? 4 : 8, 
                           cursor: 'pointer', 
                           fontSize: 14, 
                           color: '#1D2A35', 
