@@ -33,3 +33,11 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Backup files (prevent future issues)
+*backup*
+*_backup*
+*_old*
+*_new*
+*.bak
+*temp*
