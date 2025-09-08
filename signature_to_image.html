@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email Signature - Image with Clickable Areas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+        .signature-container {
+            position: relative;
+            display: inline-block;
+        }
+        .signature-image {
+            display: block;
+            border: none;
+        }
+        /* Clickable areas overlay */
+        .clickable-area {
+            position: absolute;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        /* Phone area (not clickable, just for reference) */
+        .phone-area {
+            left: 250px;
+            top: 65px;
+            width: 200px;
+            height: 20px;
+        }
+        /* Website area */
+        .website-area {
+            left: 250px;
+            top: 90px;
+            width: 250px;
+            height: 20px;
+        }
+        /* Social media icons */
+        .linkedin-area {
+            left: 250px;
+            top: 135px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+        .facebook-area {
+            left: 300px;
+            top: 135px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+        .whatsapp-area {
+            left: 350px;
+            top: 135px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Step 1: Create Screenshot</h2>
+<p>First, we need to capture your email signature as an image. Open your current email_signature.html file and take a screenshot.</p>
+
+<h2>Step 2: Use this template with your image</h2>
+<p>Once you have the screenshot saved as "email_signature.png", use this HTML code in Outlook:</p>
+
+<div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+<pre style="margin: 0; font-family: monospace; font-size: 14px;">
+&lt;div style="position: relative; display: inline-block;"&gt;
+    &lt;!-- Main signature image --&gt;
+    &lt;img src="email_signature.png" alt="Reino Fourie - Stonehouse Holdings" 
+         style="display: block; border: none; width: 600px; height: auto;"&gt;
+    
+    &lt;!-- Clickable website area --&gt;
+    &lt;a href="https://www.stonehousegroup.co.za" target="_blank" 
+       style="position: absolute; left: 250px; top: 90px; width: 250px; height: 20px; 
+              text-decoration: none; display: block;"&gt;&lt;/a&gt;
+    
+    &lt;!-- Clickable LinkedIn icon --&gt;
+    &lt;a href="https://www.linkedin.com/in/reino-fourie-2059b7307?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=ios_app" 
+       target="_blank" 
+       style="position: absolute; left: 250px; top: 135px; width: 35px; height: 35px; 
+              text-decoration: none; display: block; border-radius: 50%;"&gt;&lt;/a&gt;
+    
+    &lt;!-- Clickable Facebook icon --&gt;
+    &lt;a href="https://www.facebook.com/share/19eD2Zxufi/?mibextid=wwXIfr" 
+       target="_blank" 
+       style="position: absolute; left: 300px; top: 135px; width: 35px; height: 35px; 
+              text-decoration: none; display: block; border-radius: 50%;"&gt;&lt;/a&gt;
+    
+    &lt;!-- Clickable WhatsApp icon --&gt;
+    &lt;a href="http://wa.me/27645598007" 
+       target="_blank" 
+       style="position: absolute; left: 350px; top: 135px; width: 35px; height: 35px; 
+              text-decoration: none; display: block; border-radius: 50%;"&gt;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+</div>
+
+<h2>Step 3: Instructions</h2>
+<ol>
+    <li><strong>Create the image:</strong>
+        <ul>
+            <li>Open <code>email_signature.html</code> in your browser</li>
+            <li>Take a full screenshot of the signature</li>
+            <li>Save it as <code>email_signature.png</code> (exactly this name)</li>
+            <li>Make sure the image is about 600px wide</li>
+        </ul>
+    </li>
+    <li><strong>Set up in Outlook:</strong>
+        <ul>
+            <li>Go to Outlook Settings > Mail > Compose and reply</li>
+            <li>Create new signature</li>
+            <li>Copy the HTML code above</li>
+            <li>Paste it in the signature editor</li>
+            <li>Upload your <code>email_signature.png</code> image</li>
+        </ul>
+    </li>
+    <li><strong>Adjust coordinates if needed:</strong>
+        <ul>
+            <li>The <code>left</code> and <code>top</code> values might need adjustment</li>
+            <li>Test clicking on different areas to ensure links work</li>
+            <li>Modify the pixel values if clickable areas don't align perfectly</li>
+        </ul>
+    </li>
+</ol>
+
+<h2>Alternative: Simple Image Map</h2>
+<p>If the absolute positioning doesn't work in Outlook, try this simpler image map approach:</p>
+
+<div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+<pre style="margin: 0; font-family: monospace; font-size: 14px;">
+&lt;img src="email_signature.png" alt="Reino Fourie - Stonehouse Holdings" usemap="#signature" style="border:0;"&gt;
+&lt;map name="signature"&gt;
+    &lt;area shape="rect" coords="250,90,500,110" href="https://www.stonehousegroup.co.za" target="_blank" alt="Website"&gt;
+    &lt;area shape="circle" coords="267,152,17" href="https://www.linkedin.com/in/reino-fourie-2059b7307?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=ios_app" target="_blank" alt="LinkedIn"&gt;
+    &lt;area shape="circle" coords="317,152,17" href="https://www.facebook.com/share/19eD2Zxufi/?mibextid=wwXIfr" target="_blank" alt="Facebook"&gt;
+    &lt;area shape="circle" coords="367,152,17" href="http://wa.me/27645598007" target="_blank" alt="WhatsApp"&gt;
+&lt;/map&gt;
+</pre>
+</div>
+
+</body>
+</html>
