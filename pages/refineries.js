@@ -412,7 +412,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                     `.trim();
 
                     // Create mailto link
-                    const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                    const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
                     
                     // Open email client
                     window.location.href = mailtoLink;
@@ -420,7 +420,7 @@ This quote request was submitted via the Stonehouse Holdings website.
                     console.log('REFINERIES Form submitted:', {
                       ...form,
                       selectedOrigins,
-                      destinationEmail: 'stonehouseholdings24@gmail.com'
+                      destinationEmail: 'info@stonehouseltd.co.za'
                     });
                     
                     // Add to quote history if user is signed in

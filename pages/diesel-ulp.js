@@ -223,7 +223,7 @@ export default function DieselULP() {
                     console.log('FUEL DISTRIBUTION RSA Form submitted:', { 
                       ...form, 
                       productType: modalProduct,
-                      destinationEmail: 'stonehouseholdings24@gmail.com'
+                      destinationEmail: 'info@stonehouseltd.co.za'
                     });
 
                     // Prepare email content
@@ -252,7 +252,7 @@ This quote request was submitted via the Stonehouse Holdings website.
 `;
 
                     // Create mailto URL for email client
-                    const mailtoUrl = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                    const mailtoUrl = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
                     
                     // Open email client
                     window.location.href = mailtoUrl;

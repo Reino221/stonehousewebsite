@@ -15,7 +15,7 @@ DEPLOYMENT STATUS - August 21, 2025
 📝 Changes Include:
 - Refineries: Professional form sections with client info
 - Fuel Distribution RSA: Matching professional layout
-- Both: Working email submission to stonehouseholdings24@gmail.com
+- Both: Working email submission to info@stonehouseltd.co.za
 - Both: No personal email references in quote emails
 
 ⏰ Status: Changes pushed - waiting for GitHub Actions to complete deployment

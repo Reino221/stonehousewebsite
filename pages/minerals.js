@@ -327,7 +327,7 @@ export default function Minerals() {
                     quoteType: activeQuoteType,
                     selectedROMRanges,
                     selectedConcentrateRanges,
-                    destinationEmail: 'stonehouseholdings24@gmail.com'
+                    destinationEmail: 'info@stonehouseltd.co.za'
                   });
                   
                   // Create email body
@@ -356,7 +356,7 @@ export default function Minerals() {
                   emailBody += `Best regards,\n${formData.name}`;
                   
                   const emailSubject = `Minerals Quote Request - ${activeQuoteType} - ${formData.company}`;
-                  const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                  const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
                   
                   window.location.href = mailtoLink;
                   

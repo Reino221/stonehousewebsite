@@ -47,7 +47,7 @@ export default function StonehouseEstates() {
     emailBody += `Best regards,\n${contactForm.fullName}`;
     
     const emailSubject = `Stonehouse Estates Contact Request - ${contactForm.fullName}`;
-    const mailtoLink = `mailto:stonehouseholdings24@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     window.location.href = mailtoLink;
     

@@ -1,0 +1,18 @@
+1. Open Outlook
+2. Go to File → Options → Mail → Signatures
+3. Click "New" to create a new signature
+4. Name it "Stonehouse"
+5. In the signature editor, click the HTML source button (</>) or switch to HTML view
+6. Copy and paste the ENTIRE contents from signature_perfect_copy.html
+7. Click OK to save
+
+The signature will work with:
+✅ Clickable website link
+✅ Clickable LinkedIn, Facebook, WhatsApp links  
+✅ All styling preserved
+✅ SVG icons embedded (no hosting needed)
+✅ Logo will need to be in same folder as Outlook or use full path
+
+For the logo to work, either:
+- Copy "stonehouse logo.jpg" to your Documents folder
+- Or change the src to full path: "C:\Users\User\Desktop\Stonehouse New App\stonehouse logo.jpg"
