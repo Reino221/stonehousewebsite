@@ -8,13 +8,6 @@ export default function Home() {
   const { theme } = useContext(ThemeContext);
   const columns = [
     {
-      name: 'Refineries',
-      color: '#FFA500',
-      video: '/Refinery vid.mp4',
-      desc: 'Global trading and distribution of petroleum products for industrial and commercial use.',
-      route: '/refineries',
-    },
-    {
       name: 'FUEL DISTRIBUTION RSA',
       color: '#FFD700',
       video: '/Diesel vid.mp4',
@@ -90,13 +83,13 @@ export default function Home() {
       </h1>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'row',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '2.5rem',
           width: '100%',
-          maxWidth: 1600,
+          maxWidth: '800px', // Reduced from 1600px to better fit 2 columns
           justifyContent: 'center',
-          flexWrap: 'wrap',
+          padding: '0 1rem',
         }}
       >
         {columns.map((col, idx) => (
@@ -106,9 +99,9 @@ export default function Home() {
               borderRadius: '1.5rem',
               boxShadow: theme === 'dark' ? '0 4px 24px rgba(0,0,0,0.3)' : '0 4px 24px rgba(0,0,0,0.08)',
               minHeight: 340,
-              minWidth: 300,
-              maxWidth: 320,
               width: '100%',
+              maxWidth: '380px', // Added max width for better proportions
+              justifySelf: 'center', // Center in grid cell
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -116,7 +109,7 @@ export default function Home() {
               padding: '2.2rem 1.5rem 1.5rem 1.5rem',
               cursor: 'pointer',
               transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)',
-              marginBottom: '1.5rem',
+              marginBottom: '0', // Removed bottom margin since grid handles spacing
               position: 'relative',
               overflow: 'hidden',
               background: 'transparent',
