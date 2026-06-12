@@ -28,13 +28,6 @@ export default function Home() {
       desc: 'Agricultural supplies, fertilizers, and farming solution services.',
       route: '/agriculture',
     },
-    {
-      name: 'Stonehouse Estates',
-      color: '#8B5CF6',
-      video: '/Estates vid.mp4',
-      desc: 'Professional deceased estate administration and asset management services.',
-      route: '/stonehouse-estates',
-    },
   ];
 
   return (
