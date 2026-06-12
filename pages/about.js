@@ -46,39 +46,48 @@ const About = () => {
           textAlign: 'center',
           lineHeight: '1.8'
         }}>
-          <p style={{ 
-            color: theme === 'dark' ? '#e0e0e0' : '#4a5568', 
-            fontSize: '1.2rem', 
+          <p style={{
+            color: theme === 'dark' ? '#e0e0e0' : '#4a5568',
+            fontSize: '1.2rem',
             marginBottom: '1.5rem',
             textAlign: 'justify'
           }}>
-            Founded in 2024, Stonehouse Holdings is a dynamic trading company specializing in the supply of essential minerals such as coal and chrome. We provide diesel and ULP fuel locally throughout South Africa, catering to farms, mining industries, and commercial sectors.
+            Stonehouse Holdings, founded in 2024, is a professional transport and logistics company committed to providing reliable, efficient, and cost-effective transportation solutions throughout South Africa and neighbouring regions.
           </p>
-          
-          <p style={{ 
-            color: theme === 'dark' ? '#e0e0e0' : '#4a5568', 
-            fontSize: '1.2rem', 
+
+          <p style={{
+            color: theme === 'dark' ? '#e0e0e0' : '#4a5568',
+            fontSize: '1.2rem',
             marginBottom: '1.5rem',
             textAlign: 'justify'
           }}>
-            Our fuel products are sourced directly from trusted global refineries, guaranteeing a reliable supply and consistent quality. Beyond local fuel supply, we engage in the international trading of LPG, LNG, and fertilizers, establishing ourselves as a versatile player in the energy and minerals markets.
+            We specialize in the movement of bulk materials and general freight, serving clients across various industries with a strong focus on safety, punctuality, and operational excellence. Our experienced team works closely with customers to ensure that every load is transported efficiently and delivered according to schedule.
           </p>
-          
-          <p style={{ 
-            color: theme === 'dark' ? '#e0e0e0' : '#4a5568', 
-            fontSize: '1.2rem', 
+
+          <p style={{
+            color: theme === 'dark' ? '#e0e0e0' : '#4a5568',
+            fontSize: '1.2rem',
             marginBottom: '1.5rem',
             textAlign: 'justify'
           }}>
-            Through our comprehensive quotation system, clients can effortlessly request pricing for minerals (FOT) and fuel products across our dedicated business divisions.
+            Through our streamlined quotation system, clients can easily request transport rates and logistics solutions tailored to their specific requirements. We understand that every project is unique and strive to provide flexible services that meet the demands of each customer.
           </p>
-          
-          <p style={{ 
-            color: theme === 'dark' ? '#e0e0e0' : '#4a5568', 
+
+          <p style={{
+            color: theme === 'dark' ? '#e0e0e0' : '#4a5568',
+            fontSize: '1.2rem',
+            marginBottom: '1.5rem',
+            textAlign: 'justify'
+          }}>
+            At Stonehouse Holdings, integrity, reliability, and exceptional service are the foundation of our business. We are dedicated to building long-term relationships through transparent communication, professional service delivery, and a commitment to exceeding client expectations.
+          </p>
+
+          <p style={{
+            color: theme === 'dark' ? '#e0e0e0' : '#4a5568',
             fontSize: '1.2rem',
             textAlign: 'justify'
           }}>
-            At Stonehouse Holdings, we are committed to delivering exceptional service in every transaction. With secure payment procedures, including Tradesafe purchase orders, we ensure trust and reliability as the foundation of our client relationships.
+            As a growing transport and logistics company, Stonehouse Holdings continues to expand its capabilities and network, providing dependable transportation solutions that support the success of our clients and partners.
           </p>
         </div>
       </div>
