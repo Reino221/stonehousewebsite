@@ -114,7 +114,6 @@ const MenuBar = () => {
   const menuItems = [
     { href: '/', label: 'Home', key: 'home' },
     { href: '/about', label: 'About', key: 'about' },
-    { href: '/store', label: 'Store', key: 'store' },
     { href: '/contact', label: 'Contact', key: 'contact' }
   ];
 
