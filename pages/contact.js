@@ -1,8 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeContext } from './_app';
+
+const inputStyle = (theme) => ({
+  width: '100%',
+  padding: '0.75rem 1rem',
+  borderRadius: '10px',
+  border: theme === 'dark' ? '1.5px solid #FFD700' : '1.5px solid #d1d5db',
+  background: theme === 'dark' ? '#1a2330' : '#f9fafb',
+  color: theme === 'dark' ? '#e0e0e0' : '#1D2A35',
+  fontSize: '1rem',
+  outline: 'none',
+  boxSizing: 'border-box',
+  transition: 'border-color 0.2s',
+  fontFamily: 'inherit',
+});
 
 const Contact = () => {
   const { theme } = useContext(ThemeContext);
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [sent, setSent] = useState(false);
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Website Enquiry from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nContact Number: ${form.phone}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:info@stonehouseltd.co.za?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
   return (
     <div style={{ 
       display: 'flex', 
@@ -35,8 +64,8 @@ const Contact = () => {
         }}>Contact Us</h1>
         <div style={{
           display: 'flex',
-          flexDirection: 'row',
-          gap: '3rem',
+          flexDirection: 'column',
+          gap: '0rem',
           justifyContent: 'center',
           alignItems: 'stretch',
           flexWrap: 'wrap',
@@ -49,27 +78,129 @@ const Contact = () => {
           padding: '2.2rem 2.5rem',
           border: theme === 'dark' ? '1.5px solid #FFD700' : '1.5px solid #e7e7e7',
         }}>
-          <div style={{ minWidth: 260, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.7rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>Stonehouse Holdings</h2>
-            <ul style={{ listStyle: 'none', padding: 0, color: theme === 'dark' ? '#e0e0e0' : '#333', fontSize: '1.08rem', lineHeight: 1.7, width: '100%' }}>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Name:</span> Reino Fourie</li>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Email:</span> <a href="mailto:info@stonehouseltd.co.za" style={{ color: theme === 'dark' ? 'white' : '#1D2A35', textDecoration: 'none', fontWeight: 500 }}>info@stonehouseltd.co.za</a></li>
-              <li><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Phone:</span> <a href="tel:0645598007" style={{ color: theme === 'dark' ? 'white' : '#1D2A35', textDecoration: 'none', fontWeight: 500 }}>064 559 8007</a></li>
-            </ul>
+          {/* Top row with Stonehouse Holdings and Working Hours side by side */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row', 
+            gap: '3rem', 
+            justifyContent: 'space-between', 
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            marginBottom: '2rem',
+            width: '100%'
+          }}>
+            <div style={{ minWidth: 260, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.7rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>Stonehouse Holdings</h2>
+              <ul style={{ listStyle: 'none', padding: 0, color: theme === 'dark' ? '#e0e0e0' : '#333', fontSize: '1.08rem', lineHeight: 1.7, width: '100%' }}>
+                <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Name:</span> Reino Fourie</li>
+                <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Email:</span> <a href="mailto:info@stonehouseltd.co.za" style={{ color: theme === 'dark' ? 'white' : '#1D2A35', textDecoration: 'none', fontWeight: 500 }}>info@stonehouseltd.co.za</a></li>
+                <li><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Phone:</span> <a href="tel:0645598007" style={{ color: theme === 'dark' ? 'white' : '#1D2A35', textDecoration: 'none', fontWeight: 500 }}>064 559 8007</a></li>
+              </ul>
+            </div>
+            <div style={{ minWidth: 260, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.7rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>Working Hours</h2>
+              <ul style={{ listStyle: 'none', padding: 0, color: theme === 'dark' ? '#e0e0e0' : '#333', fontSize: '1.08rem', lineHeight: 1.7, width: '100%' }}>
+                <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Monday - Thursday:</span> 08:00 - 16:30</li>
+                <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Friday:</span> 08:00 - 15:00</li>
+                <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Saturday / Sunday:</span> Closed</li>
+                <li><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Public Holidays:</span> Closed</li>
+              </ul>
+            </div>
           </div>
-          <div style={{ minWidth: 260, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.7rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>Working Hours</h2>
-            <ul style={{ listStyle: 'none', padding: 0, color: theme === 'dark' ? '#e0e0e0' : '#333', fontSize: '1.08rem', lineHeight: 1.7, width: '100%' }}>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Monday - Thursday:</span> 08:00 - 16:30</li>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Friday:</span> 08:00 - 15:00</li>
-              <li style={{ marginBottom: 8 }}><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Saturday / Sunday:</span> Closed</li>
-              <li><span style={{ fontWeight: 600, color: theme === 'dark' ? '#FFD700' : '#C99700' }}>Public Holidays:</span> Closed</li>
-            </ul>
-          </div>
+
         </div>
-        {/* Removed the bottom inquiry email paragraph as requested */}
+        {/* Contact Form */}
+        <div style={{
+          width: '100%',
+          maxWidth: 800,
+          background: theme === 'dark' ? 'rgba(34,48,68,0.97)' : 'rgba(255,255,255,0.97)',
+          borderRadius: 18,
+          boxShadow: theme === 'dark' ? '0 4px 24px rgba(200,200,0,0.10)' : '0 4px 24px rgba(0,0,0,0.08)',
+          padding: '2.2rem 2.5rem',
+          border: theme === 'dark' ? '1.5px solid #FFD700' : '1.5px solid #e7e7e7',
+          marginBottom: '2.5rem',
+        }}>
+          <h2 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.5rem', color: theme === 'dark' ? '#FFD700' : '#1D2A35', letterSpacing: 0.5 }}>
+            Contact Us
+          </h2>
+          <form onSubmit={handleSend} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div>
+              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem', color: theme === 'dark' ? '#FFD700' : '#C99700', fontSize: '0.95rem' }}>Name</label>
+              <input
+                name="name"
+                type="text"
+                required
+                placeholder="Your full name"
+                value={form.name}
+                onChange={handleChange}
+                style={inputStyle(theme)}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem', color: theme === 'dark' ? '#FFD700' : '#C99700', fontSize: '0.95rem' }}>Email Address</label>
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="your@email.com"
+                value={form.email}
+                onChange={handleChange}
+                style={inputStyle(theme)}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem', color: theme === 'dark' ? '#FFD700' : '#C99700', fontSize: '0.95rem' }}>Contact Number</label>
+              <input
+                name="phone"
+                type="tel"
+                required
+                placeholder="Your contact number"
+                value={form.phone}
+                onChange={handleChange}
+                style={inputStyle(theme)}
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.4rem', color: theme === 'dark' ? '#FFD700' : '#C99700', fontSize: '0.95rem' }}>Message</label>
+              <textarea
+                name="message"
+                required
+                placeholder="How can we help you?"
+                value={form.message}
+                onChange={handleChange}
+                rows={5}
+                style={{ ...inputStyle(theme), resize: 'vertical', minHeight: '120px' }}
+              />
+            </div>
+            <button
+              type="submit"
+              style={{
+                background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)',
+                color: '#1D2A35',
+                border: 'none',
+                borderRadius: '50px',
+                padding: '0.85rem 2.5rem',
+                fontWeight: 700,
+                fontSize: '1.05rem',
+                cursor: 'pointer',
+                alignSelf: 'flex-start',
+                letterSpacing: '0.01em',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+                transition: 'opacity 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+            >
+              Send Us a Message
+            </button>
+            {sent && (
+              <p style={{ color: theme === 'dark' ? '#4CAF50' : '#16a34a', fontWeight: 600, margin: 0 }}>
+                Your email client has opened with your message. Please send it to complete your enquiry.
+              </p>
+            )}
+          </form>
+        </div>
       </div>
-      {/* Sign Up button (previous modal logic removed, revert to original or no button) */}
     </div>
   );
 };

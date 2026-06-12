@@ -3,227 +3,176 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ThemeContext } from './_app';
 
+const whyUs = [
+  { icon: '🛡️', title: 'Safety First', desc: 'We prioritize the safety of every load, driver, and delivery on every route.' },
+  { icon: '⏱️', title: 'Punctuality', desc: 'On-time delivery is not a promise — it is our standard operating procedure.' },
+  { icon: '💡', title: 'Efficiency', desc: 'Streamlined logistics operations that save you time and reduce costs.' },
+  { icon: '🤝', title: 'Reliability', desc: 'Long-term partnerships built on trust, transparency, and consistent service.' },
+];
+
+const services = [
+  {
+    name: 'Minerals',
+    desc: 'Crushing and screening of our own coal, and trading in minerals across the region.',
+    video: '/Coal vid.mp4',
+    route: '/minerals',
+    color: '#C97B2A',
+  },
+  {
+    name: 'Agriculture',
+    desc: 'Agricultural supplies, fertilizers, and comprehensive farming solution services.',
+    video: '/Agri vid.mp4',
+    route: '/agriculture',
+    color: '#34D399',
+  },
+];
+
 export default function Home() {
   const router = useRouter();
   const { theme } = useContext(ThemeContext);
-  const columns = [
-    {
-      name: 'FUEL DISTRIBUTION RSA',
-      color: '#FFD700',
-      video: '/Diesel vid.mp4',
-      desc: 'Premium fuel distribution and industrial petroleum solutions for South African markets.',
-      route: '/diesel-ulp',
-    },
-    {
-      name: 'Minerals',
-      color: '#8B5C2A',
-      video: '/Coal vid.mp4',
-      desc: 'Crushing and screening of our own coal, and trading in minerals.',
-      route: '/minerals',
-    },
-    {
-      name: 'Agriculture',
-      color: '#34D399',
-      video: '/Agri vid.mp4',
-      desc: 'Agricultural supplies, fertilizers, and farming solution services.',
-      route: '/agriculture',
-    },
-  ];
 
   return (
     <>
       <Head>
-        <title>Stonehouse Holdings - Global Trading & Business Solutions</title>
-        <meta name="description" content="Stonehouse Holdings - Leading global trading company specializing in refineries, minerals, fuel distribution, and deceased estate administration." />
+        <title>Stonehouse Holdings - Transport &amp; Logistics Solutions</title>
+        <meta name="description" content="Stonehouse Holdings - Professional transport and logistics company providing reliable, efficient solutions throughout South Africa and neighbouring regions." />
       </Head>
-      <div
-        style={{
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'flex-start', 
-          minHeight: '100vh', 
-          width: '100%',
-          padding: '0.5rem 1rem 2rem 1rem',
-          background: theme === 'dark' ? '#181d23' : '#e5e5e5'
-        }}
-      >
-      <div style={{ 
-        flex: 1, 
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center', 
-        justifyContent: 'flex-start',
-        maxWidth: '1200px',
-        width: '100%'
-      }}>
-      <h1
-        style={{
-          fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-          fontWeight: 900,
-          marginBottom: '2rem',
-          background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          textAlign: 'center',
-          letterSpacing: '-0.02em',
-          lineHeight: '1.1',
-          padding: '0 1rem'
-        }}
-      >
-        Stonehouse Holdings
-      </h1>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2.5rem',
-          width: '100%',
-          maxWidth: '800px', // Reduced from 1600px to better fit 2 columns
-          justifyContent: 'center',
-          padding: '0 1rem',
-        }}
-      >
-        {columns.map((col, idx) => (
-          <div
-            key={col.name}
-            style={{
-              borderRadius: '1.5rem',
-              boxShadow: theme === 'dark' ? '0 4px 24px rgba(0,0,0,0.3)' : '0 4px 24px rgba(0,0,0,0.08)',
-              minHeight: 340,
-              width: '100%',
-              maxWidth: '380px', // Added max width for better proportions
-              justifySelf: 'center', // Center in grid cell
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '2.2rem 1.5rem 1.5rem 1.5rem',
-              cursor: 'pointer',
-              transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)',
-              marginBottom: '0', // Removed bottom margin since grid handles spacing
-              position: 'relative',
-              overflow: 'hidden',
-              background: 'transparent',
-            }}
-            onClick={() => router.push(col.route)}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-16px) scale(1.06)';
-              e.currentTarget.style.zIndex = 10;
-              e.currentTarget.style.boxShadow = theme === 'dark' ? '0 12px 32px rgba(0,0,0,0.4)' : '0 12px 32px rgba(0,0,0,0.18)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.zIndex = 1;
-              e.currentTarget.style.boxShadow = theme === 'dark' ? '0 4px 24px rgba(0,0,0,0.3)' : '0 4px 24px rgba(0,0,0,0.08)';
-            }}
-          >
-            <video
-              src={col.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 0,
-                opacity: 1,
-                pointerEvents: 'none',
-                borderRadius: '1.5rem',
-              }}
-            />
-            {/* Column name at the top */}
-            <div
-              style={{
-                fontSize: '1.8rem',
-                fontWeight: 800,
-                marginBottom: '1.2rem',
-                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textAlign: 'center',
-                letterSpacing: '-0.01em',
-                lineHeight: '1.2',
-                minHeight: '4.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 2,
-                padding: '0 0.5rem',
-                wordBreak: 'break-word',
-                hyphens: 'auto',
-              }}
+
+      {/* ── Hero ── */}
+      <section style={{ position: 'relative', width: '100%', minHeight: '70vh', marginTop: '-5.5rem', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img
+          src="/hero-bg.jpg.jpg"
+          alt="Stonehouse Holdings"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,22,35,0.72)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '2rem 2rem', maxWidth: 860, marginTop: '-4rem' }}>
+          <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', fontWeight: 900, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1.2rem' }}>
+            Moving South Africa{' '}
+            <span style={{ background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Forward
+            </span>
+          </h1>
+          <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: 'rgba(255,255,255,0.82)', maxWidth: 620, margin: '0 auto 2.5rem auto', lineHeight: 1.75 }}>
+            Professional transport and logistics solutions throughout South Africa and neighbouring regions.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => router.push('/contact')}
+              style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(200,160,0,0.3)' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              {col.name}
-            </div>
-            {/* Description centered vertically */}
-            <div
-              style={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                minHeight: 0,
-                zIndex: 2,
-              }}
+              Get In Touch
+            </button>
+            <button
+              onClick={() => router.push('/about')}
+              style={{ background: 'transparent', color: '#fff', border: '2px solid rgba(255,255,255,0.55)', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#FFD700'; e.currentTarget.style.color = '#FFD700'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; e.currentTarget.style.color = '#fff'; }}
             >
-              <div
-                style={{
-                  fontSize: '1.1rem',
-                  color: '#fff',
-                  textAlign: 'center',
-                  fontWeight: 400,
-                  lineHeight: 1.6,
-                  textShadow: '0 2px 8px rgba(0,0,0,0.18)',
-                  width: '100%',
-                }}
-              >
-                {col.desc}
-              </div>
-            </div>
-            {/* Learn More pill at the bottom */}
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: 'auto',
-                zIndex: 2,
-              }}
-            >
-              <div
-                style={{
-                  marginTop: '2rem',
-                  textAlign: 'center',
-                  fontWeight: 700,
-                  fontSize: '1.1rem',
-                  color: 'rgba(255,255,255,0.82)',
-                  background: col.color + 'CC',
-                  borderRadius: '50px',
-                  padding: '0.7rem 1.6rem',
-                  display: 'inline-block',
-                  letterSpacing: '0.01em',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-                  userSelect: 'none',
-                  transition: 'background 0.18s, color 0.18s',
-                }}
-              >
-                Learn More
-              </div>
-            </div>
+              About Us
+            </button>
           </div>
-        ))}
-      </div>
-      </div>
-    </div>
+        </div>
+        <div style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Scroll</span>
+          <div style={{ width: 2, height: 30, background: 'linear-gradient(to bottom, rgba(255,215,0,0.7), transparent)' }} />
+        </div>
+      </section>
+
+      {/* ── About ── */}
+      <section style={{ background: theme === 'dark' ? '#131b25' : '#ffffff', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
+          <span style={{ color: '#C99700', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.85rem' }}>Who We Are</span>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: theme === 'dark' ? '#fff' : '#1D2A35', margin: '0.8rem 0 1.4rem 0', letterSpacing: '-0.02em' }}>
+            Built on Trust. Driven by Excellence.
+          </h2>
+          <p style={{ fontSize: '1.1rem', color: theme === 'dark' ? '#b0bec5' : '#4a5568', maxWidth: 700, margin: '0 auto 2.2rem auto', lineHeight: 1.85 }}>
+            Stonehouse Holdings, founded in 2024, is a professional transport and logistics company committed to providing reliable, efficient, and cost-effective transportation solutions throughout South Africa and neighbouring regions. We specialize in the movement of bulk materials and general freight, serving clients across various industries with a strong focus on safety, punctuality, and operational excellence.
+          </p>
+          <button
+            onClick={() => router.push('/about')}
+            style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.85rem 2.2rem', fontWeight: 700, fontSize: '1rem', cursor: 'pointer' }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+          >
+            Read More About Us
+          </button>
+        </div>
+      </section>
+
+      {/* ── Why Choose Us ── */}
+      <section style={{ background: theme === 'dark' ? '#1D2A35' : '#f4f6f9', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span style={{ color: '#C99700', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.85rem' }}>Why Choose Us</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: theme === 'dark' ? '#fff' : '#1D2A35', marginTop: '0.8rem', letterSpacing: '-0.02em' }}>
+              The Stonehouse Difference
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+            {whyUs.map((item) => (
+              <div key={item.title} style={{ background: theme === 'dark' ? '#232b36' : '#fff', borderRadius: 16, padding: '2rem 1.5rem', textAlign: 'center', boxShadow: theme === 'dark' ? '0 4px 24px rgba(0,0,0,0.25)' : '0 4px 24px rgba(0,0,0,0.07)', border: theme === 'dark' ? '1px solid #3a4248' : '1px solid #ebebeb' }}>
+                <div style={{ fontSize: '2.2rem', marginBottom: '0.9rem' }}>{item.icon}</div>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: theme === 'dark' ? '#FFD700' : '#1D2A35', marginBottom: '0.6rem' }}>{item.title}</h3>
+                <p style={{ color: theme === 'dark' ? '#b0bec5' : '#4a5568', fontSize: '0.93rem', lineHeight: 1.65 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Our Divisions ── */}
+      <section style={{ background: theme === 'dark' ? '#181d23' : '#ffffff', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span style={{ color: '#C99700', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.85rem' }}>What We Do</span>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: theme === 'dark' ? '#fff' : '#1D2A35', marginTop: '0.8rem', letterSpacing: '-0.02em' }}>
+              Our Divisions
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {services.map((svc) => (
+              <div
+                key={svc.name}
+                onClick={() => router.push(svc.route)}
+                style={{ borderRadius: 18, overflow: 'hidden', cursor: 'pointer', position: 'relative', minHeight: 340, boxShadow: '0 6px 28px rgba(0,0,0,0.18)', transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-8px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+              >
+                <video src={svc.video} autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,18,30,0.88) 40%, rgba(10,18,30,0.35) 100%)', zIndex: 1 }} />
+                <div style={{ position: 'relative', zIndex: 2, padding: '2rem', display: 'flex', flexDirection: 'column', minHeight: 340, justifyContent: 'flex-end' }}>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFD700', marginBottom: '0.5rem' }}>{svc.name}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.93rem', lineHeight: 1.65, marginBottom: '1.2rem' }}>{svc.desc}</p>
+                  <span style={{ display: 'inline-block', background: svc.color + 'CC', color: '#1D2A35', borderRadius: 50, padding: '0.5rem 1.4rem', fontWeight: 700, fontSize: '0.88rem', alignSelf: 'flex-start' }}>Learn More</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section style={{ background: 'linear-gradient(135deg, #1D2A35 0%, #0d1620 100%)', padding: '6rem 2rem', textAlign: 'center' }}>
+        <div style={{ maxWidth: 680, margin: '0 auto' }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '1.1rem', letterSpacing: '-0.02em' }}>
+            Ready to Move Your Freight?
+          </h2>
+          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.72)', marginBottom: '2.5rem', lineHeight: 1.75 }}>
+            Get in touch with our team today for a tailored transport and logistics solution built around your needs.
+          </p>
+          <button
+            onClick={() => router.push('/contact')}
+            style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '1rem 3rem', fontWeight: 700, fontSize: '1.1rem', cursor: 'pointer', letterSpacing: '0.01em', boxShadow: '0 4px 20px rgba(200,160,0,0.35)' }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+          >
+            Contact Us Today
+          </button>
+        </div>
+      </section>
     </>
   );
 }
