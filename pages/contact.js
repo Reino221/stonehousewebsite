@@ -18,18 +18,36 @@ const inputStyle = (theme) => ({
 const Contact = () => {
   const { theme } = useContext(ThemeContext);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Website Enquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nContact Number: ${form.phone}\n\nMessage:\n${form.message}`
-    );
-    window.location.href = `mailto:info@stonehouseltd.co.za?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7',
+          subject: `Website Enquiry from ${form.name}`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setForm({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -190,12 +208,18 @@ const Contact = () => {
               }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              disabled={status === 'sending'}
             >
-              Send Us a Message
+              {status === 'sending' ? 'Sending...' : 'Send Us a Message'}
             </button>
-            {sent && (
+            {status === 'success' && (
               <p style={{ color: theme === 'dark' ? '#4CAF50' : '#16a34a', fontWeight: 600, margin: 0 }}>
-                Your email client has opened with your message. Please send it to complete your enquiry.
+                Message sent successfully! We will get back to you shortly.
+              </p>
+            )}
+            {status === 'error' && (
+              <p style={{ color: '#e53e3e', fontWeight: 600, margin: 0 }}>
+                Something went wrong. Please try again or email us directly at info@stonehouseltd.co.za.
               </p>
             )}
           </form>
