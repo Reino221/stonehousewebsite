@@ -97,144 +97,65 @@ export default function Minerals() {
   return (
     <>
       <Head>
-        <title>Minerals - Stonehouse Holdings | Coal & Chrome Trading</title>
-        <meta name="description" content="Stonehouse Holdings Minerals division - Crushing and screening of our own coal, and trading in minerals including chrome." />
+        <title>Minerals & Resources - Stonehouse Holdings | Coal & Chrome Trading</title>
+        <meta name="description" content="Stonehouse Holdings Minerals & Resources division - Expert sourcing, processing, and trading of bulk minerals including coal and chrome across Southern Africa." />
       </Head>
+
+      {/* Hero — same full-bleed layout as homepage */}
+      <section style={{ position: 'relative', width: '100%', minHeight: '70vh', marginTop: '-5.5rem', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img
+          src="/Minerals.jpg"
+          alt="Minerals & Resources"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,22,35,0.72)', zIndex: 1 }} />
+        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '2rem', maxWidth: 860, marginTop: '-2rem' }}>
+          <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1.2rem', background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            Minerals &amp; Resources
+          </h1>
+          <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: 'rgba(255,255,255,0.82)', maxWidth: 620, margin: '0 auto 2.5rem auto', lineHeight: 1.75 }}>
+            Expert sourcing, processing, and trading of bulk minerals across Southern Africa
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {['Coal', 'Chrome'].map((name) => (
+              <button
+                key={name}
+                onClick={() => openQuoteForm(name)}
+                style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(200,160,0,0.3)' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                {name} Quote
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div style={{
         width: '100%',
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start',
         background: theme === 'dark' ? '#181d23' : '#e5e5e5',
-        padding: '2rem 1rem',
+        padding: '4rem 1rem 2rem',
       }}>
-      {/* Hero Section with Background */}
-      <div style={{
-        width: 'calc(100% - 2rem)',
-        maxWidth: 1200,
-        height: 400,
-        borderRadius: '24px',
-        backgroundImage: 'url("/Coal.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '3rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)',
-      }}>
-        {/* Dark overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%)',
-          borderRadius: '24px',
-        }} />
-        
-        {/* Title */}
-        <div style={{ position: 'absolute', top: 32, left: 0, width: '100%', zIndex: 2, textAlign: 'center', color: '#fff', padding: '0 1rem' }}>
-          <h1 style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-            fontWeight: 900,
-            background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginBottom: '0.5rem',
-            textShadow: '0 4px 8px rgba(0,0,0,0.3)',
-          }}>
-            Minerals
-          </h1>
-          <p style={{ 
-            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', 
-            fontWeight: 500, 
-            color: '#fff', 
-            textShadow: '0 2px 4px rgba(0,0,0,0.6)', 
-            marginBottom: 0,
-            maxWidth: '600px',
-            margin: '0 auto',
-            lineHeight: '1.4',
-            padding: '0 1rem'
-          }}>
-            Crushing and screening of our own coal, and trading in minerals
-          </p>
-        </div>
-        
-        {/* Quote Buttons */}
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end', position: 'absolute', bottom: 32, left: 0, width: '100%', zIndex: 3, gap: '0.4rem' }}>
-          {['Coal', 'Chrome'].map((name) => (
-            <button
-              key={name}
-              style={{ background: '#fff', color: '#1D2A35', border: '2px solid #FFD700', borderRadius: 40, width: 140, height: 48, fontWeight: 700, fontSize: '0.82rem', cursor: 'pointer', transition: 'background 0.2s, color 0.2s, border 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.08)', outline: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', whiteSpace: 'nowrap', lineHeight: 1.12, letterSpacing: 0.03, userSelect: 'none', margin: 0, padding: 0 }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#FFD700'; e.currentTarget.style.color = '#1D2A35'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#1D2A35'; }}
-              onClick={() => openQuoteForm(name)}
-            >
-              <span style={{ fontSize: '0.82rem', fontWeight: 800, marginBottom: 0 }}>{name}</span>
-              <span style={{ fontSize: '0.72rem', fontWeight: 500, opacity: 0.85 }}>Quote</span>
-            </button>
-          ))}
-        </div>
-      </div>
 
-      {/* Content Section */}
-      <div style={{
-        width: '100%',
-        maxWidth: 1000,
-        background: theme === 'dark' ? '#232b36' : '#ffffff',
-        borderRadius: '24px',
-        padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)',
-        boxShadow: theme === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)',
-        border: theme === 'dark' ? '1px solid #3a4248' : '1px solid #e0e0e0',
-        textAlign: 'center',
-      }}>
-        <h2 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          marginBottom: '2rem',
-          textShadow: '0 2px 4px rgba(255,215,0,0.5)',
-        }}>
-          Quality Coal & Chrome. Trusted Partnerships. Reliable Supply
-        </h2>
-        
-        {/* Washplant Image */}
-        <div style={{
-          textAlign: 'center',
-          margin: '2rem 0',
-        }}>
-          <img 
-            src="/washplant2.jpg" 
-            alt="Coal Washplant Facility" 
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              borderRadius: '10px',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
-            }}
-          />
-        </div>
-        
-        <div style={{
-          fontSize: '1.2rem',
-          lineHeight: '1.8',
-          color: theme === 'dark' ? '#cbd5e0' : '#4a5568',
-        }}>
-          <p>
-            At Stonehouse Holdings, we supply quality coal that keeps industries moving. Working with trusted partners, our coal products are washed in-house using a jig plant to meet strict standards, ensuring reliable performance and value. In addition, we crush and screen peas and 48kcal, providing consistent, high-quality products across all our offerings. With a focus on consistency, trust, and strong relationships, we deliver solutions that work for your business.
-          </p>
-        </div>
+      <div style={{ width: '100%', maxWidth: 1000, fontSize: '1.1rem', lineHeight: '1.85', color: theme === 'dark' ? '#cbd5e0' : '#4a5568' }}>
+        <p style={{ marginBottom: '1.2rem' }}>
+          At Stonehouse Holdings, our Minerals & Resources division is dedicated to the responsible sourcing and supply of high-quality bulk minerals throughout Southern Africa. We specialise in coal and chrome, serving clients across the mining, industrial, and energy sectors with a commitment to product integrity and supply reliability.
+        </p>
+        <p style={{ marginBottom: '0.6rem' }}>
+          We supply a comprehensive range of coal products, including washed and unwashed coal grades — catering to the specific requirements of each client:
+        </p>
+        <ul style={{ marginBottom: '1.2rem', paddingLeft: '1.4rem', lineHeight: 2 }}>
+          {['RB1 Washed', 'RB2 Washed', 'RB3 Washed', 'RB3 Unwashed', 'A Grade Peas', 'B Grade Peas', 'Duff', 'Spiral Duff', 'ROM', '48 KCAL Unwashed'].map(p => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+        <p>
+          In addition to coal, we trade in chrome ore, including ROM and Concentrate grades across a wide range of percentage specifications. With a focus on consistent quality, transparent pricing, and dependable logistics, Stonehouse Holdings is your trusted partner for mineral supply across the region.
+        </p>
       </div>
 
       {/* Modal - EXACT COPY from Refineries */}

@@ -12,9 +12,9 @@ const whyUs = [
 
 const services = [
   {
-    name: 'Minerals',
-    desc: 'Crushing and screening of our own coal, and trading in minerals across the region.',
-    video: '/Coal vid.mp4',
+    name: 'Minerals & Resources',
+    desc: 'Expert sourcing, processing, and trading of bulk minerals including coal and chrome, serving mining and industrial clients across Southern Africa.',
+    image: '/Minerals.jpg',
     route: '/minerals',
     color: '#C97B2A',
   },
@@ -141,7 +141,10 @@ export default function Home() {
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-8px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'none'}
               >
-                <video src={svc.video} autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+                {svc.image
+                  ? <img src={svc.image} alt={svc.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+                  : <video src={svc.video} autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+                }
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,18,30,0.88) 40%, rgba(10,18,30,0.35) 100%)', zIndex: 1 }} />
                 <div style={{ position: 'relative', zIndex: 2, padding: '2rem', display: 'flex', flexDirection: 'column', minHeight: 340, justifyContent: 'flex-end' }}>
                   <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFD700', marginBottom: '0.5rem' }}>{svc.name}</h3>
