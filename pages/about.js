@@ -52,8 +52,11 @@ export default function About() {
           <p style={{ marginBottom: '1.2rem' }}>
             At Stonehouse Holdings, integrity, reliability, and exceptional service are the foundation of our business. We are dedicated to building long-term relationships through transparent communication, professional service delivery, and a commitment to exceeding client expectations.
           </p>
-          <p>
+          <p style={{ marginBottom: '1.2rem' }}>
             As a growing transport and logistics company, Stonehouse Holdings continues to expand its capabilities and network, providing dependable transportation solutions that support the success of our clients and partners.
+          </p>
+          <p>
+            We are also actively growing our transporter network and welcome professional truck owners and fleet operators to partner with us. If you are looking for consistent work and a reliable company to collaborate with, visit our Transport page and register with us today — we would love to have you on board.
           </p>
         </div>
       </div>
