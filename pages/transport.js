@@ -21,12 +21,34 @@ export default function Transport() {
     setFormData({ name: '', contactNumber: '', email: '', message: '' });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const emailBody = `TRANSPORTER REGISTRATION\n\nName: ${formData.name}\nContact Number: ${formData.contactNumber}\nEmail: ${formData.email}\nMessage: ${formData.message || 'N/A'}`;
-    const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(`Transporter Registration - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoLink;
-    setStatus('success');
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7',
+          subject: `Transporter Registration - ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.contactNumber,
+          message: formData.message || 'No message provided',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
