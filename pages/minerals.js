@@ -74,16 +74,15 @@ export default function Minerals() {
     switch (quoteType) {
       case 'Coal':
         return [
-          'RB1 WASHED',
-          'RB2 WASHED', 
-          'RB3 WASHED',
-          'RB3 UNWASHED',
+          'RB1',
+          'RB2',
+          'RB3',
           'A GRADE - PEAS',
           'B GRADE - PEAS',
           'DUFF',
           'Spiral Duff',
           'ROM',
-          '48 KCAL UNWASHED'
+          '48 KCAL'
         ];
       case 'Anthracite':
         return ['NUTS', 'PEAS', 'GRAINS', 'DUFF'];
@@ -117,17 +116,22 @@ export default function Minerals() {
             Expert sourcing, processing, and trading of bulk minerals across Southern Africa
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {['Coal', 'Chrome'].map((name) => (
-              <button
-                key={name}
-                onClick={() => openQuoteForm(name)}
-                style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(200,160,0,0.3)' }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                {name} Quote
-              </button>
-            ))}
+            <button
+              onClick={() => openQuoteForm('Coal')}
+              style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(200,160,0,0.3)' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+            >
+              Coal Quote
+            </button>
+            <button
+              onClick={() => openQuoteForm('Chrome')}
+              style={{ background: 'transparent', color: '#fff', border: '2px solid rgba(255,255,255,0.55)', borderRadius: 50, padding: '0.9rem 2.6rem', fontWeight: 700, fontSize: '1.05rem', cursor: 'pointer' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#FFD700'; e.currentTarget.style.color = '#FFD700'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; e.currentTarget.style.color = '#fff'; }}
+            >
+              Chrome Quote
+            </button>
           </div>
         </div>
       </section>
@@ -149,7 +153,7 @@ export default function Minerals() {
           We supply a comprehensive range of coal products, including washed and unwashed coal grades — catering to the specific requirements of each client:
         </p>
         <ul style={{ marginBottom: '1.2rem', paddingLeft: '1.4rem', lineHeight: 2 }}>
-          {['RB1 Washed', 'RB2 Washed', 'RB3 Washed', 'RB3 Unwashed', 'A Grade Peas', 'B Grade Peas', 'Duff', 'Spiral Duff', 'ROM', '48 KCAL Unwashed'].map(p => (
+          {['RB1', 'RB2', 'RB3', 'A Grade Peas', 'B Grade Peas', 'Duff', 'Spiral Duff', 'ROM', '48 KCAL'].map(p => (
             <li key={p}>{p}</li>
           ))}
         </ul>
