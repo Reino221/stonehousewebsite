@@ -25,19 +25,19 @@ export default function Transport() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const fd = new FormData();
-      fd.append('access_key', '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7');
-      fd.append('subject', `Transporter Registration - ${formData.name}`);
-      fd.append('name', formData.name);
-      fd.append('email', formData.email);
-      fd.append('phone', formData.contactNumber);
-      fd.append('message', formData.message || 'No message provided');
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://api.staticforms.dev/submit', {
         method: 'POST',
-        body: fd,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          apiKey: 'sf_b2180e7b0a030decf69f3332',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.contactNumber,
+          message: formData.message || 'No message provided',
+          subject: `Transporter Registration - ${formData.name}`,
+        }),
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setStatus('success');
       } else {
         setStatus('error');
