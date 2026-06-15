@@ -10,22 +10,6 @@ const whyUs = [
   { icon: '🤝', title: 'Reliability', desc: 'Long-term partnerships built on trust, transparency, and consistent service.' },
 ];
 
-const services = [
-  {
-    name: 'Minerals & Resources',
-    desc: 'Expert sourcing, processing, and trading of bulk minerals including coal and chrome, serving mining and industrial clients across Southern Africa.',
-    image: '/Minerals.jpg',
-    route: '/minerals',
-    color: '#C97B2A',
-  },
-  {
-    name: 'Agriculture',
-    desc: 'Agricultural supplies, fertilizers, and comprehensive farming solution services.',
-    video: '/Agri vid.mp4',
-    route: '/agriculture',
-    color: '#34D399',
-  },
-];
 
 export default function Home() {
   const router = useRouter();
@@ -117,40 +101,6 @@ export default function Home() {
                 <div style={{ fontSize: '2.2rem', marginBottom: '0.9rem' }}>{item.icon}</div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: theme === 'dark' ? '#FFD700' : '#1D2A35', marginBottom: '0.6rem' }}>{item.title}</h3>
                 <p style={{ color: theme === 'dark' ? '#b0bec5' : '#4a5568', fontSize: '0.93rem', lineHeight: 1.65 }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Our Divisions ── */}
-      <section style={{ background: theme === 'dark' ? '#181d23' : '#ffffff', padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <span style={{ color: '#C99700', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.85rem' }}>What We Do</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: theme === 'dark' ? '#fff' : '#1D2A35', marginTop: '0.8rem', letterSpacing: '-0.02em' }}>
-              Our Divisions
-            </h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {services.map((svc) => (
-              <div
-                key={svc.name}
-                onClick={() => router.push(svc.route)}
-                style={{ borderRadius: 18, overflow: 'hidden', cursor: 'pointer', position: 'relative', minHeight: 340, boxShadow: '0 6px 28px rgba(0,0,0,0.18)', transition: 'transform 0.18s cubic-bezier(.4,2,.6,1)' }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-8px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'none'}
-              >
-                {svc.image
-                  ? <img src={svc.image} alt={svc.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-                  : <video src={svc.video} autoPlay loop muted playsInline style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-                }
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,18,30,0.88) 40%, rgba(10,18,30,0.35) 100%)', zIndex: 1 }} />
-                <div style={{ position: 'relative', zIndex: 2, padding: '2rem', display: 'flex', flexDirection: 'column', minHeight: 340, justifyContent: 'flex-end' }}>
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFD700', marginBottom: '0.5rem' }}>{svc.name}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.93rem', lineHeight: 1.65, marginBottom: '1.2rem' }}>{svc.desc}</p>
-                  <span style={{ display: 'inline-block', background: svc.color + 'CC', color: '#1D2A35', borderRadius: 50, padding: '0.5rem 1.4rem', fontWeight: 700, fontSize: '0.88rem', alignSelf: 'flex-start' }}>Learn More</span>
-                </div>
               </div>
             ))}
           </div>

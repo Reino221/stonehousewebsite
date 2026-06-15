@@ -67,6 +67,12 @@ const MenuBar = () => {
         return 'Agriculture';
       case '/minerals':
         return 'Minerals';
+      case '/transport':
+        return 'Transport';
+      case '/mineral-resources':
+        return 'Mineral Resources';
+      case '/agricultural':
+        return 'Agricultural';
       default:
         return 'Stonehouse Holdings';
     }
@@ -114,7 +120,10 @@ const MenuBar = () => {
   const menuItems = [
     { href: '/', label: 'Home', key: 'home' },
     { href: '/about', label: 'About', key: 'about' },
-    { href: '/contact', label: 'Contact', key: 'contact' }
+    { href: '/transport', label: 'Transport', key: 'transport' },
+    { href: '/mineral-resources', label: 'Mineral Resources', key: 'mineral-resources' },
+    { href: '/agricultural', label: 'Agricultural', key: 'agricultural' },
+    { href: '/contact', label: 'Contact', key: 'contact' },
   ];
 
   return (
