@@ -149,6 +149,10 @@ export default function MineralResources() {
             </button>
           </div>
         </div>
+        <div style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Scroll</span>
+          <div style={{ width: 2, height: 30, background: 'linear-gradient(to bottom, rgba(255,215,0,0.7), transparent)' }} />
+        </div>
       </section>
 
       <div style={{
