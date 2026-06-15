@@ -37,32 +37,13 @@ const Contact = () => {
     setForm({ name: '', email: '', phone: '', message: '' });
   };
 
-  const handleSend = async (e) => {
+  const handleSend = (e) => {
     e.preventDefault();
-    setStatus('sending');
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7',
-          subject: `Website Enquiry from ${form.name}`,
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          message: form.message,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setStatus('success');
-        setForm({ name: '', email: '', phone: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    const emailBody = `WEBSITE ENQUIRY\n\nName: ${form.name}\nEmail: ${form.email}\nContact Number: ${form.phone}\nMessage: ${form.message}`;
+    const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(`Website Enquiry from ${form.name}`)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+    setStatus('success');
+    setForm({ name: '', email: '', phone: '', message: '' });
   };
 
   return (
