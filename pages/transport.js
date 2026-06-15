@@ -31,11 +31,10 @@ export default function Transport() {
         body: JSON.stringify({
           access_key: '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7',
           subject: `Transporter Registration - ${formData.name}`,
-          from_name: formData.name,
+          name: formData.name,
           email: formData.email,
           phone: formData.contactNumber,
           message: formData.message,
-          to: 'info@stonehouseltd.co.za',
         }),
       });
       const data = await res.json();
