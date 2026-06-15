@@ -27,7 +27,7 @@ export default function Transport() {
     setStatus('sending');
     try {
       await emailjs.send(
-        'service_9khdj5l',
+        'service_g1o5fie',
         'template_l2ymoy9',
         {
           title: `Transporter Registration - ${formData.name}`,
