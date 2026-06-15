@@ -91,8 +91,11 @@ export default function Transport() {
           <p style={{ marginBottom: '1.2rem' }}>
             With a strong focus on safety, punctuality, and operational excellence, we ensure every load is handled with care and delivered on time. Our team is committed to building long-term partnerships with clients by consistently delivering value and maintaining the highest standards of service.
           </p>
-          <p>
+          <p style={{ marginBottom: '1.2rem' }}>
             Whether you require single-load movements or ongoing logistics contracts, Stonehouse Holdings has the capacity and expertise to meet your transport needs efficiently and professionally.
+          </p>
+          <p>
+            As we continue to grow and expand our logistics network across Southern Africa, we are actively looking for dedicated and professional transporters to join us. If you own trucks or manage a fleet and are looking for a reliable partner to work with, we would love to hear from you. Click the <strong>Register as Transporter</strong> button above to get in touch and become part of the Stonehouse Holdings family.
           </p>
         </div>
       </div>
