@@ -1,4 +1,5 @@
 import React, { createContext, useState, useMemo, useEffect } from 'react';
+import Head from 'next/head';
 import MenuBar from '../components/MenuBar';
 import Footer from '../components/Footer';
 import '../styles/global.css';
@@ -126,6 +127,9 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <AuthKycProvider>
       <ThemeContext.Provider value={themeContextValue}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        </Head>
         <div style={appContainerStyle(theme)}>
           <MenuBar />
           <div style={contentStyle}>

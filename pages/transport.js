@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from './_app';
 
 export default function Transport() {
@@ -7,6 +7,13 @@ export default function Transport() {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', contactNumber: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setParallaxOffset(window.scrollY * 0.4);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const closeForm = () => {
     setShowForm(false);
@@ -54,7 +61,7 @@ export default function Transport() {
         <img
           src="/Truck 1.jpg"
           alt="Transport"
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+          style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', objectFit: 'cover', zIndex: 0, transform: `translateY(${parallaxOffset}px)`, willChange: 'transform' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,22,35,0.72)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '2rem', maxWidth: 860, marginTop: '-2rem' }}>

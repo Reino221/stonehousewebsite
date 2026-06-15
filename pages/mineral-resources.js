@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import { ThemeContext, AuthKycContext } from './_app';
 
 export default function MineralResources() {
@@ -22,6 +22,15 @@ export default function MineralResources() {
   });
   const [selectedROMRanges, setSelectedROMRanges] = useState([]);
   const [selectedConcentrateRanges, setSelectedConcentrateRanges] = useState([]);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setParallaxOffset(window.scrollY * 0.4);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const openQuoteForm = (quoteType) => {
     setActiveQuoteType(quoteType);
@@ -95,11 +104,22 @@ export default function MineralResources() {
 
       {/* Hero */}
       <section style={{ position: 'relative', width: '100%', minHeight: '70vh', marginTop: '-5.5rem', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <img
-          src="/Minerals.jpg"
-          alt="Mineral Resources"
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-        />
+        <style>{`
+          @keyframes kenburns {
+            0%   { transform: scale(1)    translateX(0%)   translateY(0%); }
+            25%  { transform: scale(1.08) translateX(-2%)  translateY(-1%); }
+            50%  { transform: scale(1.12) translateX(2%)   translateY(-2%); }
+            75%  { transform: scale(1.06) translateX(-1%)  translateY(1%); }
+            100% { transform: scale(1)    translateX(0%)   translateY(0%); }
+          }
+        `}</style>
+        <div style={{ position: 'absolute', top: '-20%', left: 0, width: '100%', height: '140%', zIndex: 0, transform: `translateY(${parallaxOffset}px)`, willChange: 'transform' }}>
+          <img
+            src="/Minerals.jpg"
+            alt="Mineral Resources"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', animation: 'kenburns 18s ease-in-out infinite', transformOrigin: 'center center', willChange: 'transform' }}
+          />
+        </div>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(13,22,35,0.72)', zIndex: 1 }} />
         <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '2rem', maxWidth: 860, marginTop: '-2rem' }}>
           <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1.2rem', background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
