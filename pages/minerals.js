@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useContext, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { ThemeContext, AuthKycContext } from './_app';
 
 export default function Minerals() {
@@ -212,7 +213,7 @@ export default function Minerals() {
             {/* Scrollable Body */}
             <div style={{ overflowY: 'auto', padding: '0 30px 30px', flexGrow: 1 }}>
               <form
-                onSubmit={e => {
+                onSubmit={async e => {
                   e.preventDefault();
                   
                   // Validate mandatory fields
@@ -240,69 +241,56 @@ export default function Minerals() {
                     return;
                   }
                   
-                  // Handle form submission here
-                  console.log('MINERALS Form submitted:', {
-                    name: formData.name,
-                    email: formData.email,
-                    company: formData.company,
-                    contactNumber: formData.contactNumber,
-                    mineralType: formData.mineralType,
-                    quantity: formData.quantity,
-                    comments: formData.comments,
-                    quoteType: activeQuoteType,
-                    selectedROMRanges,
-                    selectedConcentrateRanges,
-                    destinationEmail: 'info@stonehouseltd.co.za'
-                  });
-                  
-                  // Create email body
-                  let emailBody = `MINERALS QUOTE REQUEST\n\n`;
-                  emailBody += `CLIENT INFORMATION:\n`;
-                  emailBody += `Name: ${formData.name}\n`;
-                  emailBody += `Company: ${formData.company}\n`;
-                  emailBody += `Email: ${formData.email}\n`;
-                  emailBody += `Contact Number: ${formData.contactNumber}\n\n`;
-                  emailBody += `PRODUCT INFORMATION:\n`;
-                  emailBody += `Category: ${activeQuoteType}\n`;
-                  emailBody += `Product: ${formData.mineralType}\n`;
-                  
+                  let messageBody = `MINERALS QUOTE REQUEST\n\n`;
+                  messageBody += `CLIENT INFORMATION:\n`;
+                  messageBody += `Company: ${formData.company}\n`;
+                  messageBody += `Contact Number: ${formData.contactNumber}\n\n`;
+                  messageBody += `PRODUCT INFORMATION:\n`;
+                  messageBody += `Category: ${activeQuoteType}\n`;
+                  messageBody += `Product: ${formData.mineralType}\n`;
                   if (activeQuoteType === 'Chrome' && formData.mineralType === 'ROM' && selectedROMRanges.length > 0) {
-                    emailBody += `ROM Percentage Ranges: ${selectedROMRanges.join(', ')}\n`;
+                    messageBody += `ROM Percentage Ranges: ${selectedROMRanges.join(', ')}\n`;
                   }
                   if (activeQuoteType === 'Chrome' && formData.mineralType === 'Concentrate' && selectedConcentrateRanges.length > 0) {
-                    emailBody += `Concentrate Percentage Ranges: ${selectedConcentrateRanges.join(', ')}\n`;
+                    messageBody += `Concentrate Percentage Ranges: ${selectedConcentrateRanges.join(', ')}\n`;
                   }
-                  
-                  emailBody += `Quantity: ${formData.quantity}\n\n`;
+                  messageBody += `Quantity: ${formData.quantity}\n`;
                   if (formData.comments) {
-                    emailBody += `ADDITIONAL COMMENTS:\n${formData.comments}\n\n`;
+                    messageBody += `\nADDITIONAL COMMENTS:\n${formData.comments}`;
                   }
-                  emailBody += `Please provide a quotation for the above requirements.\n\n`;
-                  emailBody += `Best regards,\n${formData.name}`;
-                  
-                  const emailSubject = `Minerals Quote Request - ${activeQuoteType} - ${formData.company}`;
-                  const mailtoLink = `mailto:info@stonehouseltd.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-                  
-                  window.location.href = mailtoLink;
-                  
-                  // Add to quote history if user is signed in
-                  if (isSignedIn) {
-                    addQuoteToHistory({
-                      product: `Minerals - ${activeQuoteType}`,
-                      name: formData.name,
-                      email: formData.email,
-                      company: formData.company,
-                      contactNumber: formData.contactNumber,
-                      mineralType: formData.mineralType,
-                      quantity: formData.quantity,
-                      message: formData.comments || 'No additional comments',
-                      romRanges: selectedROMRanges.length > 0 ? selectedROMRanges.join(', ') : null,
-                      concentrateRanges: selectedConcentrateRanges.length > 0 ? selectedConcentrateRanges.join(', ') : null
-                    });
+
+                  try {
+                    await emailjs.send(
+                      'service_g1o5fie',
+                      'template_l2ymoy9',
+                      {
+                        title: `Minerals Quote Request - ${activeQuoteType} - ${formData.company}`,
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.contactNumber,
+                        message: messageBody,
+                      },
+                      'c2gSi34Kn0jIOl2S7'
+                    );
+                    if (isSignedIn) {
+                      addQuoteToHistory({
+                        product: `Minerals - ${activeQuoteType}`,
+                        name: formData.name,
+                        email: formData.email,
+                        company: formData.company,
+                        contactNumber: formData.contactNumber,
+                        mineralType: formData.mineralType,
+                        quantity: formData.quantity,
+                        message: formData.comments || 'No additional comments',
+                        romRanges: selectedROMRanges.length > 0 ? selectedROMRanges.join(', ') : null,
+                        concentrateRanges: selectedConcentrateRanges.length > 0 ? selectedConcentrateRanges.join(', ') : null
+                      });
+                    }
+                    alert('Quote request submitted successfully! We will be in touch shortly.');
+                    closeQuoteForm();
+                  } catch {
+                    alert('Something went wrong. Please try again.');
                   }
-                  
-                  alert('Quote request submitted successfully!');
-                  closeQuoteForm();
                 }}
                 style={{ display: 'flex', flexDirection: 'column', gap: 25 }}
               >
