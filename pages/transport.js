@@ -52,7 +52,7 @@ export default function Transport() {
       {/* Hero */}
       <section style={{ position: 'relative', width: '100%', minHeight: '70vh', marginTop: '-5.5rem', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img
-          src="/Truck 1.avif"
+          src="/Truck 1.jpg"
           alt="Transport"
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
         />
