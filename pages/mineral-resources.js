@@ -226,6 +226,14 @@ export default function MineralResources() {
               </div>
               {/* Scrollable Body */}
               <div style={{ overflowY: 'auto', padding: '0 30px 30px', flexGrow: 1 }}>
+                {quoteStatus === 'success' ? (
+                  <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                    <div style={{ fontSize: 48, marginBottom: '1rem' }}>✓</div>
+                    <div style={{ fontWeight: 700, fontSize: 18, color: '#1D2A35', marginBottom: 8 }}>Quote Request Sent!</div>
+                    <div style={{ color: '#4a5568', marginBottom: '1.5rem' }}>We will get back to you with a quote shortly.</div>
+                    <button onClick={() => { setQuoteStatus('idle'); closeQuoteForm(); }} style={{ background: 'linear-gradient(135deg, #C99700 0%, #FFD700 100%)', color: '#1D2A35', border: 'none', borderRadius: 50, padding: '0.75rem 2rem', fontWeight: 700, fontSize: '1rem', cursor: 'pointer' }}>Close</button>
+                  </div>
+                ) : (
                 <form
                   onSubmit={async e => {
                     e.preventDefault();
@@ -298,9 +306,7 @@ export default function MineralResources() {
                           concentrateRanges: selectedConcentrateRanges.length > 0 ? selectedConcentrateRanges.join(', ') : null
                         });
                       }
-                      setQuoteStatus('idle');
-                      alert('Quote request submitted successfully! We will be in touch shortly.');
-                      closeQuoteForm();
+                      setQuoteStatus('success');
                     } catch {
                       setQuoteStatus('idle');
                       alert('Something went wrong. Please try again.');
@@ -417,6 +423,7 @@ export default function MineralResources() {
                     Submit Request
                   </button>
                 </form>
+                )}
               </div>
             </div>
           </div>
