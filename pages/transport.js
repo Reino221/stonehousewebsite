@@ -25,19 +25,23 @@ export default function Transport() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('https://api.staticforms.dev/submit', {
+      const res = await fetch('https://formsubmit.co/ajax/info@stonehouseltd.co.za', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: JSON.stringify({
-          apiKey: 'sf_b2180e7b0a030decf69f3332',
           name: formData.name,
           email: formData.email,
           phone: formData.contactNumber,
           message: formData.message || 'No message provided',
-          subject: `Transporter Registration - ${formData.name}`,
+          _subject: `Transporter Registration - ${formData.name}`,
+          _captcha: 'false',
         }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success === 'true' || data.success === true) {
         setStatus('success');
       } else {
         setStatus('error');

@@ -41,19 +41,23 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('https://api.staticforms.dev/submit', {
+      const res = await fetch('https://formsubmit.co/ajax/info@stonehouseltd.co.za', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: JSON.stringify({
-          apiKey: 'sf_b2180e7b0a030decf69f3332',
           name: form.name,
           email: form.email,
           phone: form.phone,
           message: form.message,
-          subject: `Website Enquiry from ${form.name}`,
+          _subject: `Website Enquiry from ${form.name}`,
+          _captcha: 'false',
         }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success === 'true' || data.success === true) {
         setStatus('success');
         setForm({ name: '', email: '', phone: '', message: '' });
       } else {
