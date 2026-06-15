@@ -41,20 +41,16 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
+      const fd = new FormData();
+      fd.append('access_key', '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7');
+      fd.append('subject', `Website Enquiry from ${form.name}`);
+      fd.append('name', form.name);
+      fd.append('email', form.email);
+      fd.append('phone', form.phone);
+      fd.append('message', form.message);
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: '3ab2c9fd-5aae-4fb3-ba33-adb5e0cf07b7',
-          subject: `Website Enquiry from ${form.name}`,
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          message: form.message,
-        }),
+        body: fd,
       });
       const data = await res.json();
       if (data.success) {
