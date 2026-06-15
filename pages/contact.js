@@ -46,7 +46,7 @@ const Contact = () => {
         'service_9khdj5l',
         'template_l2ymoy9',
         {
-          subject: `Website Enquiry from ${form.name}`,
+          title: `Website Enquiry from ${form.name}`,
           name: form.name,
           email: form.email,
           phone: form.phone,

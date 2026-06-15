@@ -30,7 +30,7 @@ export default function Transport() {
         'service_9khdj5l',
         'template_l2ymoy9',
         {
-          subject: `Transporter Registration - ${formData.name}`,
+          title: `Transporter Registration - ${formData.name}`,
           name: formData.name,
           email: formData.email,
           phone: formData.contactNumber,
