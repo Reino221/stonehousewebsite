@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useContext, useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { ThemeContext } from './_app';
 
 export default function Transport() {
@@ -25,27 +26,19 @@ export default function Transport() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('https://formsubmit.co/ajax/info@stonehouseltd.co.za', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
+      await emailjs.send(
+        'service_9khdj5l',
+        'template_l2ymoy9',
+        {
+          subject: `Transporter Registration - ${formData.name}`,
           name: formData.name,
           email: formData.email,
           phone: formData.contactNumber,
           message: formData.message || 'No message provided',
-          _subject: `Transporter Registration - ${formData.name}`,
-          _captcha: 'false',
-        }),
-      });
-      const data = await res.json();
-      if (data.success === 'true' || data.success === true) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
+        },
+        'c2gSi34Kn0jIOl2S7'
+      );
+      setStatus('success');
     } catch {
       setStatus('error');
     }

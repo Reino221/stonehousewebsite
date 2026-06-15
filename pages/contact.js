@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Head from 'next/head';
+import emailjs from '@emailjs/browser';
 import { ThemeContext } from './_app';
 
 const inputStyle = (theme) => ({
@@ -41,28 +42,20 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const res = await fetch('https://formsubmit.co/ajax/info@stonehouseltd.co.za', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
+      await emailjs.send(
+        'service_9khdj5l',
+        'template_l2ymoy9',
+        {
+          subject: `Website Enquiry from ${form.name}`,
           name: form.name,
           email: form.email,
           phone: form.phone,
           message: form.message,
-          _subject: `Website Enquiry from ${form.name}`,
-          _captcha: 'false',
-        }),
-      });
-      const data = await res.json();
-      if (data.success === 'true' || data.success === true) {
-        setStatus('success');
-        setForm({ name: '', email: '', phone: '', message: '' });
-      } else {
-        setStatus('error');
-      }
+        },
+        'c2gSi34Kn0jIOl2S7'
+      );
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '', message: '' });
     } catch {
       setStatus('error');
     }

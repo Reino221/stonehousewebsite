@@ -14,6 +14,7 @@
   "author": "Stonehouse Holdings",
   "license": "ISC",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "date-fns": "^4.1.0",
     "firebase": "^12.14.0",
     "next": "^15.3.4",
