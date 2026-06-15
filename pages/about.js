@@ -41,7 +41,7 @@ export default function About() {
       <div style={{ width: '100%', background: theme === 'dark' ? '#181d23' : '#e5e5e5', padding: '4rem 2rem' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.85', color: theme === 'dark' ? '#cbd5e0' : '#4a5568' }}>
           <p style={{ marginBottom: '1.2rem' }}>
-            Stonehouse Holdings, founded in 2024, is a professional transport and logistics company committed to providing reliable, efficient, and cost-effective transportation solutions throughout South Africa and neighbouring regions.
+            Stonehouse Holdings, founded in 2024, is a professional transport and logistics company committed to providing reliable, efficient, and cost-effective transportation solutions throughout South Africa and neighbouring regions. With more than 10 years of hands-on experience in the transport industry, our team brings the knowledge and expertise needed to deliver exceptional service on every load.
           </p>
           <p style={{ marginBottom: '1.2rem' }}>
             We specialize in the movement of bulk materials and general freight, serving clients across various industries with a strong focus on safety, punctuality, and operational excellence. Our experienced team works closely with customers to ensure that every load is transported efficiently and delivered according to schedule.
