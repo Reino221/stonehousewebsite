@@ -1,22 +1,23 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../pages/_app';
 
-const footerStyle = (theme) => ({
-  width: '100%',
-  color: theme === 'dark' ? '#fff' : '#222',
-  textAlign: 'center',
-  padding: '1rem 0',
-  fontSize: '1rem',
-  letterSpacing: '0.02em',
-  background: 'none',
-  position: 'static',
-});
-
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <footer style={footerStyle(theme)}>
-      © 2025 Stonehouse Holdings. All rights reserved.
+    <footer style={{
+      width: '100%',
+      color: theme === 'dark' ? '#fff' : '#222',
+      padding: '1rem 2rem',
+      fontSize: '1rem',
+      letterSpacing: '0.02em',
+      background: 'none',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    }}>
+      <span>Stonehouse Holdings</span>
+      <span>All Rights Reserved</span>
     </footer>
   );
 };
