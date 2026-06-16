@@ -100,8 +100,15 @@ export default function MineralResources() {
   return (
     <>
       <Head>
-        <title>Mineral Resources - Stonehouse Holdings | Coal & Chrome Trading</title>
-        <meta name="description" content="Stonehouse Holdings Mineral Resources division - Expert sourcing, processing, and trading of bulk minerals including coal and chrome across Southern Africa." />
+        <title>Coal & Chrome Trading South Africa | Stonehouse Holdings Mineral Resources</title>
+        <meta name="description" content="Stonehouse Holdings trades and sources bulk coal and chrome across Southern Africa. Request a quote for ROM chrome, Concentrate chrome, or coal today. Competitive pricing, reliable supply." />
+        <meta name="keywords" content="coal trading South Africa, chrome trading South Africa, bulk minerals South Africa, ROM chrome, chrome concentrate, mineral resources South Africa" />
+        <meta property="og:title" content="Coal & Chrome Trading South Africa | Stonehouse Holdings" />
+        <meta property="og:description" content="Expert bulk coal and chrome trading across Southern Africa. Request a competitive quote from Stonehouse Holdings today." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/mineral-resources" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/mineral-resources" />
       </Head>
 
       {/* Hero */}

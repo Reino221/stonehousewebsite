@@ -64,8 +64,15 @@ const Contact = () => {
   return (
     <>
       <Head>
-        <title>Contact - Stonehouse Holdings</title>
-        <meta name="description" content="Contact Stonehouse Holdings - Get in touch with our team for transport and logistics solutions." />
+        <title>Contact Stonehouse Holdings | Call 064 559 8007 | South Africa</title>
+        <meta name="description" content="Contact Stonehouse Holdings for transport, minerals and agricultural solutions. Call 064 559 8007 or email info@stonehouseltd.co.za. We respond promptly." />
+        <meta name="keywords" content="contact Stonehouse Holdings, transport company contact South Africa, logistics enquiry, freight quote South Africa" />
+        <meta property="og:title" content="Contact Stonehouse Holdings | South Africa" />
+        <meta property="og:description" content="Get in touch with Stonehouse Holdings. Call 064 559 8007 or email info@stonehouseltd.co.za for transport and logistics solutions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/contact" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/contact" />
       </Head>
 
       {/* Hero */}

@@ -25,8 +25,30 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Stonehouse Holdings - Transport &amp; Logistics Solutions</title>
-        <meta name="description" content="Stonehouse Holdings - Professional transport and logistics company providing reliable, efficient solutions throughout South Africa and neighbouring regions." />
+        <title>Stonehouse Holdings | Transport & Logistics Company South Africa</title>
+        <meta name="description" content="Stonehouse Holdings provides reliable bulk freight transport, coal & chrome mineral trading, and agricultural solutions across South Africa. Get a quote today." />
+        <meta name="keywords" content="transport company South Africa, bulk freight logistics, coal trading South Africa, chrome trading, agricultural supplies Southern Africa, Stonehouse Holdings" />
+        <meta property="og:title" content="Stonehouse Holdings | Transport & Logistics South Africa" />
+        <meta property="og:description" content="Professional bulk transport, minerals trading and agricultural solutions across South Africa. Reliable. Efficient. On time." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Stonehouse Holdings",
+          "url": "https://www.stonehousegroup.co.za",
+          "logo": "https://www.stonehousegroup.co.za/stonehouse%20logo.jpg",
+          "description": "Professional transport and logistics company providing bulk freight, minerals trading and agricultural solutions across South Africa.",
+          "telephone": "+27645598007",
+          "email": "info@stonehouseltd.co.za",
+          "foundingDate": "2024",
+          "address": { "@type": "PostalAddress", "addressCountry": "ZA" },
+          "areaServed": ["South Africa", "Southern Africa"],
+          "serviceType": ["Bulk Transport", "Freight Logistics", "Coal Trading", "Chrome Trading", "Agricultural Supplies"]
+        })}</script>
       </Head>
 
       {/* ── Hero ── */}

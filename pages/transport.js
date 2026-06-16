@@ -47,8 +47,15 @@ export default function Transport() {
   return (
     <>
       <Head>
-        <title>Transport - Stonehouse Holdings</title>
-        <meta name="description" content="Stonehouse Holdings Transport division - Reliable, efficient transport and logistics solutions throughout South Africa and neighbouring regions." />
+        <title>Bulk Transport & Road Freight Services South Africa | Stonehouse Holdings</title>
+        <meta name="description" content="Professional bulk material and road freight transport across South Africa. Stonehouse Holdings delivers on time, every time. Register as a transporter and join our growing network." />
+        <meta name="keywords" content="bulk transport South Africa, road freight South Africa, logistics company, freight transport, transporter registration South Africa" />
+        <meta property="og:title" content="Bulk Transport & Freight Services South Africa | Stonehouse Holdings" />
+        <meta property="og:description" content="Reliable, efficient bulk transport and road freight across South Africa. Join our transporter network today." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/transport" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/transport" />
       </Head>
 
       {/* Hero */}

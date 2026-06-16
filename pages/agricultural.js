@@ -15,8 +15,15 @@ export default function Agricultural() {
   return (
     <>
       <Head>
-        <title>Agricultural - Stonehouse Holdings</title>
-        <meta name="description" content="Stonehouse Holdings Agricultural division - Agricultural supplies, fertilizers, and comprehensive farming solutions across Southern Africa." />
+        <title>Agricultural Supplies & Farming Solutions South Africa | Stonehouse Holdings</title>
+        <meta name="description" content="Stonehouse Holdings Agricultural division supplies fertilizers, farming inputs and comprehensive agricultural solutions across Southern Africa. Reliable supply for farmers and agribusiness." />
+        <meta name="keywords" content="agricultural supplies South Africa, fertilizers South Africa, farming solutions Southern Africa, agribusiness South Africa, Stonehouse Holdings agriculture" />
+        <meta property="og:title" content="Agricultural Supplies & Farming Solutions South Africa | Stonehouse Holdings" />
+        <meta property="og:description" content="Reliable agricultural supplies, fertilizers and farming solutions across Southern Africa from Stonehouse Holdings." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/agricultural" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/agricultural" />
       </Head>
 
       {/* Hero */}

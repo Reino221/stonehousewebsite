@@ -15,8 +15,15 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About - Stonehouse Holdings</title>
-        <meta name="description" content="Stonehouse Holdings - Professional transport and logistics company providing reliable, efficient solutions throughout South Africa and neighbouring regions." />
+        <title>About Stonehouse Holdings | 10+ Years Transport Experience South Africa</title>
+        <meta name="description" content="Stonehouse Holdings has over 10 years of experience in bulk freight transport and logistics across South Africa. Learn about our commitment to safety, reliability and excellence." />
+        <meta name="keywords" content="about Stonehouse Holdings, transport company South Africa, bulk freight company, logistics South Africa, Reino Fourie" />
+        <meta property="og:title" content="About Stonehouse Holdings | Transport & Logistics South Africa" />
+        <meta property="og:description" content="Over 10 years of experience in bulk transport and logistics across South Africa. Built on trust, driven by excellence." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.stonehousegroup.co.za/about" />
+        <meta property="og:image" content="https://www.stonehousegroup.co.za/stonehouse%20logo.jpg" />
+        <link rel="canonical" href="https://www.stonehousegroup.co.za/about" />
       </Head>
 
       {/* Hero */}
